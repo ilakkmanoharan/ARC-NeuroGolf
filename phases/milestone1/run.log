@@ -1,0 +1,32 @@
+/Users/ilakkmanoharan2026/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  0%|          | 0.00/11.9k [00:00<?, ?B/s]100%|██████████| 11.9k/11.9k [00:00<00:00, 107kB/s]100%|██████████| 11.9k/11.9k [00:00<00:00, 20.9kB/s]
+Successfully submitted to The 2026 NeuroGolf Championship=== Step 1: Audit Phase 6 submission ===
+  audited 100...
+  audited 150...
+  audited 250...
+  audited 400...
+
+=== Audit Summary ===
+{
+  "submission_dir": "phases/phase6/submission",
+  "files_audited": 199,
+  "buckets": {
+    "pass_all": 23,
+    "train_only": 176,
+    "fail": 0
+  },
+  "local_total_score": 2229.6969400385283,
+  "kaggle_total_score": 2993.1952264961096,
+  "kaggle_avg": 15.041182042694018,
+  "pass_all_kaggle_total": 388.20318781859123
+}
+
+Wrote phases/milestone1/audit.json
+
+=== Step 2: Build curated submission ===
+Curated: 23 tasks, est. Kaggle score 388.2
+Zip: phases/milestone1/submission.zip
+
+=== Step 3: Kaggle submit ===
+/Users/ilakkmanoharan2026/Library/Python/3.9/bin/kaggle competitions submit -c neurogolf-2026 -f phases/milestone1/submission.zip -m ARC-Genome M1: 23 tasks, est 388

@@ -1,0 +1,36 @@
+# Private planning and research notes
+private/
+
+# Data and outputs
+data/arc_gen_raw/
+data/ARC-GEN-100K.zip
+reference/
+submission/
+submission.zip
+phases/*/submission/
+phases/*/submission.zip
+solve.log
+*.onnx
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/

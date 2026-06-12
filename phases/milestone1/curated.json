@@ -1,0 +1,832 @@
+{
+  "summary": {
+    "included": 23,
+    "excluded": 176,
+    "kaggle_total_est": 388.20318781859123,
+    "min_kaggle_score": 1.0,
+    "require_arcgen": true
+  },
+  "included": [
+    {
+      "task": 15,
+      "kaggle_score": 15.669302131360084,
+      "kaggle_cost": 11279
+    },
+    {
+      "task": 16,
+      "kaggle_score": 20.394829814011906,
+      "kaggle_cost": 100
+    },
+    {
+      "task": 53,
+      "kaggle_score": 16.793962237221187,
+      "kaggle_cost": 3663
+    },
+    {
+      "task": 56,
+      "kaggle_score": 17.545858921853323,
+      "kaggle_cost": 1727
+    },
+    {
+      "task": 73,
+      "kaggle_score": 15.999023555929655,
+      "kaggle_cost": 8111
+    },
+    {
+      "task": 95,
+      "kaggle_score": 15.669302131360084,
+      "kaggle_cost": 11279
+    },
+    {
+      "task": 120,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 127,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 171,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 179,
+      "kaggle_score": 25.0,
+      "kaggle_cost": 0
+    },
+    {
+      "task": 220,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 230,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 241,
+      "kaggle_score": 25.0,
+      "kaggle_cost": 0
+    },
+    {
+      "task": 258,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 261,
+      "kaggle_score": 13.618288614699134,
+      "kaggle_cost": 87703
+    },
+    {
+      "task": 266,
+      "kaggle_score": 17.0516147148881,
+      "kaggle_cost": 2831
+    },
+    {
+      "task": 276,
+      "kaggle_score": 20.394829814011906,
+      "kaggle_cost": 100
+    },
+    {
+      "task": 282,
+      "kaggle_score": 15.669302131360084,
+      "kaggle_cost": 11279
+    },
+    {
+      "task": 294,
+      "kaggle_score": 15.474046290643345,
+      "kaggle_cost": 13711
+    },
+    {
+      "task": 309,
+      "kaggle_score": 20.394829814011906,
+      "kaggle_cost": 100
+    },
+    {
+      "task": 317,
+      "kaggle_score": 15.669302131360084,
+      "kaggle_cost": 11279
+    },
+    {
+      "task": 331,
+      "kaggle_score": 15.474046290643345,
+      "kaggle_cost": 13711
+    },
+    {
+      "task": 337,
+      "kaggle_score": 20.394829814011906,
+      "kaggle_cost": 100
+    }
+  ],
+  "excluded": [
+    {
+      "task": 4,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 6,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 7,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 8,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 10,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 11,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 12,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 17,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 18,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 20,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 22,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 24,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 26,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 30,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 32,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 33,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 34,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 35,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 37,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 38,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 39,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 40,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 41,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 44,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 45,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 47,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 52,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 57,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 59,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 61,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 62,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 68,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 69,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 70,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 71,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 77,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 78,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 79,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 81,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 82,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 86,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 87,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 89,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 92,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 93,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 97,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 98,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 99,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 100,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 103,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 110,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 111,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 117,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 121,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 122,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 126,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 129,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 130,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 131,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 132,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 135,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 136,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 139,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 140,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 143,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 144,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 146,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 147,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 149,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 150,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 151,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 153,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 154,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 155,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 156,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 157,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 160,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 161,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 163,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 166,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 167,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 168,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 169,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 175,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 180,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 181,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 189,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 190,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 192,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 193,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 199,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 202,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 203,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 206,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 207,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 212,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 222,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 224,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 225,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 227,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 228,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 229,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 232,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 234,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 236,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 237,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 242,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 243,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 245,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 250,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 251,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 252,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 253,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 254,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 256,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 257,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 260,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 267,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 268,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 270,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 271,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 272,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 281,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 283,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 287,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 288,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 293,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 296,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 298,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 299,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 301,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 305,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 312,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 314,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 316,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 318,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 320,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 321,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 322,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 329,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 333,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 334,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 336,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 340,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 341,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 342,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 344,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 345,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 347,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 348,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 351,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 352,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 353,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 354,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 356,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 359,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 360,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 361,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 362,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 363,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 368,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 369,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 370,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 371,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 372,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 375,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 378,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 380,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 381,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 386,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 389,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 392,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 393,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 395,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 397,
+      "reason": "fails_arcgen"
+    },
+    {
+      "task": 400,
+      "reason": "fails_arcgen"
+    }
+  ]
+}

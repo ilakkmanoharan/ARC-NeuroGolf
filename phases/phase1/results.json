@@ -1,0 +1,13 @@
+{
+  "phase": 1,
+  "solved": 294,
+  "total_tasks": 400,
+  "elapsed_sec": 375.4,
+  "solvers": {
+    "conv_var": 124,
+    "conv_fixed": 123,
+    "conv_diff": 42,
+    "transpose": 2,
+    "color_map": 3
+  }
+}

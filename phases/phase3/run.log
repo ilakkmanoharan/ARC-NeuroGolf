@@ -1,0 +1,459 @@
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:74: RuntimeWarning: divide by zero encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:74: RuntimeWarning: overflow encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:74: RuntimeWarning: invalid value encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:234: RuntimeWarning: divide by zero encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:234: RuntimeWarning: overflow encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:234: RuntimeWarning: invalid value encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+[1;31m2026-06-12 13:19:43.950806 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,6} channels_last: 0[m
+[1;31m2026-06-12 13:19:43.955604 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,6} channels_last: 0[m
+[1;31m2026-06-12 13:19:44.780284 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,5} channels_last: 0[m
+[1;31m2026-06-12 13:19:44.781218 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {4,4} W: {10,10,4,7} channels_last: 0[m
+[1;31m2026-06-12 13:19:44.782383 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,5} channels_last: 0[m
+[1;31m2026-06-12 13:19:44.783330 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {4,4} W: {10,10,4,7} channels_last: 0[m
+[0;93m2026-06-12 13:19:45.474743 [W:onnxruntime:, graph.cc:109 MergeShapeInfo] Error merging shape info for output. 'output' source:{1,-1,31,31} target:{1,10,30,30}. Falling back to lenient merge.[m
+[1;31m2026-06-12 13:19:45.474878 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {2,2} W: {10,10,2,1} channels_last: 0[m
+[1;31m2026-06-12 13:19:47.565958 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,1} channels_last: 0[m
+[1;31m2026-06-12 13:19:47.567678 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,1} channels_last: 0[m
+[1;31m2026-06-12 13:19:47.571339 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,1} channels_last: 0[m
+[1;31m2026-06-12 13:19:47.572889 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,1} channels_last: 0[m
+[0;93m2026-06-12 13:20:00.641698 [W:onnxruntime:, graph.cc:109 MergeShapeInfo] Error merging shape info for output. 'output' source:{1,-1,31,31} target:{1,10,30,30}. Falling back to lenient merge.[m
+[1;31m2026-06-12 13:20:04.429063 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,6} channels_last: 0[m
+[1;31m2026-06-12 13:20:04.432361 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,6} channels_last: 0[m
+[1;31m2026-06-12 13:20:05.767245 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 13:20:05.769083 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 13:20:05.770762 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 13:20:05.772602 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 13:20:05.776991 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 13:20:05.778703 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 13:20:05.780333 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 13:20:05.782057 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 13:20:06.413370 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,6} channels_last: 0[m
+[1;31m2026-06-12 13:20:06.416936 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,6} channels_last: 0[m
+[1;31m2026-06-12 13:20:06.856869 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,3} channels_last: 0[m
+[1;31m2026-06-12 13:20:06.857912 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {6,6} W: {10,10,6,4} channels_last: 0[m
+[1;31m2026-06-12 13:20:06.859062 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,3} channels_last: 0[m
+[1;31m2026-06-12 13:20:06.859972 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {6,6} W: {10,10,6,4} channels_last: 0[m
+/Users/ilakkmanoharan2026/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  0%|          | 0.00/439k [00:00<?, ?B/s] 36%|███▋      | 160k/439k [00:00<00:00, 1.41MB/s]100%|██████████| 439k/439k [00:00<00:00, 847kB/s] 
+Successfully submitted to The 2026 NeuroGolf Championship=== Phase 3 ===
+Config: PhaseConfig(level=3, calibrated_cost=True, cost_gate_min_score=8.0, max_kernel=7, content_normalize=True, conv_sparsify=True, prefer_structural=True, extended_analytical=True, family_solvers=True, composition_depth=0, conv_v2=False, unsolved_budget=30.0, unsolved_max_kernel=9, second_pass=False, arcgen_validation=False, cost_audit=False)
+======================================================================
+Task   1: UNSOLVED
+Task   2: UNSOLVED
+Task   3: UNSOLVED
+Task   4: conv_var             cost= 2,370,519 score=10.3
+Task   5: UNSOLVED
+Task   6: conv_diff            cost=   150,423 score=13.1
+Task   7: conv_fixed           cost=   349,890 score=12.2
+Task   8: UNSOLVED
+Task   9: UNSOLVED
+Task  10: UNSOLVED
+Task  11: UNSOLVED
+Task  12: conv_fixed           cost=   458,235 score=12.0
+Task  13: UNSOLVED
+Task  14: UNSOLVED
+Task  15: conv_fixed           cost=   162,802 score=13.0
+Task  16: color_map            cost=   162,500 score=13.0
+Task  17: conv_fixed           cost= 2,273,322 score=10.4
+Task  18: UNSOLVED
+Task  19: UNSOLVED
+Task  20: conv_fixed           cost=   347,991 score=12.2
+Task  21: UNSOLVED
+Task  22: conv_diff            cost=   400,523 score=12.1
+Task  23: UNSOLVED
+Task  24: UNSOLVED
+Task  25: UNSOLVED
+Task  26: conv_diff            cost=   185,383 score=12.9
+Task  27: UNSOLVED
+Task  28: UNSOLVED
+Task  29: UNSOLVED
+Task  30: conv_var             cost= 4,542,519 score=9.7
+Task  31: UNSOLVED
+Task  32: conv_var             cost= 2,370,519 score=10.3
+Task  33: UNSOLVED
+Task  34: UNSOLVED
+Task  35: UNSOLVED
+Task  36: UNSOLVED
+Task  37: conv_fixed           cost=   599,991 score=11.7
+Task  38: conv_diff            cost=   300,439 score=12.4
+Task  39: conv_diff            cost=   348,002 score=12.2
+Task  40: conv_fixed           cost=   599,991 score=11.7
+Task  41: conv_fixed           cost=   347,991 score=12.2
+Task  42: UNSOLVED
+Task  43: UNSOLVED
+Task  44: conv_fixed           cost=   599,991 score=11.7
+Task  45: UNSOLVED
+Task  46: UNSOLVED
+Task  47: UNSOLVED
+Task  48: UNSOLVED
+Task  49: UNSOLVED
+Task  50: UNSOLVED
+Task  51: UNSOLVED
+Task  52: conv_fixed           cost=    97,930 score=13.5
+Task  53: conv_fixed           cost=   120,330 score=13.3
+Task  54: UNSOLVED
+Task  55: UNSOLVED
+Task  56: conv_diff            cost=    98,163 score=13.5
+Task  57: conv_diff            cost=   423,485 score=12.0
+Task  58: UNSOLVED
+Task  59: UNSOLVED
+Task  60: UNSOLVED
+Task  61: UNSOLVED
+Task  62: conv_fixed           cost=   599,991 score=11.7
+Task  63: UNSOLVED
+Task  64: UNSOLVED
+Task  65: UNSOLVED
+Task  66: UNSOLVED
+Task  67: UNSOLVED
+Task  68: conv_fixed           cost=   599,991 score=11.7
+Task  69: conv_fixed           cost=   599,991 score=11.7
+Task  70: UNSOLVED
+Task  71: conv_fixed           cost=   738,987 score=11.5
+Task  72: UNSOLVED
+Task  73: conv_fixed           cost=   232,266 score=12.6
+Task  74: UNSOLVED
+Task  75: UNSOLVED
+Task  76: UNSOLVED
+Task  77: UNSOLVED
+Task  78: UNSOLVED
+Task  79: conv_diff            cost=   588,098 score=11.7
+Task  80: UNSOLVED
+Task  81: conv_fixed           cost=   220,290 score=12.7
+Task  82: UNSOLVED
+Task  83: UNSOLVED
+Task  84: UNSOLVED
+Task  85: UNSOLVED
+Task  86: conv_var             cost= 4,542,519 score=9.7
+Task  87: conv_fixed           cost=    97,930 score=13.5
+Task  88: UNSOLVED
+Task  89: UNSOLVED
+Task  90: UNSOLVED
+Task  91: UNSOLVED
+Task  92: UNSOLVED
+Task  93: UNSOLVED
+Task  94: UNSOLVED
+Task  95: conv_fixed           cost=   162,802 score=13.0
+Task  96: UNSOLVED
+Task  97: UNSOLVED
+Task  98: conv_var             cost= 4,542,519 score=9.7
+Task  99: conv_fixed           cost=   599,991 score=11.7
+Task 100: conv_diff            cost=   180,067 score=12.9
+Task 101: UNSOLVED
+Task 102: UNSOLVED
+Task 103: conv_diff            cost=    98,163 score=13.5
+Task 104: UNSOLVED
+Task 105: UNSOLVED
+Task 106: UNSOLVED
+Task 107: UNSOLVED
+Task 108: UNSOLVED
+Task 109: UNSOLVED
+Task 110: UNSOLVED
+Task 111: conv_diff            cost=   348,002 score=12.2
+Task 112: UNSOLVED
+Task 113: UNSOLVED
+Task 114: UNSOLVED
+Task 115: UNSOLVED
+Task 116: UNSOLVED
+Task 117: UNSOLVED
+Task 118: UNSOLVED
+Task 119: UNSOLVED
+Task 120: conv_var             cost=   922,519 score=11.3
+Task 121: conv_diff            cost=   938,171 score=11.2
+Task 122: conv_var             cost= 4,542,519 score=9.7
+Task 123: UNSOLVED
+Task 124: UNSOLVED
+Task 125: UNSOLVED
+Task 126: conv_var             cost= 4,542,519 score=9.7
+Task 127: conv_var             cost=   922,519 score=11.3
+Task 128: UNSOLVED
+Task 129: conv_fixed           cost=    97,930 score=13.5
+Task 130: conv_diff            cost=   162,883 score=13.0
+Task 131: UNSOLVED
+Task 132: UNSOLVED
+Task 133: UNSOLVED
+Task 134: UNSOLVED
+Task 135: conv_diff            cost=   162,883 score=13.0
+Task 136: UNSOLVED
+Task 137: UNSOLVED
+Task 138: UNSOLVED
+Task 139: conv_fixed           cost=   506,802 score=11.9
+Task 140: conv_fixed           cost=    97,930 score=13.5
+Task 141: UNSOLVED
+Task 142: UNSOLVED
+Task 143: conv_fixed           cost=   599,991 score=11.7
+Task 144: conv_diff            cost=   286,295 score=12.4
+Task 145: UNSOLVED
+Task 146: conv_diff            cost=   114,229 score=13.4
+Task 147: conv_var             cost= 2,370,519 score=10.3
+Task 148: UNSOLVED
+Task 149: conv_diff            cost=   702,923 score=11.5
+Task 150: conv_var             cost= 2,370,519 score=10.3
+Task 151: conv_var             cost= 2,370,519 score=10.3
+Task 152: UNSOLVED
+Task 153: conv_diff            cost=   348,002 score=12.2
+Task 154: UNSOLVED
+Task 155: conv_var             cost= 2,370,519 score=10.3
+Task 156: UNSOLVED
+Task 157: UNSOLVED
+Task 158: UNSOLVED
+Task 159: UNSOLVED
+Task 160: conv_fixed           cost=   347,991 score=12.2
+Task 161: UNSOLVED
+Task 162: UNSOLVED
+Task 163: conv_fixed           cost=   703,002 score=11.5
+Task 164: UNSOLVED
+Task 165: UNSOLVED
+Task 166: UNSOLVED
+Task 167: conv_fixed           cost=   120,330 score=13.3
+Task 168: UNSOLVED
+Task 169: UNSOLVED
+Task 170: UNSOLVED
+Task 171: conv_var             cost=   922,519 score=11.3
+Task 172: UNSOLVED
+Task 173: UNSOLVED
+Task 174: UNSOLVED
+Task 175: UNSOLVED
+Task 176: UNSOLVED
+Task 177: UNSOLVED
+Task 178: UNSOLVED
+Task 179: transpose            cost=    72,900 score=13.8
+Task 180: conv_diff            cost=   423,523 score=12.0
+Task 181: UNSOLVED
+Task 182: UNSOLVED
+Task 183: UNSOLVED
+Task 184: UNSOLVED
+Task 185: UNSOLVED
+Task 186: UNSOLVED
+Task 187: UNSOLVED
+Task 188: UNSOLVED
+Task 189: conv_diff            cost=   506,820 score=11.9
+Task 190: UNSOLVED
+Task 191: UNSOLVED
+Task 192: conv_var             cost=   922,519 score=11.3
+Task 193: conv_var             cost= 2,370,519 score=10.3
+Task 194: UNSOLVED
+Task 195: UNSOLVED
+Task 196: UNSOLVED
+Task 197: UNSOLVED
+Task 198: UNSOLVED
+Task 199: UNSOLVED
+Task 200: UNSOLVED
+Task 201: UNSOLVED
+Task 202: UNSOLVED
+Task 203: conv_var             cost= 4,542,519 score=9.7
+Task 204: UNSOLVED
+Task 205: UNSOLVED
+Task 206: conv_var             cost= 4,542,519 score=9.7
+Task 207: conv_diff            cost=   112,492 score=13.4
+Task 208: UNSOLVED
+Task 209: UNSOLVED
+Task 210: UNSOLVED
+Task 211: UNSOLVED
+Task 212: UNSOLVED
+Task 213: UNSOLVED
+Task 214: UNSOLVED
+Task 215: UNSOLVED
+Task 216: UNSOLVED
+Task 217: UNSOLVED
+Task 218: UNSOLVED
+Task 219: UNSOLVED
+Task 220: conv_var             cost=   922,519 score=11.3
+Task 221: UNSOLVED
+Task 222: conv_fixed           cost= 1,365,387 score=10.9
+Task 223: UNSOLVED
+Task 224: UNSOLVED
+Task 225: conv_fixed           cost=   187,767 score=12.9
+Task 226: UNSOLVED
+Task 227: conv_diff            cost=   266,691 score=12.5
+Task 228: conv_fixed           cost=   347,991 score=12.2
+Task 229: conv_fixed           cost=    97,930 score=13.5
+Task 230: conv_var             cost=   922,519 score=11.3
+Task 231: UNSOLVED
+Task 232: UNSOLVED
+Task 233: UNSOLVED
+Task 234: UNSOLVED
+Task 235: UNSOLVED
+Task 236: conv_diff            cost=   286,295 score=12.4
+Task 237: UNSOLVED
+Task 238: UNSOLVED
+Task 239: UNSOLVED
+Task 240: UNSOLVED
+Task 241: transpose            cost=    72,900 score=13.8
+Task 242: conv_diff            cost=   320,558 score=12.3
+Task 243: UNSOLVED
+Task 244: UNSOLVED
+Task 245: UNSOLVED
+Task 246: UNSOLVED
+Task 247: UNSOLVED
+Task 248: UNSOLVED
+Task 249: UNSOLVED
+Task 250: UNSOLVED
+Task 251: UNSOLVED
+Task 252: UNSOLVED
+Task 253: conv_diff            cost=   938,128 score=11.2
+Task 254: UNSOLVED
+Task 255: UNSOLVED
+Task 256: UNSOLVED
+Task 257: conv_diff            cost=   506,840 score=11.9
+Task 258: conv_var             cost=   922,519 score=11.3
+Task 259: UNSOLVED
+Task 260: UNSOLVED
+Task 261: conv_var             cost= 4,542,519 score=9.7
+Task 262: UNSOLVED
+Task 263: UNSOLVED
+Task 264: UNSOLVED
+Task 265: UNSOLVED
+Task 266: conv_fixed           cost=   103,276 score=13.5
+Task 267: conv_var             cost= 4,542,519 score=9.7
+Task 268: UNSOLVED
+Task 269: UNSOLVED
+Task 270: UNSOLVED
+Task 271: conv_diff            cost=   300,483 score=12.4
+Task 272: conv_var             cost=   922,519 score=11.3
+Task 273: UNSOLVED
+Task 274: UNSOLVED
+Task 275: UNSOLVED
+Task 276: color_map            cost=   162,500 score=13.0
+Task 277: UNSOLVED
+Task 278: UNSOLVED
+Task 279: UNSOLVED
+Task 280: UNSOLVED
+Task 281: UNSOLVED
+Task 282: conv_fixed           cost=   162,802 score=13.0
+Task 283: conv_fixed           cost=   599,991 score=11.7
+Task 284: UNSOLVED
+Task 285: UNSOLVED
+Task 286: UNSOLVED
+Task 287: UNSOLVED
+Task 288: conv_var             cost= 4,542,519 score=9.7
+Task 289: UNSOLVED
+Task 290: UNSOLVED
+Task 291: UNSOLVED
+Task 292: UNSOLVED
+Task 293: conv_var             cost= 2,370,519 score=10.3
+Task 294: conv_fixed           cost=   179,991 score=12.9
+Task 295: UNSOLVED
+Task 296: conv_diff            cost=   185,437 score=12.9
+Task 297: UNSOLVED
+Task 298: conv_var             cost=   922,519 score=11.3
+Task 299: conv_fixed           cost=   286,167 score=12.4
+Task 300: UNSOLVED
+Task 301: conv_var             cost= 2,370,519 score=10.3
+Task 302: UNSOLVED
+Task 303: UNSOLVED
+Task 304: UNSOLVED
+Task 305: conv_fixed           cost= 1,365,387 score=10.9
+Task 306: UNSOLVED
+Task 307: UNSOLVED
+Task 308: UNSOLVED
+Task 309: color_map            cost=   162,500 score=13.0
+Task 310: UNSOLVED
+Task 311: UNSOLVED
+Task 312: UNSOLVED
+Task 313: UNSOLVED
+Task 314: conv_fixed           cost=   423,435 score=12.0
+Task 315: UNSOLVED
+Task 316: conv_diff            cost=   348,002 score=12.2
+Task 317: conv_fixed           cost=   162,802 score=13.0
+Task 318: conv_diff            cost=   187,895 score=12.9
+Task 319: UNSOLVED
+Task 320: UNSOLVED
+Task 321: conv_diff            cost=   384,315 score=12.1
+Task 322: conv_fixed           cost=    97,930 score=13.5
+Task 323: UNSOLVED
+Task 324: UNSOLVED
+Task 325: UNSOLVED
+Task 326: UNSOLVED
+Task 327: UNSOLVED
+Task 328: UNSOLVED
+Task 329: conv_var             cost=   922,519 score=11.3
+Task 330: UNSOLVED
+Task 331: conv_fixed           cost=   179,991 score=12.9
+Task 332: UNSOLVED
+Task 333: conv_fixed           cost=   599,991 score=11.7
+Task 334: conv_diff            cost=   160,427 score=13.0
+Task 335: UNSOLVED
+Task 336: UNSOLVED
+Task 337: color_map            cost=   162,500 score=13.0
+Task 338: UNSOLVED
+Task 339: UNSOLVED
+Task 340: UNSOLVED
+Task 341: UNSOLVED
+Task 342: UNSOLVED
+Task 343: UNSOLVED
+Task 344: conv_var             cost= 2,370,519 score=10.3
+Task 345: UNSOLVED
+Task 346: UNSOLVED
+Task 347: conv_diff            cost=   142,920 score=13.1
+Task 348: conv_var             cost= 4,542,519 score=9.7
+Task 349: UNSOLVED
+Task 350: UNSOLVED
+Task 351: conv_diff            cost=   738,094 score=11.5
+Task 352: conv_var             cost=   922,519 score=11.3
+Task 353: UNSOLVED
+Task 354: UNSOLVED
+Task 355: UNSOLVED
+Task 356: UNSOLVED
+Task 357: UNSOLVED
+Task 358: UNSOLVED
+Task 359: conv_var             cost= 2,370,519 score=10.3
+Task 360: conv_diff            cost=   322,853 score=12.3
+Task 361: conv_fixed           cost=   347,991 score=12.2
+Task 362: conv_fixed           cost=   599,991 score=11.7
+Task 363: UNSOLVED
+Task 364: UNSOLVED
+Task 365: UNSOLVED
+Task 366: UNSOLVED
+Task 367: UNSOLVED
+Task 368: UNSOLVED
+Task 369: UNSOLVED
+Task 370: UNSOLVED
+Task 371: UNSOLVED
+Task 372: conv_diff            cost=   702,829 score=11.5
+Task 373: UNSOLVED
+Task 374: UNSOLVED
+Task 375: conv_var             cost= 4,542,519 score=9.7
+Task 376: UNSOLVED
+Task 377: UNSOLVED
+Task 378: UNSOLVED
+Task 379: UNSOLVED
+Task 380: conv_fixed           cost=    97,930 score=13.5
+Task 381: UNSOLVED
+Task 382: UNSOLVED
+Task 383: UNSOLVED
+Task 384: UNSOLVED
+Task 385: UNSOLVED
+Task 386: conv_diff            cost=   167,903 score=13.0
+Task 387: UNSOLVED
+Task 388: UNSOLVED
+Task 389: conv_var             cost=   922,519 score=11.3
+Task 390: UNSOLVED
+Task 391: UNSOLVED
+Task 392: UNSOLVED
+Task 393: conv_diff            cost=   458,100 score=12.0
+Task 394: UNSOLVED
+Task 395: conv_diff            cost=   142,920 score=13.1
+Task 396: UNSOLVED
+Task 397: conv_fixed           cost=   599,991 score=11.7
+Task 398: UNSOLVED
+Task 399: UNSOLVED
+Task 400: conv_diff            cost= 2,932,814 score=10.1
+
+Solved: 127/400 in 25s
+Estimated total score: 1507.4
+  conv_fixed: 46
+  conv_diff: 40
+  conv_var: 35
+  color_map: 4
+  transpose: 2
+Created phases/phase3/submission.zip: 127 files, 439 KB
+
+Results written to phases/phase3/results.json
+Submitting: /Users/ilakkmanoharan2026/Library/Python/3.9/bin/kaggle competitions submit -c neurogolf-2026 -f phases/phase3/submission.zip -m ARC-Genome Phase 3: 127/400 solved

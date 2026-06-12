@@ -1,0 +1,808 @@
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:93: RuntimeWarning: divide by zero encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:93: RuntimeWarning: overflow encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:93: RuntimeWarning: invalid value encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:253: RuntimeWarning: divide by zero encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:253: RuntimeWarning: overflow encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:253: RuntimeWarning: invalid value encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+[1;31m2026-06-12 14:02:46.538492 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,7} channels_last: 0[m
+[1;31m2026-06-12 14:02:46.556420 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,8} channels_last: 0[m
+[1;31m2026-06-12 14:02:46.589050 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,7} channels_last: 0[m
+[1;31m2026-06-12 14:02:46.608860 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,8} channels_last: 0[m
+[1;31m2026-06-12 14:02:46.646695 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,7} channels_last: 0[m
+[1;31m2026-06-12 14:02:46.662412 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,8} channels_last: 0[m
+[1;31m2026-06-12 14:02:46.693026 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,7} channels_last: 0[m
+[1;31m2026-06-12 14:02:46.712681 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,8} channels_last: 0[m
+[1;31m2026-06-12 14:03:49.426381 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:03:49.462976 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,8} channels_last: 0[m
+[1;31m2026-06-12 14:03:49.523649 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:03:49.577749 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,8} channels_last: 0[m
+[1;31m2026-06-12 14:03:49.632883 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:03:49.669185 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,8} channels_last: 0[m
+[1;31m2026-06-12 14:03:49.712874 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:03:49.750888 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,8} channels_last: 0[m
+[1;31m2026-06-12 14:04:39.144732 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:04:39.176440 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:04:39.252823 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:04:39.300865 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:04:39.402304 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:04:39.433919 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:04:39.509972 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:04:39.540777 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[0;93m2026-06-12 14:05:19.953419 [W:onnxruntime:, graph.cc:109 MergeShapeInfo] Error merging shape info for output. 'output' source:{1,-1,31,31} target:{1,10,30,30}. Falling back to lenient merge.[m
+[1;31m2026-06-12 14:05:19.953646 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {2,2} W: {10,10,2,1} channels_last: 0[m
+[0;93m2026-06-12 14:05:19.974093 [W:onnxruntime:, graph.cc:109 MergeShapeInfo] Error merging shape info for output. 'output' source:{1,-1,31,31} target:{1,10,30,30}. Falling back to lenient merge.[m
+[1;31m2026-06-12 14:05:19.974387 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {2,2} W: {10,10,2,1} channels_last: 0[m
+[1;31m2026-06-12 14:06:22.765599 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:23.047950 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:23.310536 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:23.593101 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:23.858376 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:24.142288 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:24.405293 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:24.684929 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:24.963081 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:25.242270 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:25.502136 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:25.782106 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:26.047994 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:26.325600 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:26.625138 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:06:26.906192 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:07:45.179105 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,1} channels_last: 0[m
+[1;31m2026-06-12 14:07:45.182660 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,1} channels_last: 0[m
+[1;31m2026-06-12 14:07:45.193065 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,1} channels_last: 0[m
+[1;31m2026-06-12 14:07:45.196141 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,1} channels_last: 0[m
+[1;31m2026-06-12 14:07:45.206945 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,1} channels_last: 0[m
+[1;31m2026-06-12 14:07:45.210139 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,1} channels_last: 0[m
+[1;31m2026-06-12 14:11:42.495077 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:11:42.584711 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:11:42.688077 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:11:42.771063 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:11:43.765455 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:43.790629 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:43.834927 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:43.860587 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.026471 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.051892 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.095779 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.121123 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.296123 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.320861 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.364695 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.390431 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.556663 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.581612 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.625863 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:11:44.651570 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:16:09.936584 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {8,8} W: {10,10,8,7} channels_last: 0[m
+[1;31m2026-06-12 14:16:09.971900 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:16:10.041394 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {8,8} W: {10,10,8,7} channels_last: 0[m
+[1;31m2026-06-12 14:16:10.087755 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:16:10.139281 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {8,8} W: {10,10,8,7} channels_last: 0[m
+[1;31m2026-06-12 14:16:10.174571 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:16:10.217663 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {8,8} W: {10,10,8,7} channels_last: 0[m
+[1;31m2026-06-12 14:16:10.254173 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,7} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.166848 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.232679 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.275775 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.300053 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.345508 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.369111 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.429231 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.492511 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.533323 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.554279 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.594118 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.618020 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.683831 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.744069 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.781199 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.803606 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.845125 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.868672 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.927587 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:18:55.989375 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.026412 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.049446 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.091174 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.114833 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.140463 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.155218 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.167966 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.183136 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.207865 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.222753 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.235609 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:18:56.250619 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.187325 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,6} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.202946 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,7} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.221389 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,8} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.239762 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,6} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.256136 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,7} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.279117 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,8} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.305701 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,6} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.321084 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,7} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.338993 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,8} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.357300 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,6} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.373600 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,7} channels_last: 0[m
+[1;31m2026-06-12 14:20:31.396449 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {5,5} W: {10,10,5,8} channels_last: 0[m
+[1;31m2026-06-12 14:21:24.653387 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:24.722539 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:24.862209 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:24.935054 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:25.008163 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:25.156331 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:25.763219 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:25.831994 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:25.973221 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:26.046242 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:26.119938 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:26.263995 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:26.879955 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:26.948545 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:27.091299 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:27.163780 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:27.237333 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:27.381983 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:27.982105 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.050521 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.193229 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.266315 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.337856 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.482859 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.511120 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.530196 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.556865 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.579159 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.599144 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.625927 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.647304 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.665908 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.692495 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.715590 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.735659 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.763203 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.783056 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.802058 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.828515 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.850504 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.870328 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.897669 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.918597 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.938003 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.964797 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:28.988086 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.008296 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.035640 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.063172 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.082546 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.109186 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.131578 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.151521 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.179138 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.200076 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.219346 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.246010 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.269357 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.289256 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.316526 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.336405 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.355455 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.381884 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.404377 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.424231 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.452089 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.473465 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.493028 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.519193 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.542554 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.562657 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:21:29.589942 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:21:46.886315 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:21:46.958352 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:21:47.036511 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:21:47.106528 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.788349 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {6,6} W: {10,10,6,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.803415 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.822046 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {8,8} W: {10,10,8,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.840236 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {6,6} W: {10,10,6,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.855882 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.875420 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {8,8} W: {10,10,8,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.902191 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {6,6} W: {10,10,6,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.916981 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.934906 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {8,8} W: {10,10,8,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.952995 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {6,6} W: {10,10,6,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.968658 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,5} channels_last: 0[m
+[1;31m2026-06-12 14:22:05.987434 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {8,8} W: {10,10,8,5} channels_last: 0[m
+[1;31m2026-06-12 14:24:29.793182 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:24:29.822383 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:24:29.893650 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:24:29.922051 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:24:30.002941 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:24:30.061458 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:24:30.138127 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:24:30.169124 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:12.009400 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:12.278215 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:12.531347 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:12.799173 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:13.047760 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:13.315870 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:13.568395 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:13.839118 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:14.105171 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:14.372521 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:14.624775 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:14.891654 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:15.141759 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:15.412208 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:15.664490 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:26:15.932815 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,11} channels_last: 0[m
+[1;31m2026-06-12 14:35:03.615464 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:03.640546 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:03.683793 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:03.708888 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:03.874587 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:03.898716 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:03.941646 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:03.966481 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:04.140441 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:04.165559 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:04.208495 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:04.233366 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:04.398584 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:04.422958 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:04.465818 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,5} channels_last: 0[m
+[1;31m2026-06-12 14:35:04.490128 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,5} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.297662 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.358431 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.397586 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.420868 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.463208 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.486766 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.544902 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.605359 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.645019 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.667852 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.709060 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.732399 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.798873 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.860427 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.897665 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.920321 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.960527 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:12.984515 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.043031 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.105169 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,8} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.144242 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.166276 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.207496 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.231007 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.256693 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.271514 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.284322 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.299017 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.323849 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.339134 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.351768 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:42:13.366640 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:21.500055 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:21.568889 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:21.711124 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:21.784458 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:21.856147 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:21.999694 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:22.601665 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:22.670918 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:22.809544 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:22.882585 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:22.955556 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:23.098156 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:23.708907 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:23.777832 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:23.916675 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:23.989046 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:24.061701 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:24.204129 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:24.804610 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:24.873968 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.012504 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.084419 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {7,7} W: {10,10,7,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.157749 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {9,9} W: {10,10,9,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.300600 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {11,11} W: {10,10,11,1} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.328124 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.346770 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.373058 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.394984 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.414914 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.442429 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.463522 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.482973 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.509365 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.532318 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.551790 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.579657 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.600221 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.618988 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.645767 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.667740 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.686823 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.714322 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.735735 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.755015 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.781682 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.804645 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.824057 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.851351 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.879207 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.898074 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.925277 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.947362 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.967040 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:25.994758 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.015543 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.035701 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.063238 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.085337 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.104729 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.131583 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.151742 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.170730 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.196895 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.218487 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.237727 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.264597 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.285147 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.303717 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.330729 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.353855 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,7} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.373986 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,9} channels_last: 0[m
+[1;31m2026-06-12 14:44:26.400970 [E:onnxruntime:, sequential_executor.cc:516 ExecuteKernel] Non-zero status code returned while running Conv node. Name:'' Status Message: kernel_shape is not compatible with W shape. kernel_shape: {3,3} W: {10,10,3,11} channels_last: 0[m
+  audited 100...
+
+=== Audit Summary ===
+{
+  "submission_dir": "phases/milestone1/submission_v2",
+  "files_audited": 52,
+  "buckets": {
+    "pass_all": 52,
+    "train_only": 0,
+    "fail": 0
+  },
+  "local_total_score": 635.8698340292955,
+  "kaggle_total_score": 843.448169805806,
+  "kaggle_avg": 16.220157111650114,
+  "pass_all_kaggle_total": 843.448169805806
+}
+
+Wrote phases/milestone1/audit_v2.json
+/Users/ilakkmanoharan2026/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  0%|          | 0.00/401k [00:00<?, ?B/s]  4%|▍         | 16.0k/401k [00:00<00:02, 163kB/s]100%|██████████| 401k/401k [00:00<00:00, 736kB/s] 
+400 Client Error: Bad Request for url: https://api.kaggle.com/v1/competitions.CompetitionApiService/CreateSubmission
+Re-solving 400 tasks with ARC-GEN validation...
+Task   1: UNSOLVED
+Task   2: UNSOLVED
+Task   3: UNSOLVED
+Task   4: UNSOLVED
+Task   5: UNSOLVED
+Task   6: conv_diff            cost=   150,423 score=13.1
+Task   7: UNSOLVED
+Task   8: UNSOLVED
+Task   9: UNSOLVED
+Task  10: UNSOLVED
+Task  11: UNSOLVED
+Task  12: UNSOLVED
+Task  13: UNSOLVED
+Task  14: UNSOLVED
+Task  15: conv_fixed           cost=   162,802 score=13.0
+Task  16: color_map            cost=   162,500 score=13.0
+Task  17: UNSOLVED
+Task  18: UNSOLVED
+Task  19: UNSOLVED
+Task  20: UNSOLVED
+Task  21: UNSOLVED
+Task  22: conv_diff            cost= 1,106,123 score=11.1
+Task  23: UNSOLVED
+Task  24: UNSOLVED
+Task  25: UNSOLVED
+Task  26: conv_diff            cost=   185,383 score=12.9
+Task  27: UNSOLVED
+Task  28: UNSOLVED
+Task  29: UNSOLVED
+Task  30: UNSOLVED
+Task  31: UNSOLVED
+Task  32: UNSOLVED
+Task  33: UNSOLVED
+Task  34: UNSOLVED
+Task  35: UNSOLVED
+Task  36: UNSOLVED
+Task  37: UNSOLVED
+Task  38: UNSOLVED
+Task  39: conv_diff            cost=   600,002 score=11.7
+Task  40: conv_fixed           cost= 1,355,991 score=10.9
+Task  41: UNSOLVED
+Task  42: UNSOLVED
+Task  43: UNSOLVED
+Task  44: UNSOLVED
+Task  45: UNSOLVED
+Task  46: UNSOLVED
+Task  47: UNSOLVED
+Task  48: UNSOLVED
+Task  49: UNSOLVED
+Task  50: UNSOLVED
+Task  51: UNSOLVED
+Task  52: UNSOLVED
+Task  53: conv_fixed           cost=   120,330 score=13.3
+Task  54: UNSOLVED
+Task  55: UNSOLVED
+Task  56: conv_diff            cost=    98,163 score=13.5
+Task  57: UNSOLVED
+Task  58: UNSOLVED
+Task  59: UNSOLVED
+Task  60: UNSOLVED
+Task  61: UNSOLVED
+Task  62: UNSOLVED
+Task  63: UNSOLVED
+Task  64: UNSOLVED
+Task  65: UNSOLVED
+Task  66: UNSOLVED
+Task  67: UNSOLVED
+Task  68: UNSOLVED
+Task  69: UNSOLVED
+Task  70: UNSOLVED
+Task  71: UNSOLVED
+Task  72: UNSOLVED
+Task  73: conv_fixed           cost=   232,266 score=12.6
+Task  74: UNSOLVED
+Task  75: UNSOLVED
+Task  76: UNSOLVED
+Task  77: UNSOLVED
+Task  78: UNSOLVED
+Task  79: conv_diff            cost= 1,713,698 score=10.6
+Task  80: UNSOLVED
+Task  81: UNSOLVED
+Task  82: UNSOLVED
+Task  83: UNSOLVED
+Task  84: UNSOLVED
+Task  85: UNSOLVED
+Task  86: UNSOLVED
+Task  87: UNSOLVED
+Task  88: UNSOLVED
+Task  89: UNSOLVED
+Task  90: UNSOLVED
+Task  91: UNSOLVED
+Task  92: UNSOLVED
+Task  93: UNSOLVED
+Task  94: UNSOLVED
+Task  95: conv_fixed           cost=   162,802 score=13.0
+Task  96: UNSOLVED
+Task  97: UNSOLVED
+Task  98: UNSOLVED
+Task  99: UNSOLVED
+Task 100: conv_diff            cost=   600,067 score=11.7
+Task 101: UNSOLVED
+Task 102: UNSOLVED
+Task 103: UNSOLVED
+Task 104: UNSOLVED
+Task 105: UNSOLVED
+Task 106: UNSOLVED
+Task 107: UNSOLVED
+Task 108: UNSOLVED
+Task 109: UNSOLVED
+Task 110: UNSOLVED
+Task 111: conv_diff            cost=   936,002 score=11.3
+Task 112: UNSOLVED
+Task 113: UNSOLVED
+Task 114: UNSOLVED
+Task 115: UNSOLVED
+Task 116: UNSOLVED
+Task 117: UNSOLVED
+Task 118: UNSOLVED
+Task 119: UNSOLVED
+Task 120: conv_var             cost=   922,519 score=11.3
+Task 121: conv_diff            cost= 1,494,971 score=10.8
+Task 122: UNSOLVED
+Task 123: UNSOLVED
+Task 124: UNSOLVED
+Task 125: UNSOLVED
+Task 126: UNSOLVED
+Task 127: conv_var             cost=   922,519 score=11.3
+Task 128: UNSOLVED
+Task 129: conv_fixed           cost=   120,330 score=13.3
+Task 130: conv_diff            cost=   300,483 score=12.4
+Task 131: UNSOLVED
+Task 132: UNSOLVED
+Task 133: UNSOLVED
+Task 134: UNSOLVED
+Task 135: conv_diff            cost=   506,883 score=11.9
+Task 136: UNSOLVED
+Task 137: UNSOLVED
+Task 138: UNSOLVED
+Task 139: UNSOLVED
+Task 140: conv_fixed           cost=   120,330 score=13.3
+Task 141: UNSOLVED
+Task 142: UNSOLVED
+Task 143: UNSOLVED
+Task 144: conv_diff            cost=   286,295 score=12.4
+Task 145: UNSOLVED
+Task 146: UNSOLVED
+Task 147: UNSOLVED
+Task 148: UNSOLVED
+Task 149: UNSOLVED
+Task 150: UNSOLVED
+Task 151: UNSOLVED
+Task 152: UNSOLVED
+Task 153: conv_diff            cost=   936,002 score=11.3
+Task 154: UNSOLVED
+Task 155: UNSOLVED
+Task 156: UNSOLVED
+Task 157: UNSOLVED
+Task 158: UNSOLVED
+Task 159: UNSOLVED
+Task 160: UNSOLVED
+Task 161: UNSOLVED
+Task 162: UNSOLVED
+Task 163: UNSOLVED
+Task 164: UNSOLVED
+Task 165: UNSOLVED
+Task 166: UNSOLVED
+Task 167: UNSOLVED
+Task 168: UNSOLVED
+Task 169: UNSOLVED
+Task 170: UNSOLVED
+Task 171: conv_var             cost=   922,519 score=11.3
+Task 172: UNSOLVED
+Task 173: UNSOLVED
+Task 174: UNSOLVED
+Task 175: UNSOLVED
+Task 176: UNSOLVED
+Task 177: UNSOLVED
+Task 178: UNSOLVED
+Task 179: transpose            cost=    72,900 score=13.8
+Task 180: UNSOLVED
+Task 181: UNSOLVED
+Task 182: UNSOLVED
+Task 183: UNSOLVED
+Task 184: UNSOLVED
+Task 185: UNSOLVED
+Task 186: UNSOLVED
+Task 187: UNSOLVED
+Task 188: UNSOLVED
+Task 189: UNSOLVED
+Task 190: UNSOLVED
+Task 191: UNSOLVED
+Task 192: UNSOLVED
+Task 193: UNSOLVED
+Task 194: UNSOLVED
+Task 195: UNSOLVED
+Task 196: UNSOLVED
+Task 197: UNSOLVED
+Task 198: UNSOLVED
+Task 199: UNSOLVED
+Task 200: UNSOLVED
+Task 201: UNSOLVED
+Task 202: UNSOLVED
+Task 203: UNSOLVED
+Task 204: UNSOLVED
+Task 205: UNSOLVED
+Task 206: UNSOLVED
+Task 207: conv_diff            cost=   160,492 score=13.0
+Task 208: UNSOLVED
+Task 209: UNSOLVED
+Task 210: UNSOLVED
+Task 211: UNSOLVED
+Task 212: UNSOLVED
+Task 213: UNSOLVED
+Task 214: UNSOLVED
+Task 215: UNSOLVED
+Task 216: UNSOLVED
+Task 217: UNSOLVED
+Task 218: UNSOLVED
+Task 219: UNSOLVED
+Task 220: conv_var             cost=   922,519 score=11.3
+Task 221: UNSOLVED
+Task 222: UNSOLVED
+Task 223: UNSOLVED
+Task 224: UNSOLVED
+Task 225: UNSOLVED
+Task 226: UNSOLVED
+Task 227: conv_diff            cost=   177,891 score=12.9
+Task 228: UNSOLVED
+Task 229: UNSOLVED
+Task 230: conv_var             cost=   922,519 score=11.3
+Task 231: UNSOLVED
+Task 232: UNSOLVED
+Task 233: UNSOLVED
+Task 234: UNSOLVED
+Task 235: UNSOLVED
+Task 236: UNSOLVED
+Task 237: UNSOLVED
+Task 238: UNSOLVED
+Task 239: UNSOLVED
+Task 240: UNSOLVED
+Task 241: transpose            cost=    72,900 score=13.8
+Task 242: conv_diff            cost= 1,364,558 score=10.9
+Task 243: UNSOLVED
+Task 244: UNSOLVED
+Task 245: UNSOLVED
+Task 246: UNSOLVED
+Task 247: UNSOLVED
+Task 248: UNSOLVED
+Task 249: UNSOLVED
+Task 250: UNSOLVED
+Task 251: UNSOLVED
+Task 252: UNSOLVED
+Task 253: conv_diff            cost= 2,190,928 score=10.4
+Task 254: UNSOLVED
+Task 255: UNSOLVED
+Task 256: UNSOLVED
+Task 257: UNSOLVED
+Task 258: conv_var             cost=   922,519 score=11.3
+Task 259: UNSOLVED
+Task 260: UNSOLVED
+Task 261: conv_var             cost= 4,542,519 score=9.7
+Task 262: UNSOLVED
+Task 263: UNSOLVED
+Task 264: UNSOLVED
+Task 265: UNSOLVED
+Task 266: conv_fixed           cost=   103,276 score=13.5
+Task 267: UNSOLVED
+Task 268: UNSOLVED
+Task 269: UNSOLVED
+Task 270: UNSOLVED
+Task 271: UNSOLVED
+Task 272: UNSOLVED
+Task 273: UNSOLVED
+Task 274: UNSOLVED
+Task 275: UNSOLVED
+Task 276: color_map            cost=   162,500 score=13.0
+Task 277: UNSOLVED
+Task 278: UNSOLVED
+Task 279: UNSOLVED
+Task 280: UNSOLVED
+Task 281: UNSOLVED
+Task 282: conv_fixed           cost=   162,802 score=13.0
+Task 283: conv_fixed           cost=   179,991 score=12.9
+Task 284: UNSOLVED
+Task 285: UNSOLVED
+Task 286: UNSOLVED
+Task 287: UNSOLVED
+Task 288: UNSOLVED
+Task 289: UNSOLVED
+Task 290: UNSOLVED
+Task 291: UNSOLVED
+Task 292: UNSOLVED
+Task 293: UNSOLVED
+Task 294: conv_fixed           cost=   179,991 score=12.9
+Task 295: UNSOLVED
+Task 296: UNSOLVED
+Task 297: UNSOLVED
+Task 298: UNSOLVED
+Task 299: conv_fixed           cost=   417,367 score=12.1
+Task 300: UNSOLVED
+Task 301: UNSOLVED
+Task 302: UNSOLVED
+Task 303: UNSOLVED
+Task 304: UNSOLVED
+Task 305: conv_fixed           cost= 3,244,587 score=10.0
+Task 306: UNSOLVED
+Task 307: UNSOLVED
+Task 308: UNSOLVED
+Task 309: color_map            cost=   162,500 score=13.0
+Task 310: UNSOLVED
+Task 311: UNSOLVED
+Task 312: UNSOLVED
+Task 313: UNSOLVED
+Task 314: UNSOLVED
+Task 315: UNSOLVED
+Task 316: conv_diff            cost=   936,002 score=11.3
+Task 317: conv_fixed           cost=   162,802 score=13.0
+Task 318: conv_diff            cost=   286,295 score=12.4
+Task 319: UNSOLVED
+Task 320: UNSOLVED
+Task 321: UNSOLVED
+Task 322: conv_fixed           cost=   120,330 score=13.3
+Task 323: UNSOLVED
+Task 324: UNSOLVED
+Task 325: UNSOLVED
+Task 326: UNSOLVED
+Task 327: UNSOLVED
+Task 328: UNSOLVED
+Task 329: UNSOLVED
+Task 330: UNSOLVED
+Task 331: conv_fixed           cost=   179,991 score=12.9
+Task 332: UNSOLVED
+Task 333: UNSOLVED
+Task 334: UNSOLVED
+Task 335: UNSOLVED
+Task 336: UNSOLVED
+Task 337: color_map            cost=   162,500 score=13.0
+Task 338: UNSOLVED
+Task 339: UNSOLVED
+Task 340: UNSOLVED
+Task 341: UNSOLVED
+Task 342: UNSOLVED
+Task 343: UNSOLVED
+Task 344: UNSOLVED
+Task 345: UNSOLVED
+Task 346: UNSOLVED
+Task 347: conv_diff            cost=   142,920 score=13.1
+Task 348: UNSOLVED
+Task 349: UNSOLVED
+Task 350: UNSOLVED
+Task 351: UNSOLVED
+Task 352: UNSOLVED
+Task 353: UNSOLVED
+Task 354: UNSOLVED
+Task 355: UNSOLVED
+Task 356: UNSOLVED
+Task 357: UNSOLVED
+Task 358: UNSOLVED
+Task 359: UNSOLVED
+Task 360: UNSOLVED
+Task 361: UNSOLVED
+Task 362: UNSOLVED
+Task 363: UNSOLVED
+Task 364: UNSOLVED
+Task 365: UNSOLVED
+Task 366: UNSOLVED
+Task 367: UNSOLVED
+Task 368: UNSOLVED
+Task 369: UNSOLVED
+Task 370: UNSOLVED
+Task 371: UNSOLVED
+Task 372: UNSOLVED
+Task 373: UNSOLVED
+Task 374: UNSOLVED
+Task 375: UNSOLVED
+Task 376: UNSOLVED
+Task 377: UNSOLVED
+Task 378: UNSOLVED
+Task 379: UNSOLVED
+Task 380: UNSOLVED
+Task 381: UNSOLVED
+Task 382: UNSOLVED
+Task 383: UNSOLVED
+Task 384: UNSOLVED
+Task 385: UNSOLVED
+Task 386: conv_diff            cost=   167,903 score=13.0
+Task 387: UNSOLVED
+Task 388: UNSOLVED
+Task 389: UNSOLVED
+Task 390: UNSOLVED
+Task 391: UNSOLVED
+Task 392: UNSOLVED
+Task 393: conv_diff            cost=   815,700 score=11.4
+Task 394: UNSOLVED
+Task 395: conv_diff            cost=   142,920 score=13.1
+Task 396: UNSOLVED
+Task 397: UNSOLVED
+Task 398: UNSOLVED
+Task 399: UNSOLVED
+Task 400: UNSOLVED
+
+--- Second pass: 348 unsolved tasks ---
+
+Solved: 52/400 in 2571s
+Estimated total score: 635.9
+  conv_diff: 23
+  conv_fixed: 16
+  conv_var: 7
+  color_map: 4
+  transpose: 2
+Created phases/milestone1/submission_v2.zip: 52 files, 401 KB
+Traceback (most recent call last):
+  File "/Users/ilakkmanoharan2026/ARC-NeuroGolf/scripts/run_milestone1b.py", line 41, in <module>
+    main()
+  File "/Users/ilakkmanoharan2026/ARC-NeuroGolf/scripts/run_milestone1b.py", line 34, in main
+    subprocess.run([
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/ilakkmanoharan2026/Library/Python/3.9/bin/kaggle', 'competitions', 'submit', '-c', 'neurogolf-2026', '-f', 'phases/milestone1/submission_v2.zip', '-m', 'ARC-Genome M1b: 52 solved, ARC-GEN validated']' returned non-zero exit status 1.

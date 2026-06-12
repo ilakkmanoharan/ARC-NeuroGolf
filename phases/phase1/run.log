@@ -1,0 +1,430 @@
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:74: RuntimeWarning: divide by zero encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:74: RuntimeWarning: overflow encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:74: RuntimeWarning: invalid value encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:234: RuntimeWarning: divide by zero encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:234: RuntimeWarning: overflow encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:234: RuntimeWarning: invalid value encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  0%|          | 0.00/3.50M [00:00<?, ?B/s]  0%|          | 16.0k/3.50M [00:00<00:23, 156kB/s] 13%|█▎        | 464k/3.50M [00:00<00:01, 2.61MB/s]100%|██████████| 3.50M/3.50M [00:00<00:00, 4.56MB/s]
+Successfully submitted to The 2026 NeuroGolf Championship=== Phase 1 ===
+Config: PhaseConfig(level=1, calibrated_cost=True, cost_gate_min_score=8.0, max_kernel=29, content_normalize=False, conv_sparsify=False, prefer_structural=False, extended_analytical=False, family_solvers=False, composition_depth=0, conv_v2=False, unsolved_budget=30.0, unsolved_max_kernel=9, second_pass=False, arcgen_validation=False, cost_audit=False)
+======================================================================
+Task   1: UNSOLVED
+Task   2: conv_var             cost=56,670,519 score=7.1
+Task   3: UNSOLVED
+Task   4: conv_var             cost= 2,370,519 score=10.3
+Task   5: conv_fixed           cost=19,756,522 score=8.2
+Task   6: conv_diff            cost=   150,423 score=13.1
+Task   7: conv_fixed           cost=   349,890 score=12.2
+Task   8: conv_var             cost=11,058,519 score=8.8
+Task   9: conv_var             cost=15,402,519 score=8.4
+Task  10: conv_fixed           cost=   782,002 score=11.4
+Task  11: conv_fixed           cost= 1,106,202 score=11.1
+Task  12: conv_fixed           cost=   458,235 score=12.0
+Task  13: conv_var             cost=66,082,519 score=7.0
+Task  14: UNSOLVED
+Task  15: conv_fixed           cost=   162,802 score=13.0
+Task  16: conv_fixed           cost=    86,730 score=13.6
+Task  17: conv_fixed           cost= 2,273,322 score=10.4
+Task  18: conv_var             cost=11,058,519 score=8.8
+Task  19: UNSOLVED
+Task  20: conv_fixed           cost=   347,991 score=12.2
+Task  21: UNSOLVED
+Task  22: conv_diff            cost=   702,923 score=11.5
+Task  23: conv_var             cost=15,402,519 score=8.4
+Task  24: conv_var             cost= 7,438,519 score=9.2
+Task  25: conv_var             cost=15,402,519 score=8.4
+Task  26: conv_diff            cost=   281,383 score=12.5
+Task  27: conv_fixed           cost= 1,859,991 score=10.6
+Task  28: conv_fixed           cost= 1,859,991 score=10.6
+Task  29: UNSOLVED
+Task  30: conv_var             cost= 4,542,519 score=9.7
+Task  31: UNSOLVED
+Task  32: conv_var             cost= 2,370,519 score=10.3
+Task  33: conv_fixed           cost= 2,468,130 score=10.3
+Task  34: conv_fixed           cost= 1,126,002 score=11.1
+Task  35: conv_fixed           cost=   935,991 score=11.3
+Task  36: UNSOLVED
+Task  37: conv_fixed           cost=   599,991 score=11.7
+Task  38: conv_diff            cost=   300,439 score=12.4
+Task  39: conv_diff            cost=   348,002 score=12.2
+Task  40: conv_fixed           cost=   599,991 score=11.7
+Task  41: conv_fixed           cost=   347,991 score=12.2
+Task  42: conv_fixed           cost= 2,447,991 score=10.3
+Task  43: conv_fixed           cost= 3,875,991 score=9.8
+Task  44: conv_fixed           cost=   599,991 score=11.7
+Task  45: conv_fixed           cost=   935,991 score=11.3
+Task  46: UNSOLVED
+Task  47: conv_fixed           cost= 1,126,002 score=11.1
+Task  48: UNSOLVED
+Task  49: UNSOLVED
+Task  50: conv_var             cost=26,262,519 score=7.9
+Task  51: conv_var             cost=15,402,519 score=8.4
+Task  52: conv_fixed           cost=    97,930 score=13.5
+Task  53: conv_fixed           cost=    97,930 score=13.5
+Task  54: conv_fixed           cost=40,002,391 score=7.5
+Task  55: conv_var             cost=32,778,519 score=7.7
+Task  56: conv_diff            cost=    98,163 score=13.5
+Task  57: conv_diff            cost=   644,285 score=11.6
+Task  58: conv_var             cost=32,778,519 score=7.7
+Task  59: conv_fixed           cost= 1,106,202 score=11.1
+Task  60: conv_fixed           cost=   811,236 score=11.4
+Task  61: conv_fixed           cost= 2,751,895 score=10.2
+Task  62: conv_fixed           cost=   599,991 score=11.7
+Task  63: conv_var             cost=15,402,519 score=8.4
+Task  64: conv_var             cost=15,402,519 score=8.4
+Task  65: UNSOLVED
+Task  66: conv_var             cost=15,402,519 score=8.4
+Task  67: UNSOLVED
+Task  68: conv_fixed           cost=   599,991 score=11.7
+Task  69: conv_fixed           cost=   599,991 score=11.7
+Task  70: conv_fixed           cost= 2,468,130 score=10.3
+Task  71: conv_fixed           cost=   738,987 score=11.5
+Task  72: conv_diff            cost= 2,612,398 score=10.2
+Task  73: conv_fixed           cost=   112,266 score=13.4
+Task  74: conv_fixed           cost=26,246,391 score=7.9
+Task  75: conv_fixed           cost= 2,830,558 score=10.1
+Task  76: conv_var             cost=15,402,519 score=8.4
+Task  77: conv_var             cost=11,058,519 score=8.8
+Task  78: conv_fixed           cost=   935,991 score=11.3
+Task  79: conv_diff            cost=   588,098 score=11.7
+Task  80: conv_var             cost=32,778,519 score=7.7
+Task  81: conv_fixed           cost=   220,290 score=12.7
+Task  82: conv_var             cost=11,058,519 score=8.8
+Task  83: UNSOLVED
+Task  84: conv_var             cost=20,470,519 score=8.2
+Task  85: conv_var             cost=15,402,519 score=8.4
+Task  86: conv_var             cost= 4,542,519 score=9.7
+Task  87: conv_fixed           cost=    97,930 score=13.5
+Task  88: UNSOLVED
+Task  89: conv_fixed           cost= 2,191,290 score=10.4
+Task  90: conv_var             cost=26,262,519 score=7.9
+Task  91: UNSOLVED
+Task  92: conv_var             cost=11,058,519 score=8.8
+Task  93: conv_fixed           cost= 2,518,167 score=10.3
+Task  94: conv_fixed           cost= 6,733,266 score=9.3
+Task  95: conv_fixed           cost=   162,802 score=13.0
+Task  96: UNSOLVED
+Task  97: conv_var             cost=11,058,519 score=8.8
+Task  98: conv_var             cost= 4,542,519 score=9.7
+Task  99: conv_fixed           cost=   599,991 score=11.7
+Task 100: conv_diff            cost=   180,067 score=12.9
+Task 101: conv_var             cost=26,262,519 score=7.9
+Task 102: conv_fixed           cost= 6,656,635 score=9.3
+Task 103: conv_diff            cost=   120,563 score=13.3
+Task 104: UNSOLVED
+Task 105: conv_var             cost=15,402,519 score=8.4
+Task 106: UNSOLVED
+Task 107: UNSOLVED
+Task 108: UNSOLVED
+Task 109: UNSOLVED
+Task 110: conv_fixed           cost= 6,943,962 score=9.2
+Task 111: conv_diff            cost=   600,002 score=11.7
+Task 112: conv_var             cost=26,262,519 score=7.9
+Task 113: conv_var             cost=20,470,519 score=8.2
+Task 114: UNSOLVED
+Task 115: UNSOLVED
+Task 116: UNSOLVED
+Task 117: conv_var             cost=11,058,519 score=8.8
+Task 118: conv_var             cost=32,778,519 score=7.7
+Task 119: conv_fixed           cost= 2,603,835 score=10.2
+Task 120: conv_var             cost=   922,519 score=11.3
+Task 121: conv_diff            cost= 1,494,971 score=10.8
+Task 122: conv_var             cost= 4,542,519 score=9.7
+Task 123: UNSOLVED
+Task 124: UNSOLVED
+Task 125: conv_fixed           cost= 6,733,266 score=9.3
+Task 126: conv_var             cost= 4,542,519 score=9.7
+Task 127: conv_var             cost=   922,519 score=11.3
+Task 128: conv_fixed           cost= 5,261,266 score=9.5
+Task 129: conv_fixed           cost=    97,930 score=13.5
+Task 130: conv_diff            cost=   162,883 score=13.0
+Task 131: conv_var             cost=11,058,519 score=8.8
+Task 132: conv_var             cost= 7,438,519 score=9.2
+Task 133: conv_var             cost=15,402,519 score=8.4
+Task 134: UNSOLVED
+Task 135: conv_diff            cost=   162,883 score=13.0
+Task 136: conv_fixed           cost= 1,355,991 score=10.9
+Task 137: UNSOLVED
+Task 138: UNSOLVED
+Task 139: conv_fixed           cost=   506,802 score=11.9
+Task 140: conv_fixed           cost=    97,930 score=13.5
+Task 141: conv_var             cost=32,778,519 score=7.7
+Task 142: UNSOLVED
+Task 143: conv_fixed           cost=   599,991 score=11.7
+Task 144: conv_diff            cost=   286,295 score=12.4
+Task 145: conv_var             cost=32,778,519 score=7.7
+Task 146: conv_diff            cost=   114,229 score=13.4
+Task 147: conv_var             cost= 2,370,519 score=10.3
+Task 148: conv_var             cost=32,778,519 score=7.7
+Task 149: conv_diff            cost=   702,923 score=11.5
+Task 150: conv_var             cost= 2,370,519 score=10.3
+Task 151: conv_var             cost= 2,370,519 score=10.3
+Task 152: UNSOLVED
+Task 153: conv_diff            cost=   600,002 score=11.7
+Task 154: conv_fixed           cost= 2,869,266 score=10.1
+Task 155: conv_var             cost= 2,370,519 score=10.3
+Task 156: conv_fixed           cost=   935,991 score=11.3
+Task 157: conv_fixed           cost= 1,961,241 score=10.5
+Task 158: conv_var             cost=26,262,519 score=7.9
+Task 159: UNSOLVED
+Task 160: conv_fixed           cost=   347,991 score=12.2
+Task 161: conv_var             cost=11,058,519 score=8.8
+Task 162: conv_fixed           cost= 9,200,091 score=9.0
+Task 163: conv_fixed           cost=   703,002 score=11.5
+Task 164: UNSOLVED
+Task 165: conv_fixed           cost= 6,932,091 score=9.2
+Task 166: conv_var             cost=11,058,519 score=8.8
+Task 167: conv_fixed           cost=   120,330 score=13.3
+Task 168: conv_fixed           cost=   935,991 score=11.3
+Task 169: conv_fixed           cost= 1,355,991 score=10.9
+Task 170: UNSOLVED
+Task 171: conv_var             cost=   922,519 score=11.3
+Task 172: UNSOLVED
+Task 173: conv_var             cost=15,402,519 score=8.4
+Task 174: UNSOLVED
+Task 175: conv_fixed           cost= 3,700,522 score=9.9
+Task 176: conv_var             cost=40,018,519 score=7.5
+Task 177: UNSOLVED
+Task 178: UNSOLVED
+Task 179: transpose            cost=    72,900 score=13.8
+Task 180: conv_diff            cost=   423,523 score=12.0
+Task 181: conv_fixed           cost=   563,185 score=11.8
+Task 182: conv_fixed           cost= 9,200,091 score=9.0
+Task 183: UNSOLVED
+Task 184: UNSOLVED
+Task 185: UNSOLVED
+Task 186: UNSOLVED
+Task 187: conv_var             cost=26,262,519 score=7.9
+Task 188: UNSOLVED
+Task 189: conv_diff            cost=   506,820 score=11.9
+Task 190: conv_fixed           cost= 1,355,991 score=10.9
+Task 191: UNSOLVED
+Task 192: conv_var             cost=   922,519 score=11.3
+Task 193: conv_var             cost= 2,370,519 score=10.3
+Task 194: UNSOLVED
+Task 195: UNSOLVED
+Task 196: conv_var             cost=20,470,519 score=8.2
+Task 197: conv_var             cost=15,402,519 score=8.4
+Task 198: UNSOLVED
+Task 199: conv_var             cost=11,058,519 score=8.8
+Task 200: conv_fixed           cost= 3,875,991 score=9.8
+Task 201: UNSOLVED
+Task 202: conv_var             cost=11,058,519 score=8.8
+Task 203: conv_var             cost= 4,542,519 score=9.7
+Task 204: conv_var             cost=47,982,519 score=7.3
+Task 205: UNSOLVED
+Task 206: conv_var             cost= 4,542,519 score=9.7
+Task 207: conv_diff            cost=   112,492 score=13.4
+Task 208: conv_fixed           cost=10,122,922 score=8.9
+Task 209: UNSOLVED
+Task 210: UNSOLVED
+Task 211: UNSOLVED
+Task 212: conv_fixed           cost=   935,991 score=11.3
+Task 213: UNSOLVED
+Task 214: conv_fixed           cost= 1,183,314 score=11.0
+Task 215: conv_var             cost=26,262,519 score=7.9
+Task 216: UNSOLVED
+Task 217: conv_fixed           cost= 1,538,802 score=10.8
+Task 218: UNSOLVED
+Task 219: conv_fixed           cost= 5,681,241 score=9.4
+Task 220: conv_var             cost=   922,519 score=11.3
+Task 221: UNSOLVED
+Task 222: conv_fixed           cost= 1,365,387 score=10.9
+Task 223: UNSOLVED
+Task 224: conv_var             cost= 7,438,519 score=9.2
+Task 225: conv_fixed           cost=   187,767 score=12.9
+Task 226: conv_fixed           cost= 1,859,991 score=10.6
+Task 227: conv_diff            cost=   266,691 score=12.5
+Task 228: conv_fixed           cost=   347,991 score=12.2
+Task 229: conv_fixed           cost=    97,930 score=13.5
+Task 230: conv_var             cost=   922,519 score=11.3
+Task 231: UNSOLVED
+Task 232: conv_var             cost=11,058,519 score=8.8
+Task 233: UNSOLVED
+Task 234: conv_var             cost=11,058,519 score=8.8
+Task 235: conv_diff            cost= 1,116,358 score=11.1
+Task 236: conv_diff            cost=   286,295 score=12.4
+Task 237: conv_var             cost= 7,438,519 score=9.2
+Task 238: UNSOLVED
+Task 239: UNSOLVED
+Task 240: conv_fixed           cost=30,867,882 score=7.8
+Task 241: transpose            cost=    72,900 score=13.8
+Task 242: conv_diff            cost=   320,558 score=12.3
+Task 243: conv_var             cost= 7,438,519 score=9.2
+Task 244: UNSOLVED
+Task 245: conv_var             cost=11,058,519 score=8.8
+Task 246: conv_var             cost=26,262,519 score=7.9
+Task 247: UNSOLVED
+Task 248: UNSOLVED
+Task 249: UNSOLVED
+Task 250: conv_fixed           cost=   935,991 score=11.3
+Task 251: conv_var             cost= 7,438,519 score=9.2
+Task 252: conv_var             cost=11,058,519 score=8.8
+Task 253: conv_diff            cost=   938,128 score=11.2
+Task 254: conv_fixed           cost=   782,002 score=11.4
+Task 255: UNSOLVED
+Task 256: conv_var             cost= 7,438,519 score=9.2
+Task 257: conv_diff            cost=   506,840 score=11.9
+Task 258: conv_var             cost=   922,519 score=11.3
+Task 259: UNSOLVED
+Task 260: conv_fixed           cost=   935,991 score=11.3
+Task 261: conv_var             cost=   922,519 score=11.3
+Task 262: UNSOLVED
+Task 263: UNSOLVED
+Task 264: UNSOLVED
+Task 265: conv_fixed           cost=20,649,495 score=8.2
+Task 266: conv_fixed           cost=   103,276 score=13.5
+Task 267: conv_fixed           cost=   133,890 score=13.2
+Task 268: conv_var             cost= 7,438,519 score=9.2
+Task 269: UNSOLVED
+Task 270: conv_fixed           cost= 2,869,266 score=10.1
+Task 271: conv_diff            cost=   300,483 score=12.4
+Task 272: conv_var             cost=   922,519 score=11.3
+Task 273: conv_fixed           cost= 2,447,991 score=10.3
+Task 274: UNSOLVED
+Task 275: UNSOLVED
+Task 276: color_map            cost=   162,500 score=13.0
+Task 277: conv_fixed           cost= 1,859,991 score=10.6
+Task 278: conv_var             cost=20,470,519 score=8.2
+Task 279: conv_var             cost=26,262,519 score=7.9
+Task 280: conv_var             cost=56,670,519 score=7.1
+Task 281: conv_var             cost=11,058,519 score=8.8
+Task 282: conv_fixed           cost=   162,802 score=13.0
+Task 283: conv_fixed           cost=   599,991 score=11.7
+Task 284: conv_var             cost=20,470,519 score=8.2
+Task 285: conv_var             cost=15,402,519 score=8.4
+Task 286: conv_var             cost=15,402,519 score=8.4
+Task 287: conv_fixed           cost= 2,200,587 score=10.4
+Task 288: conv_var             cost= 4,542,519 score=9.7
+Task 289: UNSOLVED
+Task 290: UNSOLVED
+Task 291: UNSOLVED
+Task 292: conv_var             cost=66,082,519 score=7.0
+Task 293: conv_var             cost= 2,370,519 score=10.3
+Task 294: conv_fixed           cost=   179,991 score=12.9
+Task 295: UNSOLVED
+Task 296: conv_diff            cost=   185,437 score=12.9
+Task 297: conv_var             cost=11,058,519 score=8.8
+Task 298: conv_var             cost=   922,519 score=11.3
+Task 299: conv_fixed           cost=   286,167 score=12.4
+Task 300: UNSOLVED
+Task 301: conv_var             cost= 2,370,519 score=10.3
+Task 302: conv_fixed           cost= 2,603,835 score=10.2
+Task 303: conv_var             cost=20,470,519 score=8.2
+Task 304: UNSOLVED
+Task 305: conv_fixed           cost= 1,365,387 score=10.9
+Task 306: conv_var             cost=40,018,519 score=7.5
+Task 307: UNSOLVED
+Task 308: UNSOLVED
+Task 309: color_map            cost=   162,500 score=13.0
+Task 310: UNSOLVED
+Task 311: UNSOLVED
+Task 312: conv_fixed           cost= 1,888,635 score=10.5
+Task 313: conv_var             cost=15,402,519 score=8.4
+Task 314: conv_fixed           cost=   423,435 score=12.0
+Task 315: UNSOLVED
+Task 316: conv_diff            cost=   348,002 score=12.2
+Task 317: conv_fixed           cost=   162,802 score=13.0
+Task 318: conv_diff            cost=   187,895 score=12.9
+Task 319: UNSOLVED
+Task 320: conv_var             cost= 7,438,519 score=9.2
+Task 321: conv_diff            cost=   384,315 score=12.1
+Task 322: conv_fixed           cost=    97,930 score=13.5
+Task 323: conv_fixed           cost= 4,000,890 score=9.8
+Task 324: conv_var             cost=15,402,519 score=8.4
+Task 325: UNSOLVED
+Task 326: UNSOLVED
+Task 327: UNSOLVED
+Task 328: conv_var             cost=56,670,519 score=7.1
+Task 329: conv_var             cost=   922,519 score=11.3
+Task 330: conv_fixed           cost= 1,859,991 score=10.6
+Task 331: conv_fixed           cost=   179,991 score=12.9
+Task 332: conv_var             cost=32,778,519 score=7.7
+Task 333: conv_fixed           cost=   599,991 score=11.7
+Task 334: conv_diff            cost=   160,427 score=13.0
+Task 335: conv_var             cost=15,402,519 score=8.4
+Task 336: conv_fixed           cost= 1,355,991 score=10.9
+Task 337: color_map            cost=   162,500 score=13.0
+Task 338: conv_var             cost=32,778,519 score=7.7
+Task 339: UNSOLVED
+Task 340: conv_var             cost= 7,438,519 score=9.2
+Task 341: conv_fixed           cost=   935,991 score=11.3
+Task 342: conv_fixed           cost=   935,991 score=11.3
+Task 343: conv_fixed           cost= 1,885,216 score=10.6
+Task 344: conv_var             cost= 2,370,519 score=10.3
+Task 345: conv_fixed           cost= 1,355,991 score=10.9
+Task 346: UNSOLVED
+Task 347: conv_diff            cost=   198,120 score=12.8
+Task 348: conv_var             cost= 4,542,519 score=9.7
+Task 349: UNSOLVED
+Task 350: conv_var             cost=32,778,519 score=7.7
+Task 351: conv_diff            cost=   738,094 score=11.5
+Task 352: conv_var             cost=   922,519 score=11.3
+Task 353: conv_var             cost= 7,438,519 score=9.2
+Task 354: conv_fixed           cost=   935,991 score=11.3
+Task 355: UNSOLVED
+Task 356: conv_fixed           cost= 1,355,991 score=10.9
+Task 357: UNSOLVED
+Task 358: conv_var             cost=26,262,519 score=7.9
+Task 359: conv_var             cost= 2,370,519 score=10.3
+Task 360: conv_diff            cost=   322,853 score=12.3
+Task 361: conv_fixed           cost=   347,991 score=12.2
+Task 362: conv_fixed           cost=   599,991 score=11.7
+Task 363: conv_fixed           cost=   935,991 score=11.3
+Task 364: conv_var             cost=20,470,519 score=8.2
+Task 365: UNSOLVED
+Task 366: UNSOLVED
+Task 367: conv_var             cost=26,262,519 score=7.9
+Task 368: conv_fixed           cost=   935,991 score=11.3
+Task 369: conv_fixed           cost= 1,355,991 score=10.9
+Task 370: conv_var             cost=11,058,519 score=8.8
+Task 371: conv_var             cost=11,058,519 score=8.8
+Task 372: conv_diff            cost=   702,829 score=11.5
+Task 373: conv_fixed           cost=   168,543 score=13.0
+Task 374: UNSOLVED
+Task 375: conv_var             cost= 4,542,519 score=9.7
+Task 376: UNSOLVED
+Task 377: UNSOLVED
+Task 378: conv_var             cost=11,058,519 score=8.8
+Task 379: conv_var             cost=20,470,519 score=8.2
+Task 380: conv_fixed           cost=    97,930 score=13.5
+Task 381: conv_fixed           cost= 1,355,991 score=10.9
+Task 382: conv_var             cost=20,470,519 score=8.2
+Task 383: conv_var             cost=15,402,519 score=8.4
+Task 384: UNSOLVED
+Task 385: conv_fixed           cost=   629,691 score=11.6
+Task 386: conv_diff            cost=   247,103 score=12.6
+Task 387: conv_var             cost=15,402,519 score=8.4
+Task 388: UNSOLVED
+Task 389: conv_var             cost=   922,519 score=11.3
+Task 390: conv_fixed           cost= 3,973,266 score=9.8
+Task 391: UNSOLVED
+Task 392: conv_fixed           cost=   935,991 score=11.3
+Task 393: conv_diff            cost=   458,100 score=12.0
+Task 394: UNSOLVED
+Task 395: conv_diff            cost=   142,920 score=13.1
+Task 396: UNSOLVED
+Task 397: conv_fixed           cost=   599,991 score=11.7
+Task 398: UNSOLVED
+Task 399: UNSOLVED
+Task 400: conv_diff            cost= 2,932,814 score=10.1
+
+Solved: 294/400 in 375s
+Estimated total score: 3060.8
+  conv_var: 124
+  conv_fixed: 123
+  conv_diff: 42
+  color_map: 3
+  transpose: 2
+Created phases/phase1/submission.zip: 294 files, 3580 KB
+
+Results written to phases/phase1/results.json
+Submitting: /Users/ilakkmanoharan2026/Library/Python/3.9/bin/kaggle competitions submit -c neurogolf-2026 -f phases/phase1/submission.zip -m ARC-Genome Phase 1: 294/400 solved
