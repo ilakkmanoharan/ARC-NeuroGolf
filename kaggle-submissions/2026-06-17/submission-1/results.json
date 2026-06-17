@@ -1,0 +1,33 @@
+{
+  "submission": 1,
+  "date": "2026-06-17",
+  "phase": 12,
+  "milestone": "M7b",
+  "solved": 64,
+  "pass_all": 64,
+  "kaggle_score_est": 985.6092252190502,
+  "kaggle_score_actual": 835.12,
+  "kaggle_score_delta_vs_m6": 0.68,
+  "baseline_m6_kaggle": 834.44,
+  "zip": "submission_v2.zip",
+  "submitted": true,
+  "submitted_at": "2026-06-17T11:32:23Z",
+  "message": "ARC-Genome M7b: 64 verified, est 986, slim bounded flip",
+  "solver_counts": {
+    "conv_diff": 19,
+    "conv_fixed": 14,
+    "position_gather": 7,
+    "conv_var": 7,
+    "concat": 5,
+    "color_map": 4,
+    "compose": 3,
+    "transpose": 2,
+    "bounded_flip_v": 1,
+    "bounded_flip_h": 1,
+    "upscale": 1
+  },
+  "flip_task_scores": {
+    "150": {"m6": 12.56, "m7b": 12.90},
+    "155": {"m6": 12.56, "m7b": 12.90}
+  }
+}

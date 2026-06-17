@@ -6,7 +6,7 @@ import numpy as np
 from onnx import helper, numpy_helper
 
 from arc_genome.data.encoding import GH, GW, fixed_shapes, get_examples
-from arc_genome.onnx.gather import build_gather_model
+from arc_genome.onnx.gather import build_gather_model, build_gather_model_with_const
 from arc_genome.onnx.model import make_model
 
 
@@ -79,10 +79,15 @@ def s_pad_embed(td):
     if oh <= ih and ow <= iw:
         return None
     exs = get_examples(td)
-    for dr in range(0, GH - ih + 1):
-        for dc in range(0, GW - iw + 1):
+    for dr in range(0, max(0, GH - ih) + 1):
+        for dc in range(0, max(0, GW - iw) + 1):
+            pad_top, pad_left = dr, dc
+            pad_bottom = oh - ih - pad_top
+            pad_right = ow - iw - pad_left
+            if pad_bottom < 0 or pad_right < 0:
+                continue
             if not all(
-                np.array_equal(out, np.pad(inp, ((dr, oh - ih - dr), (dc, ow - iw - dc)))) for inp, out in exs
+                np.array_equal(out, np.pad(inp, ((pad_top, pad_bottom), (pad_left, pad_right)))) for inp, out in exs
             ):
                 continue
             pad_h, pad_w = GH - oh, GW - ow
@@ -94,7 +99,7 @@ def s_pad_embed(td):
                 helper.make_node("Slice", ["input", "st", "en"], ["sl"]),
                 helper.make_node(
                     "Pad", ["sl"], ["output"],
-                    pads=[0, 0, dr, dc, 0, 0, pad_h + (oh - ih - dr), pad_w + (ow - iw - dc)],
+                    pads=[0, 0, pad_top, pad_left, 0, 0, pad_h + pad_bottom, pad_w + pad_right],
                     value=0.0,
                 ),
             ]
@@ -183,10 +188,61 @@ def s_mirror_complete(td):
     return None
 
 
+def s_gravity(td):
+    """Pixels fall down within each column (common ARC pattern)."""
+    exs = get_examples(td)
+    sp = fixed_shapes(td)
+    if sp is None:
+        return None
+    (ih, iw), (oh, ow) = sp
+    if (ih, iw) != (oh, ow):
+        return None
+
+    def gravity(g):
+        out = np.zeros_like(g)
+        for c in range(iw):
+            nz = g[:, c][g[:, c] != 0]
+            if len(nz):
+                out[ih - len(nz) :, c] = nz
+        return out
+
+    if not all(np.array_equal(gravity(inp), out) for inp, out in exs):
+        return None
+
+    inp0, out0 = exs[0]
+    idx = np.full((ih, iw, 2), -1, dtype=np.int64)
+    cst = np.full((ih, iw), -1, dtype=np.int64)
+    for c in range(iw):
+        src = [r for r in range(ih) if inp0[r, c] != 0]
+        dst = [r for r in range(ih) if out0[r, c] != 0]
+        if len(src) != len(dst):
+            return None
+        for dr, sr in zip(dst, src):
+            idx[dr, c] = [sr, c]
+        for r in range(ih):
+            if out0[r, c] == 0:
+                cst[r, c] = 0
+
+    for inp, out in exs:
+        pred = np.zeros_like(out)
+        for r in range(ih):
+            for c in range(iw):
+                if idx[r, c, 0] >= 0:
+                    pred[r, c] = inp[idx[r, c, 0], idx[r, c, 1]]
+                elif cst[r, c] >= 0:
+                    pred[r, c] = cst[r, c]
+                else:
+                    return None
+        if not np.array_equal(pred, out):
+            return None
+    return build_gather_model_with_const(ih, iw, ih, iw, idx, cst)
+
+
 EXTENDED_SOLVERS = [
     ("translate", s_translate),
     ("scale_down", s_scale_down),
     ("pad_embed", s_pad_embed),
     ("mask_preserve", s_mask_preserve),
     ("mirror_complete", s_mirror_complete),
+    ("gravity", s_gravity),
 ]

@@ -41,7 +41,9 @@ Official formula: `score = max(1, 25 − ln(memory + params))` using ORT profile
 - **Solved:** 52/400 tasks (43 min)
 - **pass_all:** 52 (all ARC-GEN verified)
 - **Estimated Kaggle score:** **843.4** (up from 388.2)
-- **Zip:** `submission_v2.zip` — **not yet submitted** (Kaggle API 400; likely daily limit after 14 submissions today)
+- **Zip:** `submission_v2.zip` — submitted 2026-06-14
+- **Kaggle score:** **564.20** (was 388.20; +45%)
+- **Note:** Kaggle CLI requires the file to be named `submission.zip`
 
 ```bash
 ~/Library/Python/3.9/bin/kaggle competitions submit -c neurogolf-2026 \

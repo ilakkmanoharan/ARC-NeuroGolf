@@ -1,0 +1,7 @@
+# Kaggle status — submission-3
+
+**Kaggle score:** 848.07 (same as submission-2)  
+**Tasks:** 65 pass_all  
+**Message:** `ARC-Genome M8b: 65 verified, est 999, autodiscover`
+
+Per-task logs: `kaggle_logs/kaggle_logs.json`

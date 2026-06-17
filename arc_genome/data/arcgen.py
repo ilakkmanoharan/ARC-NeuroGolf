@@ -1,4 +1,4 @@
-"""ARC-GEN synthetic validation (matches Kaggle: up to 30 samples)."""
+"""ARC-GEN synthetic validation."""
 
 from __future__ import annotations
 
@@ -8,10 +8,11 @@ import os
 import numpy as np
 import onnxruntime as ort
 
+from arc_genome.config import get_config
 from arc_genome.data.encoding import to_onehot
 
 ORT_PROVIDERS = ["CPUExecutionProvider"]
-MAX_ARCGEN_VALIDATE = 30
+MAX_ARCGEN_VALIDATE = 30  # Kaggle official cap
 _arcgen_dir: str | None = None
 _tasks_cache: dict | None = None
 
@@ -52,13 +53,21 @@ def load_tasks_with_arcgen(data_file: str = "data/all_tasks.json", arcgen_dir: s
     return tasks
 
 
+def _arcgen_limit() -> int:
+    cfg = get_config()
+    if cfg.arcgen_validation:
+        return cfg.arcgen_validate_samples
+    return MAX_ARCGEN_VALIDATE
+
+
 def validate_full(path: str, task_data: dict) -> bool:
-    """Validate train + test + arc-gen (up to 30), matching Kaggle order."""
+    """Validate train + test + arc-gen (configurable sample count)."""
     try:
         sess = ort.InferenceSession(path, providers=ORT_PROVIDERS)
     except Exception:
         return False
-    examples = task_data.get("train", []) + task_data.get("test", []) + task_data.get("arc-gen", [])[:MAX_ARCGEN_VALIDATE]
+    n = _arcgen_limit()
+    examples = task_data.get("train", []) + task_data.get("test", []) + task_data.get("arc-gen", [])[:n]
     for ex in examples:
         inp = to_onehot(ex["input"])
         exp = to_onehot(ex["output"])

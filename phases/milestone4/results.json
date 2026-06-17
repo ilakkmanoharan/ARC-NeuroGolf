@@ -1,0 +1,21 @@
+{
+  "solved": 62,
+  "pass_all": 62,
+  "kaggle_score_est": 959.8088264259447,
+  "kaggle_score_actual": 809.32,
+  "zip": "phases/milestone4/submission_v2.zip",
+  "submitted": true,
+  "solver_counts": {
+    "conv_diff": 19,
+    "conv_fixed": 14,
+    "position_gather": 7,
+    "conv_var": 7,
+    "concat": 5,
+    "color_map": 4,
+    "compose": 3,
+    "transpose": 2,
+    "upscale": 1
+  },
+  "message": "ARC-Genome M4: 62 verified, est 960, coverage push",
+  "note": "Same 62 tasks as M3; third pass found 0 new wins"
+}

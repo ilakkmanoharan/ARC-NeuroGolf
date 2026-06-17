@@ -12,7 +12,9 @@ from arc_genome.data.encoding import GH, GW, fixed_shapes, get_examples
 
 
 def _fitting_examples(task_data: dict):
-    """Train+test plus ARC-GEN pairs with matching shapes (up to 50)."""
+    """Train+test plus ARC-GEN pairs with matching shapes."""
+    cfg = get_config()
+    limit = cfg.arcgen_fit_samples if cfg.arcgen_validation else 50
     exs = get_examples(task_data)
     if not exs:
         return exs
@@ -27,7 +29,7 @@ def _fitting_examples(task_data: dict):
         out = np.array(ex["output"], dtype=np.int64)
         if inp.shape == in_shape and out.shape == out_shape:
             extra.append((inp, out))
-    return exs + extra[:50]
+    return exs + extra[:limit]
 
 
 from arc_genome.onnx.model import make_model, save_model, validate_model

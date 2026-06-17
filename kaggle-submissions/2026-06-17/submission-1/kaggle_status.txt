@@ -1,0 +1,6 @@
+fileName        date                        description                                              status                     publicScore  privateScore  
+--------------  --------------------------  -------------------------------------------------------  -------------------------  -----------  ------------  
+submission.zip  2026-06-17 11:32:23.207000  ARC-Genome M7b: 64 verified, est 986, slim bounded flip  SubmissionStatus.COMPLETE  835.12                     
+submission.zip  2026-06-14 15:40:55.937000  ARC-Genome M6: 64 verified, est 985, bounded CWM flip    SubmissionStatus.COMPLETE  834.44                     
+submission.zip  2026-06-14 13:45:15.270000  ARC-Genome M5: 62 verified, est 960, var-shape solvers   SubmissionStatus.COMPLETE  809.32                     
+submission.zip  2026-06-14 12:05:12.960000  ARC-Genome M4: 62 verified, est 960, coverage push       SubmissionStatus.COMPLETE  809.32                     

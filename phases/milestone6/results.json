@@ -1,0 +1,21 @@
+{
+  "solved": 64,
+  "pass_all": 64,
+  "kaggle_score_est": 984.9280394310757,
+  "zip": "phases/milestone6/submission_v2.zip",
+  "submitted": true,
+  "solver_counts": {
+    "conv_diff": 19,
+    "conv_fixed": 14,
+    "position_gather": 7,
+    "conv_var": 7,
+    "concat": 5,
+    "color_map": 4,
+    "compose": 3,
+    "transpose": 2,
+    "bounded_flip_v": 1,
+    "bounded_flip_h": 1,
+    "upscale": 1
+  },
+  "message": "ARC-Genome M6: 64 verified, est 985, bounded CWM flip"
+}

@@ -18,7 +18,7 @@ def _bbox(grid: np.ndarray) -> tuple[int, int, int, int] | None:
 
 def normalize_task_data(task_data: dict) -> dict:
     """Crop all examples to a shared tight bounding box."""
-    exs = task_data["train"] + task_data["test"]
+    exs = task_data["train"] + task_data["test"] + task_data.get("arc-gen", [])
     boxes = []
     for ex in exs:
         for key in ("input", "output"):
@@ -36,7 +36,9 @@ def normalize_task_data(task_data: dict) -> dict:
     c1 = max(b[3] for b in boxes)
 
     norm = copy.deepcopy(task_data)
-    for split in ("train", "test"):
+    for split in ("train", "test", "arc-gen"):
+        if split not in norm:
+            continue
         for ex in norm[split]:
             for key in ("input", "output"):
                 g = np.array(ex[key])

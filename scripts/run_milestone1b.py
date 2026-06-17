@@ -46,11 +46,14 @@ def main():
     with open(f"{MILESTONE_DIR}/results_v2.json", "w") as f:
         json.dump(results_doc, f, indent=2)
 
-    msg = f"ARC-Genome M1b: {len(results)} solved, ARC-GEN validated"
+    msg = f"ARC-Genome M1b: {len(results)} ARC-GEN verified, est {summary['pass_all_kaggle_total']:.0f}"
+    submit_path = "submission.zip"
+    import shutil
+    shutil.copy2(zip_path, submit_path)
     print(f"\n=== Kaggle submit ({len(results)} tasks, est. {summary['pass_all_kaggle_total']:.1f}) ===")
     proc = subprocess.run([
         KAGGLE, "competitions", "submit", "-c", "neurogolf-2026",
-        "-f", zip_path, "-m", msg,
+        "-f", submit_path, "-m", msg,
     ])
     if proc.returncode == 0:
         results_doc["submitted"] = True

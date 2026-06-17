@@ -1,0 +1,9 @@
+# Kaggle status — submission-4
+
+**Submitted:** 2026-06-17  
+**Message:** `ARC-Genome M9: 70 verified, est 1066, arcgen gather fit`  
+**Tasks:** 70 pass_all  
+**Audit est.:** 1065.5  
+**Expected Kaggle:** ~905 (1065 × 0.849)
+
+Pre-scan new tasks: 83, 108, 211, 326, 385

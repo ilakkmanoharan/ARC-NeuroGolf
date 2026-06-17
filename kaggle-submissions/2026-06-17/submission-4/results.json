@@ -1,0 +1,33 @@
+{
+  "submission": 4,
+  "date": "2026-06-17",
+  "phase": 15,
+  "milestone": "M9",
+  "solved": 70,
+  "pass_all": 70,
+  "kaggle_score_est": 1065.5174872118832,
+  "kaggle_score_baseline": 848.07,
+  "prescan_new_candidates": [
+    83,
+    108,
+    211,
+    326,
+    385
+  ],
+  "zip": "kaggle-submissions/2026-06-17/submission-4/submission_v2.zip",
+  "solver_counts": {
+    "conv_diff": 19,
+    "position_gather_arcgen": 18,
+    "conv_fixed": 14,
+    "conv_var": 7,
+    "color_map": 4,
+    "compose": 3,
+    "transpose": 2,
+    "bounded_flip_v": 1,
+    "bounded_flip_h": 1,
+    "bounded_upscale2": 1
+  },
+  "elapsed_s": 4734.1,
+  "submitted": true,
+  "message": "ARC-Genome M9: 70 verified, est 1066, arcgen gather fit"
+}

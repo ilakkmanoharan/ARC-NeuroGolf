@@ -2,6 +2,11 @@
   "solved": 52,
   "pass_all": 52,
   "kaggle_score_est": 843.448169805806,
+  "kaggle_score_actual": 564.20,
   "zip": "phases/milestone1/submission_v2.zip",
-  "submitted": false
+  "submitted": true,
+  "submitted_at": "2026-06-14",
+  "message": "ARC-Genome M1b: 52 ARC-GEN verified, est 843",
+  "previous_best": 388.20,
+  "improvement": 176.0
 }

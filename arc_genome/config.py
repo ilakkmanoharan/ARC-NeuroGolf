@@ -29,6 +29,21 @@ class PhaseConfig:
     # Phase 6 — audit + ARC-GEN
     arcgen_validation: bool = False
     cost_audit: bool = False
+    arcgen_validate_samples: int = 30
+    arcgen_fit_samples: int = 50
+    use_official_score: bool = False
+    third_pass: bool = False
+    third_pass_budget: float = 60.0
+    # Phase 10 — M5 variable-shape + object primitives
+    milestone5_solvers: bool = False
+    # Phase 11 — bounded code world models (dynamic bbox transforms)
+    bounded_world: bool = False
+    # Phase 13 — ARC-GEN signature routing (M8)
+    arcgen_routing: bool = False
+    # Phase 14 — tile-based bounded upscale (cheaper memory)
+    bounded_tile_upscale: bool = False
+    # Phase 15 — ARC-GEN-fitted gather indices
+    arcgen_fit_gather: bool = False
 
 
 def build_config(level: int) -> PhaseConfig:
@@ -54,6 +69,30 @@ def build_config(level: int) -> PhaseConfig:
     if level >= 6:
         cfg.arcgen_validation = True
         cfg.cost_audit = True
+        cfg.arcgen_validate_samples = 30
+    if level >= 7:
+        cfg.arcgen_validate_samples = 100
+    if level >= 8:
+        cfg.use_official_score = True
+        cfg.arcgen_fit_samples = 100
+    if level >= 9:
+        cfg.composition_depth = 4
+        cfg.third_pass = True
+        cfg.third_pass_budget = 60.0
+        cfg.unsolved_budget = 90.0
+    if level >= 10:
+        cfg.milestone5_solvers = True
+    if level >= 11:
+        cfg.bounded_world = True
+    if level >= 12:
+        cfg.bounded_world = True  # slim flip compiler (default in bounded.py)
+    if level >= 13:
+        cfg.arcgen_routing = True
+    if level >= 14:
+        cfg.bounded_tile_upscale = True
+        cfg.third_pass = False  # saturated at 0 wins; save ~30min
+    if level >= 15:
+        cfg.arcgen_fit_gather = True
     return cfg
 
 

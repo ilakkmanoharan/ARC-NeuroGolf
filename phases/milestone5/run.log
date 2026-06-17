@@ -1,0 +1,454 @@
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:98: RuntimeWarning: divide by zero encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:98: RuntimeWarning: overflow encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:98: RuntimeWarning: invalid value encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:258: RuntimeWarning: divide by zero encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:258: RuntimeWarning: overflow encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+/Users/ilakkmanoharan2026/ARC-NeuroGolf/arc_genome/genome/ops/conv.py:258: RuntimeWarning: invalid value encountered in matmul
+  if not np.array_equal(np.argmax(p_mat @ wt, axis=1), t):
+  audited 100...
+
+=== Audit Summary ===
+{
+  "submission_dir": "phases/milestone5/submission",
+  "files_audited": 62,
+  "buckets": {
+    "pass_all": 62,
+    "train_only": 0,
+    "fail": 0
+  },
+  "local_total_score": 776.4510339569122,
+  "kaggle_total_score": 959.8088264259447,
+  "kaggle_avg": 15.480787522999108,
+  "pass_all_kaggle_total": 959.8088264259447
+}
+
+Wrote phases/milestone5/audit.json
+/Users/ilakkmanoharan2026/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+  0%|          | 0.00/395k [00:00<?, ?B/s] 41%|████      | 160k/395k [00:00<00:00, 1.35MB/s]100%|██████████| 395k/395k [00:00<00:00, 740kB/s] 
+Successfully submitted to The 2026 NeuroGolf ChampionshipMilestone 5: variable-shape + object analytical solvers...
+Task   1: UNSOLVED
+Task   2: UNSOLVED
+Task   3: UNSOLVED
+Task   4: UNSOLVED
+Task   5: UNSOLVED
+Task   6: conv_diff            cost=     4,991 score=16.5
+Task   7: UNSOLVED
+Task   8: UNSOLVED
+Task   9: UNSOLVED
+Task  10: UNSOLVED
+Task  11: UNSOLVED
+Task  12: conv_fixed           cost=    30,543 score=14.7
+Task  13: UNSOLVED
+Task  14: UNSOLVED
+Task  15: conv_fixed           cost=    11,279 score=15.7
+Task  16: color_map            cost=       100 score=20.4
+Task  17: UNSOLVED
+Task  18: UNSOLVED
+Task  19: UNSOLVED
+Task  20: UNSOLVED
+Task  21: UNSOLVED
+Task  22: conv_diff            cost=    22,591 score=15.0
+Task  23: UNSOLVED
+Task  24: UNSOLVED
+Task  25: UNSOLVED
+Task  26: conv_diff            cost=     6,639 score=16.2
+Task  27: UNSOLVED
+Task  28: UNSOLVED
+Task  29: UNSOLVED
+Task  30: UNSOLVED
+Task  31: UNSOLVED
+Task  32: UNSOLVED
+Task  33: UNSOLVED
+Task  34: UNSOLVED
+Task  35: UNSOLVED
+Task  36: UNSOLVED
+Task  37: UNSOLVED
+Task  38: UNSOLVED
+Task  39: UNSOLVED
+Task  40: UNSOLVED
+Task  41: UNSOLVED
+Task  42: UNSOLVED
+Task  43: UNSOLVED
+Task  44: UNSOLVED
+Task  45: UNSOLVED
+Task  46: UNSOLVED
+Task  47: UNSOLVED
+Task  48: UNSOLVED
+Task  49: UNSOLVED
+Task  50: UNSOLVED
+Task  51: UNSOLVED
+Task  52: UNSOLVED
+Task  53: position_gather      cost=   109,807 score=13.4
+Task  54: UNSOLVED
+Task  55: UNSOLVED
+Task  56: conv_diff            cost=     1,727 score=17.5
+Task  57: UNSOLVED
+Task  58: UNSOLVED
+Task  59: UNSOLVED
+Task  60: conv_fixed           cost=    16,951 score=15.3
+Task  61: UNSOLVED
+Task  62: UNSOLVED
+Task  63: UNSOLVED
+Task  64: UNSOLVED
+Task  65: UNSOLVED
+Task  66: UNSOLVED
+Task  67: UNSOLVED
+Task  68: UNSOLVED
+Task  69: UNSOLVED
+Task  70: UNSOLVED
+Task  71: UNSOLVED
+Task  72: UNSOLVED
+Task  73: conv_fixed           cost=     3,511 score=16.8
+Task  74: UNSOLVED
+Task  75: UNSOLVED
+Task  76: UNSOLVED
+Task  77: UNSOLVED
+Task  78: UNSOLVED
+Task  79: conv_diff            cost=    28,591 score=14.7
+Task  80: UNSOLVED
+Task  81: UNSOLVED
+Task  82: UNSOLVED
+Task  83: UNSOLVED
+Task  84: UNSOLVED
+Task  85: UNSOLVED
+Task  86: UNSOLVED
+Task  87: compose              cost=   109,807 score=13.4
+Task  88: UNSOLVED
+Task  89: UNSOLVED
+Task  90: UNSOLVED
+Task  91: UNSOLVED
+Task  92: UNSOLVED
+Task  93: UNSOLVED
+Task  94: UNSOLVED
+Task  95: conv_fixed           cost=    11,279 score=15.7
+Task  96: UNSOLVED
+Task  97: UNSOLVED
+Task  98: UNSOLVED
+Task  99: UNSOLVED
+Task 100: conv_diff            cost=    13,271 score=15.5
+Task 101: UNSOLVED
+Task 102: UNSOLVED
+Task 103: UNSOLVED
+Task 104: UNSOLVED
+Task 105: UNSOLVED
+Task 106: UNSOLVED
+Task 107: UNSOLVED
+Task 108: UNSOLVED
+Task 109: UNSOLVED
+Task 110: UNSOLVED
+Task 111: UNSOLVED
+Task 112: UNSOLVED
+Task 113: UNSOLVED
+Task 114: UNSOLVED
+Task 115: UNSOLVED
+Task 116: concat               cost=   109,807 score=13.4
+Task 117: UNSOLVED
+Task 118: UNSOLVED
+Task 119: UNSOLVED
+Task 120: conv_var             cost=    83,703 score=13.7
+Task 121: conv_diff            cost=    26,431 score=14.8
+Task 122: UNSOLVED
+Task 123: UNSOLVED
+Task 124: UNSOLVED
+Task 125: UNSOLVED
+Task 126: UNSOLVED
+Task 127: conv_var             cost=    83,703 score=13.7
+Task 128: UNSOLVED
+Task 129: UNSOLVED
+Task 130: conv_diff            cost=    12,191 score=15.6
+Task 131: UNSOLVED
+Task 132: UNSOLVED
+Task 133: UNSOLVED
+Task 134: UNSOLVED
+Task 135: position_gather      cost=   109,807 score=13.4
+Task 136: UNSOLVED
+Task 137: UNSOLVED
+Task 138: UNSOLVED
+Task 139: UNSOLVED
+Task 140: compose              cost=   109,807 score=13.4
+Task 141: UNSOLVED
+Task 142: position_gather      cost=   109,807 score=13.4
+Task 143: UNSOLVED
+Task 144: conv_diff            cost=     9,207 score=15.9
+Task 145: UNSOLVED
+Task 146: UNSOLVED
+Task 147: UNSOLVED
+Task 148: UNSOLVED
+Task 149: UNSOLVED
+Task 150: UNSOLVED
+Task 151: UNSOLVED
+Task 152: position_gather      cost=   109,807 score=13.4
+Task 153: conv_diff            cost=    20,911 score=15.1
+Task 154: UNSOLVED
+Task 155: UNSOLVED
+Task 156: UNSOLVED
+Task 157: UNSOLVED
+Task 158: UNSOLVED
+Task 159: UNSOLVED
+Task 160: UNSOLVED
+Task 161: UNSOLVED
+Task 162: UNSOLVED
+Task 163: UNSOLVED
+Task 164: concat               cost=   109,807 score=13.4
+Task 165: UNSOLVED
+Task 166: UNSOLVED
+Task 167: UNSOLVED
+Task 168: UNSOLVED
+Task 169: UNSOLVED
+Task 170: UNSOLVED
+Task 171: conv_var             cost=    83,703 score=13.7
+Task 172: concat               cost=   109,807 score=13.4
+Task 173: UNSOLVED
+Task 174: UNSOLVED
+Task 175: UNSOLVED
+Task 176: UNSOLVED
+Task 177: UNSOLVED
+Task 178: UNSOLVED
+Task 179: transpose            cost=         0 score=25.0
+Task 180: UNSOLVED
+Task 181: UNSOLVED
+Task 182: UNSOLVED
+Task 183: UNSOLVED
+Task 184: UNSOLVED
+Task 185: UNSOLVED
+Task 186: UNSOLVED
+Task 187: UNSOLVED
+Task 188: UNSOLVED
+Task 189: UNSOLVED
+Task 190: UNSOLVED
+Task 191: UNSOLVED
+Task 192: UNSOLVED
+Task 193: UNSOLVED
+Task 194: position_gather      cost=   109,807 score=13.4
+Task 195: UNSOLVED
+Task 196: UNSOLVED
+Task 197: UNSOLVED
+Task 198: UNSOLVED
+Task 199: UNSOLVED
+Task 200: UNSOLVED
+Task 201: UNSOLVED
+Task 202: UNSOLVED
+Task 203: UNSOLVED
+Task 204: UNSOLVED
+Task 205: UNSOLVED
+Task 206: UNSOLVED
+Task 207: UNSOLVED
+Task 208: UNSOLVED
+Task 209: UNSOLVED
+Task 210: concat               cost=   109,807 score=13.4
+Task 211: UNSOLVED
+Task 212: UNSOLVED
+Task 213: UNSOLVED
+Task 214: position_gather      cost=   109,807 score=13.4
+Task 215: UNSOLVED
+Task 216: UNSOLVED
+Task 217: UNSOLVED
+Task 218: UNSOLVED
+Task 219: UNSOLVED
+Task 220: conv_var             cost=    83,703 score=13.7
+Task 221: UNSOLVED
+Task 222: UNSOLVED
+Task 223: upscale              cost=   109,807 score=13.4
+Task 224: UNSOLVED
+Task 225: UNSOLVED
+Task 226: UNSOLVED
+Task 227: conv_diff            cost=     6,487 score=16.2
+Task 228: UNSOLVED
+Task 229: UNSOLVED
+Task 230: conv_var             cost=    83,703 score=13.7
+Task 231: UNSOLVED
+Task 232: UNSOLVED
+Task 233: UNSOLVED
+Task 234: UNSOLVED
+Task 235: UNSOLVED
+Task 236: UNSOLVED
+Task 237: UNSOLVED
+Task 238: UNSOLVED
+Task 239: UNSOLVED
+Task 240: UNSOLVED
+Task 241: transpose            cost=         0 score=25.0
+Task 242: conv_diff            cost=    33,391 score=14.6
+Task 243: UNSOLVED
+Task 244: UNSOLVED
+Task 245: UNSOLVED
+Task 246: UNSOLVED
+Task 247: UNSOLVED
+Task 248: UNSOLVED
+Task 249: UNSOLVED
+Task 250: UNSOLVED
+Task 251: UNSOLVED
+Task 252: UNSOLVED
+Task 253: UNSOLVED
+Task 254: UNSOLVED
+Task 255: UNSOLVED
+Task 256: UNSOLVED
+Task 257: UNSOLVED
+Task 258: conv_var             cost=    83,703 score=13.7
+Task 259: UNSOLVED
+Task 260: UNSOLVED
+Task 261: conv_var             cost=    87,703 score=13.6
+Task 262: UNSOLVED
+Task 263: UNSOLVED
+Task 264: UNSOLVED
+Task 265: UNSOLVED
+Task 266: conv_fixed           cost=     2,831 score=17.1
+Task 267: UNSOLVED
+Task 268: UNSOLVED
+Task 269: UNSOLVED
+Task 270: UNSOLVED
+Task 271: UNSOLVED
+Task 272: UNSOLVED
+Task 273: UNSOLVED
+Task 274: UNSOLVED
+Task 275: UNSOLVED
+Task 276: color_map            cost=       100 score=20.4
+Task 277: UNSOLVED
+Task 278: UNSOLVED
+Task 279: UNSOLVED
+Task 280: UNSOLVED
+Task 281: UNSOLVED
+Task 282: conv_fixed           cost=    11,279 score=15.7
+Task 283: conv_fixed           cost=    13,711 score=15.5
+Task 284: UNSOLVED
+Task 285: UNSOLVED
+Task 286: UNSOLVED
+Task 287: UNSOLVED
+Task 288: UNSOLVED
+Task 289: UNSOLVED
+Task 290: UNSOLVED
+Task 291: UNSOLVED
+Task 292: UNSOLVED
+Task 293: UNSOLVED
+Task 294: conv_fixed           cost=    13,711 score=15.5
+Task 295: UNSOLVED
+Task 296: UNSOLVED
+Task 297: UNSOLVED
+Task 298: UNSOLVED
+Task 299: conv_fixed           cost=    12,719 score=15.5
+Task 300: UNSOLVED
+Task 301: UNSOLVED
+Task 302: UNSOLVED
+Task 303: UNSOLVED
+Task 304: UNSOLVED
+Task 305: conv_fixed           cost=    44,879 score=14.3
+Task 306: UNSOLVED
+Task 307: UNSOLVED
+Task 308: UNSOLVED
+Task 309: color_map            cost=       100 score=20.4
+Task 310: UNSOLVED
+Task 311: concat               cost=   109,807 score=13.4
+Task 312: UNSOLVED
+Task 313: UNSOLVED
+Task 314: UNSOLVED
+Task 315: UNSOLVED
+Task 316: conv_diff            cost=    16,911 score=15.3
+Task 317: conv_fixed           cost=    11,279 score=15.7
+Task 318: conv_diff            cost=     9,207 score=15.9
+Task 319: UNSOLVED
+Task 320: UNSOLVED
+Task 321: UNSOLVED
+Task 322: conv_fixed           cost=     3,663 score=16.8
+Task 323: UNSOLVED
+Task 324: UNSOLVED
+Task 325: UNSOLVED
+Task 326: UNSOLVED
+Task 327: UNSOLVED
+Task 328: UNSOLVED
+Task 329: UNSOLVED
+Task 330: UNSOLVED
+Task 331: conv_fixed           cost=    13,711 score=15.5
+Task 332: UNSOLVED
+Task 333: UNSOLVED
+Task 334: UNSOLVED
+Task 335: UNSOLVED
+Task 336: UNSOLVED
+Task 337: color_map            cost=       100 score=20.4
+Task 338: UNSOLVED
+Task 339: UNSOLVED
+Task 340: UNSOLVED
+Task 341: UNSOLVED
+Task 342: UNSOLVED
+Task 343: UNSOLVED
+Task 344: UNSOLVED
+Task 345: UNSOLVED
+Task 346: UNSOLVED
+Task 347: conv_diff            cost=     4,751 score=16.5
+Task 348: UNSOLVED
+Task 349: UNSOLVED
+Task 350: UNSOLVED
+Task 351: UNSOLVED
+Task 352: UNSOLVED
+Task 353: UNSOLVED
+Task 354: UNSOLVED
+Task 355: UNSOLVED
+Task 356: UNSOLVED
+Task 357: UNSOLVED
+Task 358: UNSOLVED
+Task 359: UNSOLVED
+Task 360: UNSOLVED
+Task 361: UNSOLVED
+Task 362: UNSOLVED
+Task 363: UNSOLVED
+Task 364: UNSOLVED
+Task 365: UNSOLVED
+Task 366: UNSOLVED
+Task 367: UNSOLVED
+Task 368: UNSOLVED
+Task 369: UNSOLVED
+Task 370: UNSOLVED
+Task 371: UNSOLVED
+Task 372: conv_diff            cost=    15,239 score=15.4
+Task 373: position_gather      cost=   109,807 score=13.4
+Task 374: UNSOLVED
+Task 375: UNSOLVED
+Task 376: UNSOLVED
+Task 377: UNSOLVED
+Task 378: UNSOLVED
+Task 379: UNSOLVED
+Task 380: compose              cost=   109,807 score=13.4
+Task 381: UNSOLVED
+Task 382: UNSOLVED
+Task 383: UNSOLVED
+Task 384: UNSOLVED
+Task 385: UNSOLVED
+Task 386: conv_diff            cost=     5,815 score=16.3
+Task 387: UNSOLVED
+Task 388: UNSOLVED
+Task 389: UNSOLVED
+Task 390: UNSOLVED
+Task 391: UNSOLVED
+Task 392: UNSOLVED
+Task 393: conv_diff            cost=    16,703 score=15.3
+Task 394: UNSOLVED
+Task 395: conv_diff            cost=     4,751 score=16.5
+Task 396: UNSOLVED
+Task 397: UNSOLVED
+Task 398: UNSOLVED
+Task 399: UNSOLVED
+Task 400: UNSOLVED
+
+--- Second pass: 338 unsolved tasks ---
+
+--- Third pass (conv_v2 extended): 338 unsolved tasks ---
+
+Solved: 62/400 in 5389s
+Estimated total score: 959.8
+  conv_diff: 19
+  conv_fixed: 14
+  position_gather: 7
+  conv_var: 7
+  concat: 5
+  color_map: 4
+  compose: 3
+  transpose: 2
+  upscale: 1
+Created phases/milestone5/submission_v2.zip: 62 files, 395 KB
+
+=== Kaggle submit (62 tasks, est. 959.8) ===
+Submitted successfully.

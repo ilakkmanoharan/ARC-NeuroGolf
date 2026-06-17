@@ -56,6 +56,27 @@ def solve_all(
                 results[tn] = {"solver": sname, "cost": cost_info}
                 print(f"Task {tn:3d}: {sname:20s} (2nd pass) cost={cost_info['total']:>10,}")
 
+    if cfg.third_pass:
+        unsolved = [tn for tn in task_nums if tn not in results]
+        print(f"\n--- Third pass (conv_v2 extended): {len(unsolved)} unsolved tasks ---")
+        from arc_genome.genome.ops.conv import solve_conv_v2
+        import tempfile
+        for tn in unsolved:
+            td = tasks[tn]["data"]
+            hex_id = tasks[tn].get("hex")
+            with tempfile.TemporaryDirectory() as tmp:
+                path = os.path.join(tmp, "m.onnx")
+                if solve_conv_v2(td, path, cfg.third_pass_budget) is None:
+                    continue
+                from arc_genome.genome.infer import _validates, _score_candidate
+                if not _validates(path, td, hex_id):
+                    continue
+                cost_info = _score_candidate(path, td)
+                out_path = os.path.join(output_dir, f"task{tn:03d}.onnx")
+                shutil.copy2(path, out_path)
+                results[tn] = {"solver": "conv_v2", "cost": cost_info}
+                print(f"Task {tn:3d}: conv_v2              (3rd pass) cost={cost_info['total']:>10,}")
+
     elapsed = time.time() - t0
     total_score = sum(r["cost"].get("score", compute_score(r["cost"]["total"])) for r in results.values())
     print(f"\nSolved: {len(results)}/{len(task_nums)} in {elapsed:.0f}s")

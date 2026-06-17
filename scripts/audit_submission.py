@@ -17,7 +17,9 @@ from arc_genome.onnx.kaggle_score import kaggle_score_model
 from arc_genome.onnx.model import validate_model
 
 
-def audit(submission_dir: str, data_file: str, out_json: str):
+def audit(submission_dir: str, data_file: str, out_json: str, phase: int = 6):
+    from arc_genome.config import set_phase
+    set_phase(phase)
     tasks = load_tasks_with_arcgen(data_file)
     results = []
     buckets = {"pass_all": 0, "train_only": 0, "fail": 0}
@@ -87,8 +89,9 @@ def main():
     parser.add_argument("--submission_dir", default="phases/phase6/submission")
     parser.add_argument("--data_file", default="data/all_tasks.json")
     parser.add_argument("--out", default="phases/milestone1/audit.json")
+    parser.add_argument("--phase", type=int, default=6)
     args = parser.parse_args()
-    audit(args.submission_dir, args.data_file, args.out)
+    audit(args.submission_dir, args.data_file, args.out, args.phase)
 
 
 if __name__ == "__main__":

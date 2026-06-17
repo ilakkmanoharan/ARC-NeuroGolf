@@ -21,15 +21,50 @@ from arc_genome.onnx.cost import compute_cost
 from arc_genome.onnx.model import save_model, validate_model
 
 
-def _solver_list():
+def _score_candidate(path: str, task_data: dict) -> dict:
+    cfg = get_config()
+    if cfg.use_official_score:
+        from arc_genome.onnx.kaggle_score import kaggle_score_model
+        ks = kaggle_score_model(path, task_data)
+        if ks:
+            return {"total": ks["cost"], "score": ks["score"], "memory": ks["memory"], "params": ks["params"]}
+    return compute_cost(path)
+
+
+def _solver_list(task_data: dict | None = None):
     cfg = get_config()
     solvers = list(ANALYTICAL_SOLVERS)
+    if cfg.bounded_world:
+        from arc_genome.genome.ops.bounded import BOUNDED_SOLVERS
+        solvers = BOUNDED_SOLVERS + solvers
     if cfg.extended_analytical:
         from arc_genome.genome.ops.extended import EXTENDED_SOLVERS
         solvers.extend(EXTENDED_SOLVERS)
     if cfg.family_solvers:
         from arc_genome.genome.ops.family import FAMILY_SOLVERS
         solvers.extend(FAMILY_SOLVERS)
+    if cfg.milestone5_solvers:
+        from arc_genome.genome.ops.milestone5 import MILESTONE5_SOLVERS
+        solvers.extend(MILESTONE5_SOLVERS)
+    if cfg.arcgen_fit_gather:
+        from arc_genome.genome.ops.arcgen_gather import ARCgen_GATHER_SOLVERS
+        solvers = ARCgen_GATHER_SOLVERS + solvers
+    if cfg.arcgen_routing and task_data is not None:
+        from arc_genome.genome.belief import rank_solver_order
+        from arc_genome.config import get_config as _gc
+        if _gc().level >= 14:
+            from arc_genome.genome.ops.autodiscover import discover_rules
+            names = [n for n, _ in solvers]
+            scores = {n: 0.0 for n in names}
+            for name, conf in discover_rules(task_data):
+                if name in scores:
+                    scores[name] = max(scores[name], conf + 0.2)
+            ranked = sorted(names, key=lambda n: (-scores.get(n, 0.0), names.index(n)))
+            solvers = [(n, dict(solvers)[n]) for n in ranked]
+        else:
+            names = [n for n, _ in solvers]
+            ranked = rank_solver_order(task_data, names)
+            solvers = [(n, dict(solvers)[n]) for n in ranked]
     return solvers
 
 
@@ -50,7 +85,7 @@ def _try_record(
 ):
     if not _validates(path, task_data, task_hex):
         return
-    cost = compute_cost(path)
+    cost = _score_candidate(path, task_data)
     cfg = get_config()
     if apply_gate and cfg.calibrated_cost and cost["score"] < cfg.cost_gate_min_score:
         return
@@ -86,7 +121,7 @@ def _gather_candidates(
                 pass
 
     for td in datasets:
-        for sname, sfn in _solver_list():
+        for sname, sfn in _solver_list(td):
             try:
                 model = sfn(td)
                 if model is None:
@@ -173,10 +208,19 @@ def solve_task(
                 conv_cands, _ = _gather_conv(task_data, task_hex, tmpdir, conv_budget, apply_gate=False)
                 candidates = conv_cands
         if not candidates:
-            if os.path.exists(out_path):
+            cfg = get_config()
+            if os.path.exists(out_path) and not cfg.cost_audit:
                 os.remove(out_path)
             return False, None, None
-        name, cost, src = min(candidates, key=lambda x: x[1]["total"])
+        cfg = get_config()
+        if cfg.prefer_structural:
+            analytical = [c for c in candidates if not c[0].startswith("conv")]
+            if analytical:
+                candidates = analytical
+        if cfg.use_official_score:
+            name, cost, src = max(candidates, key=lambda x: x[1]["score"])
+        else:
+            name, cost, src = min(candidates, key=lambda x: x[1]["total"])
         shutil.copy2(src, out_path)
 
     return True, name, cost
@@ -193,6 +237,8 @@ def cost_audit_task(
     old_cost = compute_cost(out_path) if os.path.exists(out_path) else None
     ok, name, cost = solve_task(task_num, task_data, outdir, conv_budget, task_hex)
     if not ok:
+        if old_cost and os.path.exists(out_path):
+            return True, "seeded", old_cost
         return False, None, None
     if old_cost and cost["total"] >= old_cost["total"]:
         return True, name, old_cost

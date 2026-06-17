@@ -1,4 +1,4 @@
-"""Gather-based spatial remapping ONNX graphs."""
+"""Gather-based spatial remapping ONNX graphs (opset 10 — uses Gather, not GatherElements)."""
 
 from __future__ import annotations
 
@@ -10,11 +10,11 @@ from arc_genome.onnx.model import make_model
 
 
 def build_gather_model(oh: int, ow: int, idx: np.ndarray):
-    flat_idx = np.zeros((1, 10, GH * GW), dtype=np.int64)
+    flat_idx = np.zeros((GH * GW,), dtype=np.int64)
     mask = np.zeros((1, 1, GH, GW), dtype=np.float32)
     for oi in range(oh):
         for oj in range(ow):
-            flat_idx[0, :, oi * GW + oj] = idx[oi, oj, 0] * GW + idx[oi, oj, 1]
+            flat_idx[oi * GW + oj] = idx[oi, oj, 0] * GW + idx[oi, oj, 1]
             mask[0, 0, oi, oj] = 1.0
     inits = [
         numpy_helper.from_array(np.array([1, 10, GH * GW], dtype=np.int64), "fs"),
@@ -24,7 +24,7 @@ def build_gather_model(oh: int, ow: int, idx: np.ndarray):
     ]
     nodes = [
         helper.make_node("Reshape", ["input", "fs"], ["flat"]),
-        helper.make_node("GatherElements", ["flat", "idx"], ["g"], axis=2),
+        helper.make_node("Gather", ["flat", "idx"], ["g"], axis=2),
         helper.make_node("Reshape", ["g", "os"], ["raw"]),
         helper.make_node("Mul", ["raw", "mask"], ["output"]),
     ]
@@ -32,13 +32,13 @@ def build_gather_model(oh: int, ow: int, idx: np.ndarray):
 
 
 def build_gather_model_with_const(ih: int, iw: int, oh: int, ow: int, idx: np.ndarray, cst: np.ndarray):
-    flat_idx = np.zeros((1, 10, GH * GW), dtype=np.int64)
+    flat_idx = np.zeros((GH * GW,), dtype=np.int64)
     gather_mask = np.zeros((1, 1, GH, GW), dtype=np.float32)
     const_oh = np.zeros((1, 10, GH, GW), dtype=np.float32)
     for oi in range(oh):
         for oj in range(ow):
             if idx[oi, oj, 0] >= 0:
-                flat_idx[0, :, oi * GW + oj] = idx[oi, oj, 0] * GW + idx[oi, oj, 1]
+                flat_idx[oi * GW + oj] = idx[oi, oj, 0] * GW + idx[oi, oj, 1]
                 gather_mask[0, 0, oi, oj] = 1.0
             elif cst[oi, oj] >= 0:
                 const_oh[0, cst[oi, oj], oi, oj] = 1.0
@@ -51,7 +51,7 @@ def build_gather_model_with_const(ih: int, iw: int, oh: int, ow: int, idx: np.nd
     ]
     nodes = [
         helper.make_node("Reshape", ["input", "fs"], ["flat"]),
-        helper.make_node("GatherElements", ["flat", "idx"], ["g"], axis=2),
+        helper.make_node("Gather", ["flat", "idx"], ["g"], axis=2),
         helper.make_node("Reshape", ["g", "os"], ["raw"]),
         helper.make_node("Mul", ["raw", "gmask"], ["masked"]),
     ]

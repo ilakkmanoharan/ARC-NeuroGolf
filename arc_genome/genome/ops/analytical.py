@@ -56,19 +56,14 @@ def s_flip(td):
         return None
     for axis, flip_fn in [(0, np.flipud), (1, np.fliplr)]:
         if all(np.array_equal(out, flip_fn(inp)) for inp, out in exs):
-            if axis == 0:
-                idx = np.arange(GH).reshape(1, 1, GH, 1).repeat(10, 1).repeat(GW, 3)
-                for r in range(ih):
-                    idx[0, :, r, :] = ih - 1 - r
-            else:
-                idx = np.arange(GW).reshape(1, 1, 1, GW).repeat(10, 1).repeat(GH, 2)
-                for c in range(iw):
-                    idx[0, :, :, c] = iw - 1 - c
-            ax = 2 if axis == 0 else 3
-            return make_model(
-                [helper.make_node("GatherElements", ["input", "idx"], ["output"], axis=ax)],
-                [numpy_helper.from_array(idx.astype(np.int64), "idx")],
-            )
+            idx = np.zeros((oh, ow, 2), dtype=np.int64)
+            for r in range(oh):
+                for c in range(ow):
+                    if axis == 0:
+                        idx[r, c] = [ih - 1 - r, c]
+                    else:
+                        idx[r, c] = [r, iw - 1 - c]
+            return build_gather_model(oh, ow, idx)
     return None
 
 
@@ -93,6 +88,30 @@ def s_rotate(td):
                 idx[r, c] = [sr, sc]
         return build_gather_model(oh, ow, idx)
     return None
+
+
+def s_position_gather(td):
+    """Per-output-pixel source lookup (handles translate vs value-ambiguous gather)."""
+    sp = fixed_shapes(td)
+    if sp is None:
+        return None
+    (ih, iw), (oh, ow) = sp
+    exs = get_examples(td)
+    idx = np.zeros((oh, ow, 2), dtype=np.int64)
+    for r in range(oh):
+        for c in range(ow):
+            found = False
+            for sr in range(ih):
+                for sc in range(iw):
+                    if all(int(out[r, c]) == int(inp[sr, sc]) for inp, out in exs):
+                        idx[r, c] = [sr, sc]
+                        found = True
+                        break
+                if found:
+                    break
+            if not found:
+                return None
+    return build_gather_model(oh, ow, idx)
 
 
 def s_spatial_gather(td):
@@ -312,6 +331,7 @@ ANALYTICAL_SOLVERS = [
     ("tile", s_tile),
     ("upscale", s_upscale),
     ("concat", s_concat),
+    ("position_gather", s_position_gather),
     ("spatial_gather", s_spatial_gather),
     ("crop", s_crop),
 ]

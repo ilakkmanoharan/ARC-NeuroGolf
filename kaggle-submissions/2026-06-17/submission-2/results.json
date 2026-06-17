@@ -1,0 +1,33 @@
+{
+  "submission": 2,
+  "date": "2026-06-17",
+  "phase": 13,
+  "milestone": "M8",
+  "solved": 65,
+  "pass_all": 65,
+  "kaggle_score_est": 998.5498850033948,
+  "prescan_new_candidates": [
+    307
+  ],
+  "zip": "kaggle-submissions/2026-06-17/submission-2/submission_v2.zip",
+  "submitted": true,
+  "solver_counts": {
+    "conv_diff": 19,
+    "conv_fixed": 14,
+    "position_gather": 7,
+    "conv_var": 7,
+    "concat": 5,
+    "color_map": 4,
+    "compose": 3,
+    "transpose": 2,
+    "bounded_flip_v": 1,
+    "bounded_flip_h": 1,
+    "upscale": 1,
+    "bounded_upscale2": 1
+  },
+  "baseline_submission1_tasks": 64,
+  "kaggle_score_actual": 848.07,
+  "kaggle_score_delta_vs_submission1": 12.95,
+  "elapsed_s": 5245.1,
+  "message": "ARC-Genome M8: 65 verified, est 999, arcgen routing"
+}
