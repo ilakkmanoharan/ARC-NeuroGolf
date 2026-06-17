@@ -1,0 +1,268 @@
+# Run a full NeuroGolf solve + optional Kaggle submit on GitHub-hosted runners.
+#
+# Required repo secrets:
+#   KAGGLE_USERNAME, KAGGLE_KEY
+#
+# Optional (for arc_gen_raw cache miss):
+#   ARC_GEN_RAW_URL          — direct URL to ARC-GEN-100K.zip
+#   KAGGLE_ARC_GEN_DATASET   — e.g. youruser/neurogolf-arc-gen (kaggle datasets download)
+#
+# Trigger: Actions → NeuroGolf submission → Run workflow
+
+name: NeuroGolf submission
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: Submission date folder (YYYY-MM-DD)
+        required: true
+        default: "2026-06-17"
+      submission_number:
+        description: Submission number for this run
+        required: true
+        default: "5"
+      run_script:
+        description: Script filename under scripts/
+        required: true
+        default: run_submission_2026-06-17_s4.py
+      description:
+        description: Short description for all-submissions.md (optional)
+        required: false
+        default: ""
+      fetch_prev_logs:
+        description: Fetch Kaggle logs for previous submission
+        type: boolean
+        default: true
+      auto_commit:
+        description: Commit metadata results back to main
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+env:
+  PYTHON_VERSION: "3.11"
+  HF_ALL_TASKS_URL: https://huggingface.co/LuciferMrng/neurogolf-2026/resolve/main/all_tasks.json
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate inputs
+        env:
+          RUN_SCRIPT: ${{ inputs.run_script }}
+          SUB_NUM: ${{ inputs.submission_number }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$RUN_SCRIPT" =~ ^run_submission_[0-9]{4}-[0-9]{2}-[0-9]{2}_s[0-9]+\.py$ ]] && \
+             [[ ! "$RUN_SCRIPT" =~ ^run_submission_[0-9]{4}-[0-9]{2}-[0-9]{2}\.py$ ]]; then
+            echo "::error::run_script must match run_submission_*.py"
+            exit 1
+          fi
+          if [[ ! -f "scripts/$RUN_SCRIPT" ]]; then
+            echo "::error::scripts/$RUN_SCRIPT not found"
+            exit 1
+          fi
+          if ! [[ "$SUB_NUM" =~ ^[0-9]+$ ]] || [ "$SUB_NUM" -lt 1 ]; then
+            echo "::error::submission_number must be a positive integer"
+            exit 1
+          fi
+
+      - name: Configure Kaggle CLI
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${KAGGLE_USERNAME:-}" ] || [ -z "${KAGGLE_KEY:-}" ]; then
+            echo "::error::Set KAGGLE_USERNAME and KAGGLE_KEY repository secrets"
+            exit 1
+          fi
+          mkdir -p ~/.kaggle
+          printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+
+      - name: Restore arc_gen_raw cache
+        uses: actions/cache@v4
+        id: arcgen-cache
+        with:
+          path: data/arc_gen_raw
+          key: arc-gen-raw-v1-${{ hashFiles('data/all_tasks.json') }}
+          restore-keys: |
+            arc-gen-raw-v1-
+
+      - name: Fetch arc_gen_raw on cache miss
+        env:
+          ARC_GEN_RAW_URL: ${{ secrets.ARC_GEN_RAW_URL }}
+          KAGGLE_ARC_GEN_DATASET: ${{ secrets.KAGGLE_ARC_GEN_DATASET }}
+        run: |
+          set -euo pipefail
+          if [ -d data/arc_gen_raw ] && [ "$(find data/arc_gen_raw -name '*.json' | head -1)" ]; then
+            echo "arc_gen_raw present ($(find data/arc_gen_raw -name '*.json' | wc -l) json files)"
+            exit 0
+          fi
+          mkdir -p data
+          if [ -n "${ARC_GEN_RAW_URL:-}" ]; then
+            curl -fsSL "$ARC_GEN_RAW_URL" -o /tmp/arc-gen.zip
+            mkdir -p data/arc_gen_raw
+            unzip -q /tmp/arc-gen.zip -d data/arc_gen_raw
+          elif [ -n "${KAGGLE_ARC_GEN_DATASET:-}" ]; then
+            kaggle datasets download -d "$KAGGLE_ARC_GEN_DATASET" -p /tmp/arcgen --unzip
+            if [ -d /tmp/arcgen/arc_gen_raw ]; then
+              mv /tmp/arcgen/arc_gen_raw data/
+            else
+              mkdir -p data/arc_gen_raw
+              mv /tmp/arcgen/*.json data/arc_gen_raw/ 2>/dev/null || true
+            fi
+          else
+            echo "::error::arc_gen_raw missing. Warm Actions cache, or set ARC_GEN_RAW_URL / KAGGLE_ARC_GEN_DATASET secret."
+            exit 1
+          fi
+          echo "arc_gen_raw ready: $(find data/arc_gen_raw -name '*.json' | wc -l) json files"
+
+      - name: Ensure all_tasks.json
+        run: |
+          set -euo pipefail
+          if [ ! -f data/all_tasks.json ]; then
+            mkdir -p data
+            curl -fsSL "$HF_ALL_TASKS_URL" -o data/all_tasks.json
+          fi
+
+      - name: Unzip prior submission ONNX seeds
+        env:
+          DATE: ${{ inputs.date }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for zip in kaggle-submissions/"$DATE"/submission-*/submission_v2.zip; do
+            dir="$(dirname "$zip")/submission"
+            if [ -d "$dir" ] && [ "$(find "$dir" -name '*.onnx' | head -1)" ]; then
+              continue
+            fi
+            mkdir -p "$dir"
+            unzip -q -o "$zip" -d "$dir"
+            echo "Seeded $(dirname "$zip") from $(basename "$zip")"
+          done
+
+      - name: Fetch previous submission logs
+        if: inputs.fetch_prev_logs == true
+        env:
+          DATE: ${{ inputs.date }}
+          SUB_NUM: ${{ inputs.submission_number }}
+          KAGGLE_BIN: kaggle
+        run: |
+          set -euo pipefail
+          PREV_NUM=$((SUB_NUM - 1))
+          PREV_DIR=""
+          if [ "$PREV_NUM" -ge 1 ]; then
+            PREV_DIR="kaggle-submissions/${DATE}/submission-${PREV_NUM}"
+          else
+            PREV_DIR="$(find kaggle-submissions -mindepth 2 -maxdepth 2 -type d -name 'submission-*' \
+              ! -path "kaggle-submissions/${DATE}/*" | sort -V | tail -1)"
+          fi
+          if [ -z "$PREV_DIR" ] || [ ! -d "$PREV_DIR" ]; then
+            echo "No previous submission folder found; skipping log fetch"
+            exit 0
+          fi
+          PREV_SUB="${PREV_DIR}/submission"
+          if [ ! -d "$PREV_SUB" ] || [ ! "$(find "$PREV_SUB" -name '*.onnx' | head -1)" ]; then
+            if [ -f "${PREV_DIR}/submission_v2.zip" ]; then
+              mkdir -p "$PREV_SUB"
+              unzip -q -o "${PREV_DIR}/submission_v2.zip" -d "$PREV_SUB"
+            else
+              echo "Previous submission has no ONNX; skipping log fetch"
+              exit 0
+            fi
+          fi
+          python scripts/fetch_kaggle_logs.py \
+            --submission_dir "$PREV_SUB" \
+            --out_dir "${PREV_DIR}/kaggle_logs" \
+            --download_official
+          kaggle competitions submissions list -c neurogolf-2026 --csv | head -8 > "${PREV_DIR}/kaggle_status.txt" || true
+
+      - name: Run submission pipeline
+        env:
+          KAGGLE_BIN: kaggle
+        run: python scripts/${{ inputs.run_script }}
+
+      - name: Record Kaggle status
+        env:
+          DATE: ${{ inputs.date }}
+          SUB_NUM: ${{ inputs.submission_number }}
+        run: |
+          set -euo pipefail
+          SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
+          kaggle competitions submissions list -c neurogolf-2026 --csv | head -8 > "${SUB_DIR}/kaggle_status.txt" || true
+
+      - name: Update submission registry
+        env:
+          DATE: ${{ inputs.date }}
+          SUB_NUM: ${{ inputs.submission_number }}
+          DESCRIPTION: ${{ inputs.description }}
+        run: |
+          set -euo pipefail
+          SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
+          ARGS=(--folder "$SUB_DIR")
+          if [ -n "$DESCRIPTION" ]; then
+            ARGS+=(--description "$DESCRIPTION")
+          fi
+          python scripts/append_submission_registry.py "${ARGS[@]}"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: neurogolf-${{ inputs.date }}-s${{ inputs.submission_number }}
+          path: |
+            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/submission_v2.zip
+            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/run.log
+            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/audit.json
+            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/results.json
+            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/kaggle_status.txt
+            kaggle-submissions/all-submissions.md
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Commit results to main
+        if: inputs.auto_commit == true
+        env:
+          DATE: ${{ inputs.date }}
+          SUB_NUM: ${{ inputs.submission_number }}
+        run: |
+          set -euo pipefail
+          SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add kaggle-submissions/all-submissions.md
+          for f in results.json audit.json run.log kaggle_status.txt submission_v2.zip; do
+            [ -f "${SUB_DIR}/${f}" ] && git add "${SUB_DIR}/${f}"
+          done
+          if [ -d "${SUB_DIR}/kaggle_logs" ]; then
+            git add "${SUB_DIR}/kaggle_logs/kaggle_logs.json" "${SUB_DIR}/kaggle_logs/README.md" 2>/dev/null || true
+          fi
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "$(cat <<EOF
+ci: submission-${SUB_NUM} results (${DATE})
+
+Automated run via neurogolf-submission workflow.
+EOF
+)"
+          git push

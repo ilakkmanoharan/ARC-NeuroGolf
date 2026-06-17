@@ -84,8 +84,10 @@ Push code → workflow runs solve → uploads zip + logs as artifacts → option
 
 ### Example workflow sketch
 
+Workflow file: [`.github/workflows/neurogolf-submission.yml`](../.github/workflows/neurogolf-submission.yml)
+
 ```yaml
-# .github/workflows/submission.yml
+# .github/workflows/neurogolf-submission.yml (see repo for full version)
 name: NeuroGolf submission
 on:
   workflow_dispatch:   # manual “Run” button

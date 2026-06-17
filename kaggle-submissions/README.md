@@ -8,6 +8,8 @@ Archive and workflow for [NeuroGolf 2026](https://kaggle.com/competitions/neurog
 |---|---|
 | [everyday.md](everyday.md) | Per-submission checklist (logs → analysis → plan → implement → submit) |
 | [cloud.md](cloud.md) | Run solves remotely (Kaggle Notebook, GitHub Actions, VPS) |
+| [all-submissions.md](all-submissions.md) | Master submission registry |
+| [`.github/workflows/neurogolf-submission.yml`](../.github/workflows/neurogolf-submission.yml) | GitHub Actions workflow (Run workflow in Actions tab) |
 
 ## Layout
 
