@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submission 4 &mdash; 2026-06-17</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --text: #172033;
+      --muted: #5b6475;
+      --border: #d9dee8;
+      --soft: #f6f8fb;
+      --accent: #17345f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+    header {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      background: linear-gradient(180deg, #f9fbff 0%, #ffffff 100%);
+      margin-bottom: 24px;
+    }
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      margin: 0 0 14px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.03em;
+      color: var(--accent);
+    }
+    h2 {
+      margin-top: 32px;
+      font-size: 1.55rem;
+      color: var(--accent);
+    }
+    h3 {
+      margin-top: 20px;
+      font-size: 1.15rem;
+    }
+    p {
+      margin: 0 0 12px;
+    }
+    a {
+      color: #154fa3;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 24px;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--soft);
+      font-weight: 650;
+    }
+    .subhead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 820px;
+    }
+    .section {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin: 12px 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+    .link-grid a {
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      background: var(--soft);
+    }
+    .slide {
+      margin: 16px 0 30px;
+    }
+    .slide img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--soft);
+    }
+    .placeholder {
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      background: var(--soft);
+      color: var(--muted);
+    }
+    pre.markdown {
+      white-space: pre-wrap;
+      overflow-x: auto;
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid #111827;
+    }
+    details {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      background: #fff;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 650;
+      color: var(--accent);
+    }
+    footer {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Submission 4 &mdash; 2026-06-17</h1>
+      <p><strong>Milestone:</strong> M9</p>
+      <p class="subhead">ARC-Genome M9: 70 verified, est 1066, arcgen gather fit</p>
+    </header>
+
+    <section class="section" aria-labelledby="details-heading">
+      <h2 id="details-heading">Submission details</h2>
+      <table>
+        <tbody>
+          <tr><th scope="row">Date folder</th><td>2026-06-17</td></tr>
+          <tr><th scope="row">Submission number</th><td>4</td></tr>
+          <tr><th scope="row">Submitted at</th><td>&mdash;</td></tr>
+          <tr><th scope="row">Kaggle graded at</th><td>2026-06-19T09:55:06.343691+00:00</td></tr>
+          <tr><th scope="row">pass_all / solved tasks</th><td>70 / 70</td></tr>
+          <tr><th scope="row">Audit est. score</th><td>1065.5</td></tr>
+          <tr><th scope="row">Kaggle actual score</th><td>915.03</td></tr>
+          <tr><th scope="row">Phase</th><td>15</td></tr>
+          <tr><th scope="row">Milestone</th><td>M9</td></tr>
+          <tr><th scope="row">Elapsed</th><td>78.9 minutes</td></tr>
+          <tr><th scope="row">Submitted to Kaggle</th><td>yes</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Audit summary</h3>
+      <table>
+        <tbody>
+          <tr><th scope="row">Files audited</th><td>70</td></tr>
+          <tr><th scope="row">pass_all</th><td>70</td></tr>
+          <tr><th scope="row">train_only</th><td>0</td></tr>
+          <tr><th scope="row">fail</th><td>0</td></tr>
+          <tr><th scope="row">Kaggle audit total</th><td>1065.5174872118832</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Solver counts</h3>
+      <table>
+        <thead>
+          <tr><th>Solver</th><th>Count</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>conv_diff</td><td>19</td></tr>
+          <tr><td>position_gather_arcgen</td><td>18</td></tr>
+          <tr><td>conv_fixed</td><td>14</td></tr>
+          <tr><td>conv_var</td><td>7</td></tr>
+          <tr><td>color_map</td><td>4</td></tr>
+          <tr><td>compose</td><td>3</td></tr>
+          <tr><td>transpose</td><td>2</td></tr>
+          <tr><td>bounded_flip_v</td><td>1</td></tr>
+          <tr><td>bounded_flip_h</td><td>1</td></tr>
+          <tr><td>bounded_upscale2</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" aria-labelledby="links-heading">
+      <h2 id="links-heading">Links</h2>
+      <ul class="link-grid">
+        <li><a href="kaggle_logs/kaggle_logs.json">Kaggle logs</a></li>
+        <li><a href="kaggle_logs/">Per-task logs folder</a></li>
+        <li><a href="results.json">results.json</a></li>
+        <li><a href="audit.json">audit.json</a></li>
+        <li><a href="run.log">run.log</a></li>
+        <li><a href="submission_v2.zip">submission_v2.zip</a></li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="slides-heading">
+      <h2 id="slides-heading">Slides</h2>
+      <article class="slide">
+        <h2>Analysis summary</h2>
+        <img src="analysis.png" alt="Analysis summary">
+      </article>
+      <article class="slide">
+        <h2>Theory summary</h2>
+        <img src="theory.png" alt="Theory summary">
+      </article>
+      <article class="slide">
+        <h2>Learnings summary</h2>
+        <img src="learnings.png" alt="Learnings summary">
+      </article>
+    </section>
+
+    <section class="section" aria-labelledby="analysis-heading">
+      <h2 id="analysis-heading">Analysis</h2>
+      <pre class="markdown"># Submission Analysis — submission-4 (M9)
+
+**Date:** 2026-06-17  
+**Kaggle:** **915.03** ✅  
+**Tasks:** **70 pass_all** (+5 vs submission-3)  
+**Message:** `ARC-Genome M9: 70 verified, est 1066, arcgen gather fit`
+
+---
+
+## Score progression
+
+| Submission | Tasks | Audit est. | Kaggle actual | Δ tasks | Δ Kaggle |
+|---|---:|---:|---:|---:|---:|
+| submission-3 | 65 | 998.5 | 848.07 | — | — |
+| **submission-4** | **70** | **1065.5** | **915.03** | **+5** | **+66.96** |
+
+Predicted delta from audit: +67.0. Actual Kaggle delta: **+66.96** — effectively exact after the audit/Kaggle ratio held.
+
+---
+
+## Audit vs Kaggle ratio
+
+| Metric | Value |
+|---|---:|
+| Audit est. | 1065.52 |
+| Kaggle actual | **915.03** |
+| Actual / audit | **85.9%** |
+| Previous ratio (s2/s3) | ~84.9% |
+
+The audit remains a usable ranking signal: absolute values overstate by ~14%, but the **delta tracked exactly** for this run.
+
+---
+
+## What changed
+
+**Phase 15 ARC-GEN-fitted position gather** — compile the gather index map from `train + test + arc-gen[:100]`, not train/test alone.
+
+### New tasks (pre-scan confirmed)
+
+| Task | Solver |
+|---|---|
+| 83, 108, 211, 326, 385 | `position_gather_arcgen` |
+
+### Solver mix shift
+
+| Solver | s3 | s4 | Δ |
+|---|---:|---:|---:|
+| position_gather_arcgen | — | **18** | +18 |
+| position_gather | 7 | 0 | -7 |
+| concat | 5 | 0 | -5 |
+| compose | 3 | 3 | — |
+
+ARC-GEN-fitted gather replaced train-only gather/concat assumptions with circuits that survive the 100-sample validation gate.
+
+---
+
+## Run stats
+
+- Time: 4,734s (~79 min)
+- Pre-scan: 5 new candidates (exact)
+- pass_all: **70**
+- train_only: **0**
+- Submitted: ✅
+
+---
+
+## What did not work yet
+
+| Target | Result |
+|---|---|
+| Single-hop jump toward 2000 | Still needs many more pass_all tasks |
+| Bounded autodiscover beyond existing rules | No new s4 coverage |
+| Train-only gather assumptions | Rejected unless ARC-GEN-fitted |
+
+---
+
+## Path to 2000
+
+```text
+915 actual (s4) -> need +1085 more
+At 13 avg/task: ~84 more tasks
+At 20 avg/task: ~55 more tasks
+```
+
+submission-4 validates ARC-GEN fitting as a reliable delta lever. The next submission should keep the 100-sample gate and try small fitted-rule extensions before larger object programs.
+
+---
+
+## Takeaway
+
+**ARC-GEN-fitted gather converted synthetic validation into exact Kaggle lift.** The next lever is to fit other low-risk symbolic families on ARC-GEN while preserving the no-train-only invariant.</pre>
+
+      <details>
+        <summary>Theory full text</summary>
+        <pre class="markdown"># Theory — submission-4 (Phase 15 / M9)
+
+**Change:** ARC-GEN-fitted gather index compilation  
+**Result:** 70 pass_all, 915.03 Kaggle
+
+---
+
+## BLF update
+
+```text
+Belief: train/test-consistent gather maps are underdetermined.
+Evidence: ARC-GEN samples disambiguate source indices.
+Decision: fit symbolic parameters on train + test + 100 ARC-GEN.
+```
+
+The useful abstraction is not "more search"; it is **parameter fitting under synthetic generator evidence**.
+
+---
+
+## Problem
+
+`position_gather` inferred `(sr, sc)` from train/test only. That creates value-ambiguous maps: several source cells can match tiny train/test grids, but only one survives generator variation.
+
+Train-only candidates are not useful for the competition loop because they inflate local coverage without Kaggle lift.
+
+---
+
+## Solution
+
+Fit index map `idx[r,c] -> (sr,sc)` such that every example in `train + test + arc-gen[:100]` satisfies:
+
+```text
+output[r,c] = input[idx[r,c,0], idx[r,c,1]]
+```
+
+Then compile the result to the existing static `Gather` ONNX graph. The model class stays cheap; only the fitting evidence changes.
+
+### Why it generalized
+
+- The generated samples varied enough to remove ambiguous source cells.
+- Validation used the same 100-sample gate before packaging.
+- The audit delta and Kaggle delta matched almost exactly.
+
+---
+
+## Code World Model implication
+
+The successful CWM pattern is:
+
+```text
+symbolic family -> ARC-GEN parameter fit -> ONNX compile -> 100-sample validate
+```
+
+This is a safer path than adding train-only heuristics. New levers should extend the set of symbolic families that can be ARC-GEN-fitted.
+
+---
+
+## Next lever
+
+Phase 16 should stay small: fit another low-risk symbolic family on ARC-GEN before larger object-program work.
+
+Candidate order:
+
+| Lever | Reason |
+|---|---|
+| ARC-GEN-fitted color maps | Cheap, same-shape, no new compiler |
+| Bbox-relative gather | Plausible for layout variation, needs dynamic index compiler |
+| Object programs | Larger coverage potential, higher implementation risk |
+
+---
+
+## Phase config
+
+```python
+set_phase(15)  # phase 14 + arcgen_fit_gather
+```
+
+For follow-up work, `arcgen_validate_samples` must remain **>= 100** and train_only outputs must never be packaged.
+
+---
+
+## Takeaway
+
+**ARC-GEN is most valuable as a parameter-fitting oracle for symbolic Code World Models.** The submission-4 lift proves that fitted parameters can translate directly to Kaggle score when the validation gate is strict.</pre>
+      </details>
+
+      <details>
+        <summary>Learnings full text</summary>
+        <pre class="markdown"># Learnings — submission-4 (M9)
+
+**Outcome:** 70 pass_all, 915.03 Kaggle, +66.96 vs submission-3.
+
+---
+
+## Actionable rules
+
+1. **Treat ARC-GEN as fitting evidence, not just validation.** The winning change moved parameter inference from train/test to train + test + 100 ARC-GEN.
+2. **Never count train_only tasks as progress.** Local train/test wins only matter after the 100-sample ARC-GEN gate passes.
+3. **Track deltas more than raw audit totals.** The audit absolute score was high by ~14%, but the s4 delta matched Kaggle almost exactly.
+4. **Prefer low-risk symbolic family extensions.** Reusing the existing gather compiler kept the change small and made failures easy to reject.
+5. **Seed preservation remains important.** Cost audit should keep prior ONNX when a new candidate is worse or absent.
+6. **Pre-scan must match the production gate.** s4 worked because pre-scan and packaging both used full ARC-GEN validation.
+7. **Large score goals require coverage, not only cheaper models.** At current yield, 2000 needs dozens more pass_all tasks.
+
+---
+
+## Carry-forward checklist
+
+| Rule | Submission-5 requirement |
+|---|---|
+| 100 ARC-GEN samples | `set_phase(16)` must keep `arcgen_validate_samples >= 100` |
+| No train_only | Submit only if audit reports `train_only == 0` |
+| Real improvement | Submit only on `pass_all > 70` or audit estimate >= baseline + 1 |
+| Minimal next lever | ARC-GEN-fit one cheap symbolic family before object-program expansion |
+
+---
+
+## Best next experiment
+
+Start with **ARC-GEN-fitted color maps** because it requires no new ONNX compiler and extends the successful "fit symbolic parameters from generator samples" pattern. If it produces no pass_all increase, the next meaningful lever is bbox-relative gather or object-level programs.</pre>
+      </details>
+    </section>
+
+    <section class="section" aria-labelledby="status-heading">
+      <h2 id="status-heading">Kaggle status</h2>
+      <pre class="markdown"># Kaggle status — submission-4
+# Graded at: 2026-06-19T09:55:06.343404+00:00
+# Score: 915.03
+# Status: SubmissionStatus.COMPLETE
+
+ref,fileName,date,description,status,publicScore,privateScore
+53785600,submission.zip,2026-06-17 19:02:16.533000,"ARC-Genome M9: 70 verified, est 1066, arcgen gather fit",SubmissionStatus.COMPLETE,915.03,</pre>
+    </section>
+
+    <footer>
+      <span>Generated by NeuroGolf automation</span>
+      <a href="../../gallery/index.html">Back to gallery</a>
+    </footer>
+  </main>
+</body>
+</html>
