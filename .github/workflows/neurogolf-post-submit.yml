@@ -1,0 +1,195 @@
+# Post-submit: wait 1h (+30m retries), fetch Kaggle logs, commit to repo.
+#
+# Required secrets: KAGGLE_USERNAME + KAGGLE_KEY  (or KAGGLE_API_TOKEN)
+#
+# Trigger: Actions → NeuroGolf post-submit → Run workflow
+#   Also chained automatically from neurogolf-loop.yml
+
+name: NeuroGolf post-submit
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: Submission date folder (YYYY-MM-DD)
+        required: true
+        default: "2026-06-17"
+      submission_number:
+        description: Submission number to fetch logs for
+        required: true
+        default: "4"
+      message:
+        description: Kaggle message substring (optional; reads results.json)
+        required: false
+        default: ""
+      skip_initial_wait:
+        description: Skip 1h wait (use if submission was >1h ago)
+        type: boolean
+        default: true
+      auto_commit:
+        description: Commit logs and status back to main
+        type: boolean
+        default: true
+      trigger_cursor_agent:
+        description: Launch Cursor Cloud Agent after logs land
+        type: boolean
+        default: true
+      next_date:
+        description: Date for next submission (Cursor implement mode)
+        required: false
+        default: "2026-06-18"
+      next_submission_number:
+        description: Next submission number for Cursor agent
+        required: false
+        default: "1"
+  workflow_call:
+    inputs:
+      date:
+        required: true
+        type: string
+      submission_number:
+        required: true
+        type: string
+      message:
+        required: false
+        type: string
+        default: ""
+      skip_initial_wait:
+        required: false
+        type: boolean
+        default: true
+      auto_commit:
+        required: false
+        type: boolean
+        default: true
+      trigger_cursor_agent:
+        required: false
+        type: boolean
+        default: true
+      next_date:
+        required: false
+        type: string
+        default: "2026-06-18"
+      next_submission_number:
+        required: false
+        type: string
+        default: "1"
+
+permissions:
+  contents: write
+
+env:
+  PYTHON_VERSION: "3.11"
+
+jobs:
+  post-submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Configure Kaggle CLI
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -n "${KAGGLE_API_TOKEN:-}" ]; then
+            export KAGGLE_API_TOKEN
+            echo "Using KAGGLE_API_TOKEN"
+          elif [ -n "${KAGGLE_USERNAME:-}" ] && [ -n "${KAGGLE_KEY:-}" ]; then
+            mkdir -p ~/.kaggle
+            printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > ~/.kaggle/kaggle.json
+            chmod 600 ~/.kaggle/kaggle.json
+          else
+            echo "::error::Set KAGGLE_USERNAME+KAGGLE_KEY or KAGGLE_API_TOKEN"
+            exit 1
+          fi
+
+      - name: Unzip submission ONNX if needed
+        env:
+          DATE: ${{ inputs.date }}
+          SUB_NUM: ${{ inputs.submission_number }}
+        run: |
+          set -euo pipefail
+          SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
+          if [ -f "${SUB_DIR}/submission_v2.zip" ]; then
+            mkdir -p "${SUB_DIR}/submission"
+            unzip -q -o "${SUB_DIR}/submission_v2.zip" -d "${SUB_DIR}/submission" || true
+          fi
+
+      - name: Wait for Kaggle grade and fetch logs
+        env:
+          KAGGLE_BIN: kaggle
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          ARGS=(
+            --date "${{ inputs.date }}"
+            --submission "${{ inputs.submission_number }}"
+          )
+          if [ -n "${{ inputs.message }}" ]; then
+            ARGS+=(--message "${{ inputs.message }}")
+          fi
+          if [ "${{ inputs.skip_initial_wait }}" = "true" ]; then
+            ARGS+=(--skip-initial-wait)
+          fi
+          python scripts/post_submit_fetch.py "${ARGS[@]}"
+
+      - name: Commit post-submit artifacts
+        if: inputs.auto_commit == true
+        env:
+          DATE: ${{ inputs.date }}
+          SUB_NUM: ${{ inputs.submission_number }}
+        run: |
+          set -euo pipefail
+          SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${SUB_DIR}/kaggle_status.txt" "${SUB_DIR}/results.json" 2>/dev/null || true
+          git add "${SUB_DIR}/kaggle_logs/" 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "$(cat <<EOF
+ci: post-submit logs submission-${SUB_NUM} (${DATE})
+
+Kaggle grade + per-task logs via neurogolf-post-submit workflow.
+EOF
+)"
+          git push
+
+      - name: Trigger Cursor Cloud Agent (next submission)
+        if: inputs.trigger_cursor_agent == true
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          pip install -q -r requirements-ci.txt 2>/dev/null || pip install -q cursor-sdk
+          python scripts/trigger_cursor_agent.py \
+            --date "${{ inputs.next_date }}" \
+            --submission "${{ inputs.next_submission_number }}" \
+            --mode implement \
+            --prior-date "${{ inputs.date }}" \
+            --prior-submission "${{ inputs.submission_number }}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: post-submit-${{ inputs.date }}-s${{ inputs.submission_number }}
+          path: |
+            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/kaggle_logs/**
+            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/kaggle_status.txt
+            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/results.json
+          retention-days: 30
+          if-no-files-found: warn

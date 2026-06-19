@@ -150,6 +150,8 @@ def main():
         sys.exit(1)
     results_doc["submitted"] = True
     results_doc["message"] = msg
+    from datetime import datetime, timezone
+    results_doc["submitted_at"] = datetime.now(timezone.utc).isoformat()
     with open(f"{SUB_DIR}/results.json", "w") as f:
         json.dump(results_doc, f, indent=2)
     print("Submitted successfully.")

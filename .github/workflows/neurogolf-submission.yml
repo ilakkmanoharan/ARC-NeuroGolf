@@ -17,15 +17,15 @@ on:
       date:
         description: Submission date folder (YYYY-MM-DD)
         required: true
-        default: "2026-06-17"
+        default: "2026-06-18"
       submission_number:
         description: Submission number for this run
         required: true
-        default: "5"
+        default: "1"
       run_script:
         description: Script filename under scripts/
         required: true
-        default: run_submission_2026-06-17_s4.py
+        default: run_submission_2026-06-18_s1.py
       description:
         description: Short description for all-submissions.md (optional)
         required: false
@@ -37,10 +37,15 @@ on:
       auto_commit:
         description: Commit metadata results back to main
         type: boolean
-        default: false
+        default: true
+      chain_post_submit:
+        description: After Kaggle submit, queue post-submit workflow (1h wait + logs)
+        type: boolean
+        default: true
 
 permissions:
   contents: write
+  actions: write
 
 env:
   PYTHON_VERSION: "3.11"
@@ -88,15 +93,19 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
         run: |
           set -euo pipefail
-          if [ -z "${KAGGLE_USERNAME:-}" ] || [ -z "${KAGGLE_KEY:-}" ]; then
-            echo "::error::Set KAGGLE_USERNAME and KAGGLE_KEY repository secrets"
+          if [ -n "${KAGGLE_API_TOKEN:-}" ]; then
+            echo "Using KAGGLE_API_TOKEN"
+          elif [ -n "${KAGGLE_USERNAME:-}" ] && [ -n "${KAGGLE_KEY:-}" ]; then
+            mkdir -p ~/.kaggle
+            printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > ~/.kaggle/kaggle.json
+            chmod 600 ~/.kaggle/kaggle.json
+          else
+            echo "::error::Set KAGGLE_USERNAME+KAGGLE_KEY or KAGGLE_API_TOKEN repository secrets"
             exit 1
           fi
-          mkdir -p ~/.kaggle
-          printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > ~/.kaggle/kaggle.json
-          chmod 600 ~/.kaggle/kaggle.json
 
       - name: Restore arc_gen_raw cache
         uses: actions/cache@v4
@@ -145,12 +154,10 @@ jobs:
           fi
 
       - name: Unzip prior submission ONNX seeds
-        env:
-          DATE: ${{ inputs.date }}
         run: |
           set -euo pipefail
           shopt -s nullglob
-          for zip in kaggle-submissions/"$DATE"/submission-*/submission_v2.zip; do
+          for zip in kaggle-submissions/*/submission-*/submission_v2.zip; do
             dir="$(dirname "$zip")/submission"
             if [ -d "$dir" ] && [ "$(find "$dir" -name '*.onnx' | head -1)" ]; then
               continue
@@ -199,6 +206,7 @@ jobs:
       - name: Run submission pipeline
         env:
           KAGGLE_BIN: kaggle
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
         run: python scripts/${{ inputs.run_script }}
 
       - name: Record Kaggle status
@@ -266,3 +274,34 @@ Automated run via neurogolf-submission workflow.
 EOF
 )"
           git push
+
+      - name: Chain post-submit workflow (1h wait + logs)
+        if: inputs.chain_post_submit == true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATE: ${{ inputs.date }}
+          SUB_NUM: ${{ inputs.submission_number }}
+          NEXT_DATE: ${{ inputs.date }}
+          NEXT_SUB: ${{ inputs.submission_number }}
+        run: |
+          set -euo pipefail
+          SUBMITTED=false
+          if [ -f "kaggle-submissions/${DATE}/submission-${SUB_NUM}/results.json" ]; then
+            SUBMITTED=$(python3 -c "import json; print(json.load(open('kaggle-submissions/${DATE}/submission-${SUB_NUM}/results.json')).get('submitted', False))")
+          fi
+          if [ "$SUBMITTED" != "True" ]; then
+            echo "Not submitted; skip post-submit chain"
+            exit 0
+          fi
+          # Next submission = same day N+1 for loop continuity
+          NEXT_N=$((SUB_NUM + 1))
+          gh workflow run neurogolf-post-submit.yml \
+            -f date="${DATE}" \
+            -f submission_number="${SUB_NUM}" \
+            -f skip_initial_wait=false \
+            -f auto_commit=true \
+            -f trigger_cursor_agent=true \
+            -f next_date="${DATE}" \
+            -f next_submission_number="${NEXT_N}"
+          echo "Queued post-submit for submission-${SUB_NUM} (1h wait). Agent will target submission-${NEXT_N}."
+

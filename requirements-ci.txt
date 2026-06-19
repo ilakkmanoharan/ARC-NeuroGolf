@@ -1,0 +1,2 @@
+# Optional CI dependencies (Cursor agent step in neurogolf-loop workflow)
+cursor-sdk>=0.1.0

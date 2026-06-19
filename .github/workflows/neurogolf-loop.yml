@@ -1,0 +1,114 @@
+# Master loop: grade prior submission → Cursor agent PR → run next submission.
+#
+# FIRST RUN (2026-06-18): grades submission-4, agent opens PR for 2026-06-18/submission-1.
+# YOU: merge the agent PR when ready.
+# THEN: re-run with phase=submit-only (or full after PR merged).
+#
+# Required secrets:
+#   KAGGLE_USERNAME + KAGGLE_KEY  (or KAGGLE_API_TOKEN)
+# Optional:
+#   CURSOR_API_KEY, ARC_GEN_RAW_URL / KAGGLE_ARC_GEN_DATASET
+
+name: NeuroGolf loop
+
+on:
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: "full | post-submit-only | submit-only"
+        type: choice
+        options:
+          - full
+          - post-submit-only
+          - submit-only
+        default: full
+      prior_date:
+        description: Date folder for submission to grade
+        default: "2026-06-17"
+      prior_submission:
+        description: Submission number to grade
+        default: "4"
+      skip_initial_wait:
+        description: Skip 1h wait on prior submission (true if submitted >1h ago)
+        type: boolean
+        default: true
+      next_date:
+        description: Date folder for next submission
+        default: "2026-06-18"
+      next_submission:
+        description: Next submission number
+        default: "1"
+      next_run_script:
+        description: Run script under scripts/ (empty = auto-detect)
+        required: false
+        default: ""
+      auto_commit:
+        description: Commit workflow outputs to main
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  post-submit:
+    if: inputs.phase == 'full' || inputs.phase == 'post-submit-only'
+    uses: ./.github/workflows/neurogolf-post-submit.yml
+    with:
+      date: ${{ inputs.prior_date }}
+      submission_number: ${{ inputs.prior_submission }}
+      skip_initial_wait: ${{ inputs.skip_initial_wait }}
+      auto_commit: ${{ inputs.auto_commit }}
+      trigger_cursor_agent: ${{ inputs.phase == 'full' }}
+      next_date: ${{ inputs.next_date }}
+      next_submission_number: ${{ inputs.next_submission }}
+    secrets: inherit
+
+  submit:
+    if: |
+      always() &&
+      (
+        inputs.phase == 'submit-only' ||
+        (inputs.phase == 'full' && needs.post-submit.result == 'success')
+      )
+    needs:
+      - post-submit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve run script
+        id: script
+        env:
+          NEXT_DATE: ${{ inputs.next_date }}
+          NEXT_SUB: ${{ inputs.next_submission }}
+          RUN_SCRIPT: ${{ inputs.next_run_script }}
+        run: |
+          set -euo pipefail
+          if [ -n "$RUN_SCRIPT" ]; then
+            SCRIPT="$RUN_SCRIPT"
+          else
+            SCRIPT="run_submission_${NEXT_DATE}_s${NEXT_SUB}.py"
+          fi
+          if [ ! -f "scripts/$SCRIPT" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "script=$SCRIPT" >> "$GITHUB_OUTPUT"
+            echo "::notice::scripts/$SCRIPT not found — merge Cursor agent PR, then re-run phase=submit-only"
+            exit 0
+          fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          echo "script=$SCRIPT" >> "$GITHUB_OUTPUT"
+          echo "Found scripts/$SCRIPT"
+
+      - name: Trigger submit workflow
+        if: steps.script.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run neurogolf-submission.yml \
+            -f date="${{ inputs.next_date }}" \
+            -f submission_number="${{ inputs.next_submission }}" \
+            -f run_script="${{ steps.script.outputs.script }}" \
+            -f fetch_prev_logs=true \
+            -f auto_commit="${{ inputs.auto_commit }}"
