@@ -49,6 +49,9 @@ def _solver_list(task_data: dict | None = None):
     if cfg.arcgen_fit_gather:
         from arc_genome.genome.ops.arcgen_gather import ARCgen_GATHER_SOLVERS
         solvers = ARCgen_GATHER_SOLVERS + solvers
+    if cfg.arcgen_fit_color:
+        from arc_genome.genome.ops.analytical import s_color_map_arcgen
+        solvers = [("color_map_arcgen", s_color_map_arcgen)] + solvers
     if cfg.arcgen_routing and task_data is not None:
         from arc_genome.genome.belief import rank_solver_order
         from arc_genome.config import get_config as _gc

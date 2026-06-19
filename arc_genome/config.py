@@ -44,6 +44,8 @@ class PhaseConfig:
     bounded_tile_upscale: bool = False
     # Phase 15 — ARC-GEN-fitted gather indices
     arcgen_fit_gather: bool = False
+    # Phase 16 — ARC-GEN-fitted color remaps
+    arcgen_fit_color: bool = False
 
 
 def build_config(level: int) -> PhaseConfig:
@@ -93,6 +95,8 @@ def build_config(level: int) -> PhaseConfig:
         cfg.third_pass = False  # saturated at 0 wins; save ~30min
     if level >= 15:
         cfg.arcgen_fit_gather = True
+    if level >= 16:
+        cfg.arcgen_fit_color = True
     return cfg
 
 

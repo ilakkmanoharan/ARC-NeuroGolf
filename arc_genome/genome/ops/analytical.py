@@ -7,6 +7,7 @@ from itertools import product as iproduct
 import numpy as np
 from onnx import helper, numpy_helper
 
+from arc_genome.config import get_config
 from arc_genome.data.encoding import GH, GW, fixed_shapes, get_examples
 from arc_genome.onnx.gather import build_gather_model, build_gather_model_with_const
 from arc_genome.onnx.model import make_model
@@ -30,6 +31,32 @@ def s_color_map(td):
             if iv in cm and cm[iv] != ov:
                 return None
             cm[iv] = ov
+    w = np.zeros((10, 10, 1, 1), dtype=np.float32)
+    for ic in range(10):
+        w[cm.get(ic, ic), ic, 0, 0] = 1.0
+    return make_model(
+        [helper.make_node("Conv", ["input", "W"], ["output"], kernel_shape=[1, 1])],
+        [numpy_helper.from_array(w, "W")],
+    )
+
+
+def s_color_map_arcgen(td):
+    """Color remap fitted on train + test + ARC-GEN samples."""
+    cfg = get_config()
+    n = cfg.arcgen_fit_samples if cfg.arcgen_validation else 0
+    examples = td["train"] + td["test"] + td.get("arc-gen", [])[:n]
+    cm = {}
+    for ex in examples:
+        inp, out = np.array(ex["input"]), np.array(ex["output"])
+        if inp.shape != out.shape:
+            return None
+        for iv, ov in zip(inp.flat, out.flat):
+            iv, ov = int(iv), int(ov)
+            if iv in cm and cm[iv] != ov:
+                return None
+            cm[iv] = ov
+    if not cm:
+        return None
     w = np.zeros((10, 10, 1, 1), dtype=np.float32)
     for ic in range(10):
         w[cm.get(ic, ic), ic, 0, 0] = 1.0

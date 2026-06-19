@@ -1,41 +1,71 @@
 # Theory — submission-4 (Phase 15 / M9)
 
-**Change:** ARC-GEN-fitted gather index compilation
+**Change:** ARC-GEN-fitted gather index compilation  
+**Result:** 70 pass_all, 915.03 Kaggle
+
+---
+
+## BLF update
+
+```text
+Belief: train/test-consistent gather maps are underdetermined.
+Evidence: ARC-GEN samples disambiguate source indices.
+Decision: fit symbolic parameters on train + test + 100 ARC-GEN.
+```
+
+The useful abstraction is not "more search"; it is **parameter fitting under synthetic generator evidence**.
 
 ---
 
 ## Problem
 
-`position_gather` infers `(sr,sc)` from train+test only. When ARC-GEN grids vary in content layout, train-consistent indices **fail held-out generators** — 12 unsolved tasks match train-only.
+`position_gather` inferred `(sr, sc)` from train/test only. That creates value-ambiguous maps: several source cells can match tiny train/test grids, but only one survives generator variation.
+
+Train-only candidates are not useful for the competition loop because they inflate local coverage without Kaggle lift.
 
 ---
 
 ## Solution
 
-Fit index map `idx[r,c] → (sr,sc)` such that **all** examples in `train + test + arc-gen[:100]` satisfy:
+Fit index map `idx[r,c] -> (sr,sc)` such that every example in `train + test + arc-gen[:100]` satisfies:
 
 ```text
 output[r,c] = input[idx[r,c,0], idx[r,c,1]]
 ```
 
-Compile to static `Gather` ONNX (same as analytical position_gather, different idx).
+Then compile the result to the existing static `Gather` ONNX graph. The model class stays cheap; only the fitting evidence changes.
 
-### Variable input shape
+### Why it generalized
 
-Fixed **output** shape required; input shape may vary (task 326). Index search uses bounds `GH×GW` with per-example bounds checks.
+- The generated samples varied enough to remove ambiguous source cells.
+- Validation used the same 100-sample gate before packaging.
+- The audit delta and Kaggle delta matched almost exactly.
 
 ---
 
-## Why this moves toward 2000
+## Code World Model implication
 
-Each new pass_all task ≈ **+13 Kaggle** at current cost levels.  
-5 tasks ≈ **+65 audit ≈ +55 Kaggle**.
-
-Cumulative coverage path:
+The successful CWM pattern is:
 
 ```text
-65 → 70 (s4) → 90 (M10) → 120 (M12) → 150+ (2000 territory)
+symbolic family -> ARC-GEN parameter fit -> ONNX compile -> 100-sample validate
 ```
+
+This is a safer path than adding train-only heuristics. New levers should extend the set of symbolic families that can be ARC-GEN-fitted.
+
+---
+
+## Next lever
+
+Phase 16 should stay small: fit another low-risk symbolic family on ARC-GEN before larger object-program work.
+
+Candidate order:
+
+| Lever | Reason |
+|---|---|
+| ARC-GEN-fitted color maps | Cheap, same-shape, no new compiler |
+| Bbox-relative gather | Plausible for layout variation, needs dynamic index compiler |
+| Object programs | Larger coverage potential, higher implementation risk |
 
 ---
 
@@ -45,12 +75,10 @@ Cumulative coverage path:
 set_phase(15)  # phase 14 + arcgen_fit_gather
 ```
 
+For follow-up work, `arcgen_validate_samples` must remain **>= 100** and train_only outputs must never be packaged.
+
 ---
 
-## Expected outcome
+## Takeaway
 
-| Metric | Value |
-|---|---|
-| pass_all | 70 |
-| Kaggle | ~905 |
-| New solver | `position_gather_arcgen` |
+**ARC-GEN is most valuable as a parameter-fitting oracle for symbolic Code World Models.** The submission-4 lift proves that fitted parameters can translate directly to Kaggle score when the validation gate is strict.
