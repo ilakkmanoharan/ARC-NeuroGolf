@@ -161,12 +161,8 @@ jobs:
             echo "Nothing to commit"
             exit 0
           fi
-          git commit -m "$(cat <<EOF
-ci: post-submit logs submission-${SUB_NUM} (${DATE})
-
-Kaggle grade + per-task logs via neurogolf-post-submit workflow.
-EOF
-)"
+          git commit -m "ci: post-submit logs submission-${SUB_NUM} (${DATE})" \
+            -m "Kaggle grade + per-task logs via neurogolf-post-submit workflow."
           git push
 
       - name: Trigger Cursor Cloud Agent (next submission)

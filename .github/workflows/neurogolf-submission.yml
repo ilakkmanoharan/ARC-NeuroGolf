@@ -267,12 +267,8 @@ jobs:
             echo "Nothing to commit"
             exit 0
           fi
-          git commit -m "$(cat <<EOF
-ci: submission-${SUB_NUM} results (${DATE})
-
-Automated run via neurogolf-submission workflow.
-EOF
-)"
+          git commit -m "ci: submission-${SUB_NUM} results (${DATE})" \
+            -m "Automated run via neurogolf-submission workflow."
           git push
 
       - name: Chain post-submit workflow (1h wait + logs)
