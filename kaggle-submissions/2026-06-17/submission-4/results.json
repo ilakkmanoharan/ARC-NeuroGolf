@@ -29,5 +29,8 @@
   },
   "elapsed_s": 4734.1,
   "submitted": true,
-  "message": "ARC-Genome M9: 70 verified, est 1066, arcgen gather fit"
+  "message": "ARC-Genome M9: 70 verified, est 1066, arcgen gather fit",
+  "kaggle_score_actual": 915.03,
+  "kaggle_graded_at": "2026-06-19T09:55:06.343691+00:00",
+  "kaggle_status": "SubmissionStatus.COMPLETE"
 }
