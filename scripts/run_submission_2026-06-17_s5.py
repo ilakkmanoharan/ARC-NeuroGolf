@@ -183,6 +183,14 @@ def main():
             json.dump(results_doc, f, indent=2)
         sys.exit(0)
 
+    if os.environ.get("NEUROGOLF_SKIP_KAGGLE_SUBMIT"):
+        results_doc["message"] = f"Solve push only: {n} pass_all, est {est:.0f}"
+        results_doc["ready_for_manual_kaggle_submit"] = True
+        with open(f"{SUB_DIR}/results.json", "w") as f:
+            json.dump(results_doc, f, indent=2)
+        print("NEUROGOLF_SKIP_KAGGLE_SUBMIT set — zip ready, no Kaggle CLI submit.")
+        sys.exit(0)
+
     msg = f"ARC-Genome M10a: {n} verified, est {est:.0f}, arcgen color fit"
     shutil.copy2(ZIP_STORE, SUBMIT_PATH)
     proc = subprocess.run([

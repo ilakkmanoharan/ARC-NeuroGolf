@@ -1,0 +1,106 @@
+# Notify when Automation #3 pushes a solve package (no manual GitHub Watch needed).
+#
+# On push to main that adds/updates kaggle_submit_package.md:
+#   1. Opens a GitHub Issue (always — uses GITHUB_TOKEN)
+#   2. Sends email to NOTIFY_EMAIL if SMTP secrets are set
+#
+# One-time GitHub repo secrets (Settings → Secrets → Actions):
+#   NOTIFY_EMAIL          — default ilakkmanoharan@gmail.com (optional)
+#   GMAIL_APP_PASSWORD    — Gmail app password for SMTP_USER inbox
+#   SMTP_USER             — optional, defaults to NOTIFY_EMAIL
+#
+# Gmail app password: Google Account → Security → 2-Step Verification → App passwords
+
+name: Notify Kaggle ready
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kaggle-submissions/**/kaggle_submit_package.md"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find package files in this push
+        id: packages
+        run: |
+          set -euo pipefail
+          mapfile -t FILES < <(git diff --name-only HEAD~1 HEAD | grep 'kaggle_submit_package\.md$' || true)
+          if [ "${#FILES[@]}" -eq 0 ]; then
+            mapfile -t FILES < <(git diff --name-only HEAD~1 HEAD | grep 'kaggle-submissions/.*/submission-.*/' || true)
+          fi
+          if [ "${#FILES[@]}" -eq 0 ]; then
+            echo "No package files in push"
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Prefer explicit package manifest
+          PKG=""
+          for f in "${FILES[@]}"; do
+            if [[ "$f" == *kaggle_submit_package.md ]]; then
+              PKG="$f"
+              break
+            fi
+          done
+          if [ -z "$PKG" ]; then
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "package=$PKG" >> "$GITHUB_OUTPUT"
+          echo "count=1" >> "$GITHUB_OUTPUT"
+          echo "Found package: $PKG"
+
+      - name: Create GitHub Issue
+        if: steps.packages.outputs.count == '1'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const pkg = '${{ steps.packages.outputs.package }}';
+            const body = fs.readFileSync(pkg, 'utf8');
+            const parts = pkg.split('/');
+            const date = parts[1];
+            const sub = parts[2].replace('submission-', '');
+            const title = `Kaggle ready: ${date} submission-${sub}`;
+            const repo = `${context.repo.owner}/${context.repo.repo}`;
+            const fullBody = [
+              body,
+              '',
+              '---',
+              `Repo: https://github.com/${repo}`,
+              `Folder: ${pkg.replace('/kaggle_submit_package.md', '/')}`,
+            ].join('\n');
+            const { data: issue } = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body: fullBody,
+            });
+            core.info(`Created issue #${issue.number}: ${issue.html_url}`);
+
+      - name: Send email
+        if: steps.packages.outputs.count == '1'
+        env:
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL != '' && secrets.NOTIFY_EMAIL || 'ilakkmanoharan@gmail.com' }}
+          SMTP_USER: ${{ secrets.SMTP_USER != '' && secrets.SMTP_USER || (secrets.NOTIFY_EMAIL != '' && secrets.NOTIFY_EMAIL || 'ilakkmanoharan@gmail.com') }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GMAIL_APP_PASSWORD:-}" ] && [ -z "${SMTP_PASSWORD:-}" ]; then
+            echo "No SMTP secret — issue created; enable GMAIL_APP_PASSWORD for direct email"
+            exit 0
+          fi
+          python3 scripts/notify_kaggle_ready.py "${{ steps.packages.outputs.package }}"
