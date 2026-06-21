@@ -1,7 +1,31 @@
 # Kaggle status — submission-3
+# Graded at: 2026-06-21T14:04:35.054590+00:00
+# Score: 848.07
+# Status: SubmissionStatus.COMPLETE
 
-**Kaggle score:** 848.07 (same as submission-2)  
-**Tasks:** 65 pass_all  
-**Message:** `ARC-Genome M8b: 65 verified, est 999, autodiscover`
-
-Per-task logs: `kaggle_logs/kaggle_logs.json`
+ref,fileName,date,description,status,publicScore,privateScore
+53785600,submission.zip,2026-06-17 19:02:16.533000,"ARC-Genome M9: 70 verified, est 1066, arcgen gather fit",SubmissionStatus.COMPLETE,915.03,
+53783395,submission.zip,2026-06-17 17:15:52.873000,"ARC-Genome M8b: 65 verified, est 999, autodiscover",SubmissionStatus.COMPLETE,848.07,
+53777709,submission.zip,2026-06-17 13:49:27.900000,"ARC-Genome M8: 65 verified, est 999, arcgen routing",SubmissionStatus.COMPLETE,848.07,
+53774020,submission.zip,2026-06-17 11:32:23.207000,"ARC-Genome M7b: 64 verified, est 986, slim bounded flip",SubmissionStatus.COMPLETE,835.12,
+53679540,submission.zip,2026-06-14 15:40:55.937000,"ARC-Genome M6: 64 verified, est 985, bounded CWM flip",SubmissionStatus.COMPLETE,834.44,
+53676011,submission.zip,2026-06-14 13:45:15.270000,"ARC-Genome M5: 62 verified, est 960, var-shape solvers",SubmissionStatus.COMPLETE,809.32,
+53672770,submission.zip,2026-06-14 12:05:12.960000,"ARC-Genome M4: 62 verified, est 960, coverage push",SubmissionStatus.COMPLETE,809.32,
+53671641,submission.zip,2026-06-14 11:28:00.030000,"ARC-Genome M4: 62 verified, est 960, coverage push",SubmissionStatus.COMPLETE,809.32,
+53666668,submission.zip,2026-06-14 08:53:19.560000,"ARC-Genome M3: 62 verified, est 960, official score",SubmissionStatus.COMPLETE,809.32,
+53663665,submission.zip,2026-06-14 07:13:08.787000,"ARC-Genome M2: 50 verified, est 777, 100 arcgen",SubmissionStatus.COMPLETE,761.25,
+53662098,submission.zip,2026-06-14 06:20:01.603000,M1b test,SubmissionStatus.COMPLETE,564.20,
+53613024,submission.zip,2026-06-12 19:01:50.180000,"ARC-Genome M1: 23 tasks, est 388",SubmissionStatus.COMPLETE,388.20,
+53612499,submission.zip,2026-06-12 18:37:48.557000,ARC-Genome Phase 6: 199/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612376,submission.zip,2026-06-12 18:33:48.997000,ARC-Genome Phase 5: 199/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612296,submission.zip,2026-06-12 18:29:47.920000,ARC-Genome Phase 4: 199/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612275,submission.zip,2026-06-12 18:28:33.823000,ARC-Genome Phase 3: 199/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612247,submission.zip,2026-06-12 18:27:23.673000,ARC-Genome Phase 2: 199/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612202,submission.zip,2026-06-12 18:25:39.733000,ARC-Genome Phase 6: 199/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612154,submission.zip,2026-06-12 18:23:08.907000,ARC-Genome Phase 5: 199/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612083,submission.zip,2026-06-12 18:20:39.060000,ARC-Genome Phase 4: 127/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612072,submission.zip,2026-06-12 18:20:08.067000,ARC-Genome Phase 3: 127/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612059,submission.zip,2026-06-12 18:19:40.740000,ARC-Genome Phase 2: 127/400 solved,SubmissionStatus.COMPLETE,388.20,
+53612042,submission.zip,2026-06-12 18:19:01.327000,ARC-Genome Phase 1: 294/400 solved,SubmissionStatus.COMPLETE,369.42,
+53602779,submission.zip,2026-06-12 12:41:25.417000,ARC-Genome v0.1.1: 293 validated ONNX models,SubmissionStatus.COMPLETE,346.95,
+53602771,submission.zip,2026-06-12 12:41:04.773000,ARC-Genome v0.1: 294/400 analytical+conv baseline,SubmissionStatus.ERROR,,
