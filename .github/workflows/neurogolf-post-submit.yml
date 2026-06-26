@@ -174,11 +174,7 @@ jobs:
           set -euo pipefail
           pip install -q -r requirements-ci.txt 2>/dev/null || pip install -q cursor-sdk
           python scripts/trigger_cursor_agent.py \
-            --date "${{ inputs.next_date }}" \
-            --submission "${{ inputs.next_submission_number }}" \
-            --mode implement \
-            --prior-date "${{ inputs.date }}" \
-            --prior-submission "${{ inputs.submission_number }}"
+            --mode agent1
 
       - uses: actions/upload-artifact@v4
         with:

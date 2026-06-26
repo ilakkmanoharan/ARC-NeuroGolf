@@ -98,6 +98,8 @@ Agent only works on **today’s UTC date**. Never solves old-date folders.
 
 Export training rows: [training/lora-adapters/README.md](../../training/lora-adapters/README.md)
 
+**Cloud training:** `neurogolf-train-lora.yml` runs on `macos-14` when agent commits rows under `training/lora-*/examples/`. Checkpoints upload as GHA artifacts (gitignored). Agent can also run `train_lora.py` inline on Apple Silicon Cursor cloud.
+
 ---
 
 ## How to start the loop

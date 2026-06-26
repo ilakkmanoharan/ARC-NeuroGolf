@@ -73,6 +73,8 @@ git add kaggle-submissions/research/index.html training/lora-diagnose/
 git commit -m "agent1: diagnose submission-N (${TODAY})"
 git push origin main
 
+(Optional LoRA refresh — see step 4 note; or wait for GHA neurogolf-train-lora on push to training/lora-*/)
+
 ================================================================================
 STEP 3 — NeuroGolf-Strategize (next submission plan)
 ================================================================================
@@ -113,6 +115,7 @@ Act as NeuroGolf-Implement.
 3. Add NEXT_DIR/kaggle_notebook.md — human-readable runbook (env, steps, zip path).
 4. Setup:
    pip install -r requirements.txt
+   export NEUROGOLF_SKIP_KAGGLE_SUBMIT=1
    curl -fsSL https://huggingface.co/LuciferMrng/neurogolf-2026/resolve/main/all_tasks.json -o data/all_tasks.json
    test "$(find data/arc_gen_raw -name '*.json' | head -1)" || exit "blocked: arc_gen_raw empty — rerun Setup Agent"
 5. Seed ONNX from git-tracked submission_v2.zip files.
@@ -125,9 +128,17 @@ Export training row:
     --input-file NEXT_DIR/plan.md \
     --output-file scripts/run_submission_${TODAY}_sM.py
 
+After export, refresh LoRA adapters when mlx_lm is available (Cursor cloud / Apple Silicon):
+  python3 scripts/bootstrap_lora_training_data.py --adapter all
+  python3 scripts/train_lora.py --adapter all
+  (checkpoints are gitignored; training rows under training/lora-*/examples/ are committed)
+If mlx_lm is not available, skip training — persona instructions suffice until GHA neurogolf-train-lora runs.
+
 ================================================================================
 STEP 5 — Trigger GitHub auto-submit (commit trigger file)
 ================================================================================
+
+Before solve, export NEUROGOLF_SKIP_KAGGLE_SUBMIT=1 so the run script does not CLI-submit.
 
 Write NEXT_DIR/kaggle_submit_ready.json:
 {

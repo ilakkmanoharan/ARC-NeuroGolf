@@ -207,7 +207,17 @@ jobs:
         env:
           KAGGLE_BIN: kaggle
           KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+          NEUROGOLF_SKIP_KAGGLE_SUBMIT: "1"
         run: python scripts/${{ inputs.run_script }}
+
+      - name: Write kaggle_submit_ready.json
+        env:
+          DATE: ${{ inputs.date }}
+          SUB_NUM: ${{ inputs.submission_number }}
+        run: |
+          set -euo pipefail
+          SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
+          python3 scripts/write_kaggle_submit_ready.py --submission-dir "$SUB_DIR" || true
 
       - name: Record Kaggle status
         env:
@@ -257,7 +267,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add kaggle-submissions/all-submissions.md
-          for f in results.json audit.json run.log kaggle_status.txt submission_v2.zip; do
+          for f in results.json audit.json run.log kaggle_status.txt submission_v2.zip kaggle_submit_ready.json; do
             [ -f "${SUB_DIR}/${f}" ] && git add "${SUB_DIR}/${f}"
           done
           if [ -d "${SUB_DIR}/kaggle_logs" ]; then
@@ -277,19 +287,21 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           DATE: ${{ inputs.date }}
           SUB_NUM: ${{ inputs.submission_number }}
-          NEXT_DATE: ${{ inputs.date }}
-          NEXT_SUB: ${{ inputs.submission_number }}
         run: |
           set -euo pipefail
+          SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
+          if [ -f "${SUB_DIR}/kaggle_submit_ready.json" ]; then
+            echo "kaggle_submit_ready.json present — neurogolf-auto-submit will chain post-submit after Kaggle submit"
+            exit 0
+          fi
           SUBMITTED=false
-          if [ -f "kaggle-submissions/${DATE}/submission-${SUB_NUM}/results.json" ]; then
-            SUBMITTED=$(python3 -c "import json; print(json.load(open('kaggle-submissions/${DATE}/submission-${SUB_NUM}/results.json')).get('submitted', False))")
+          if [ -f "${SUB_DIR}/results.json" ]; then
+            SUBMITTED=$(python3 -c "import json; print(json.load(open('${SUB_DIR}/results.json')).get('submitted', False))")
           fi
           if [ "$SUBMITTED" != "True" ]; then
             echo "Not submitted; skip post-submit chain"
             exit 0
           fi
-          # Next submission = same day N+1 for loop continuity
           NEXT_N=$((SUB_NUM + 1))
           gh workflow run neurogolf-post-submit.yml \
             -f date="${DATE}" \

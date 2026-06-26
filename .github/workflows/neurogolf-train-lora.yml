@@ -1,0 +1,61 @@
+# Train NeuroGolf LoRA adapters on Apple Silicon (MLX-LM).
+#
+# Triggered when agent commits new training rows, or run manually.
+# Checkpoints are gitignored; upload as workflow artifacts for Cursor cloud env.
+#
+# Required: none (reads training/lora-*/examples/ from repo)
+
+name: NeuroGolf train LoRA
+
+on:
+  workflow_dispatch:
+    inputs:
+      adapter:
+        description: diagnose | strategize | implement | all
+        default: all
+      iters:
+        description: Training iterations per adapter
+        default: "200"
+  push:
+    branches: [main]
+    paths:
+      - "training/lora-*/examples/**"
+      - "scripts/bootstrap_lora_training_data.py"
+      - "scripts/train_lora.py"
+      - "scripts/lora_dataset.py"
+
+permissions:
+  contents: read
+
+jobs:
+  train:
+    runs-on: macos-14
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install MLX-LM
+        run: pip install -r requirements-training.txt
+
+      - name: Bootstrap + train
+        env:
+          ADAPTER: ${{ inputs.adapter || 'all' }}
+          ITERS: ${{ inputs.iters || '200' }}
+        run: |
+          set -euo pipefail
+          python scripts/bootstrap_lora_training_data.py --adapter "$ADAPTER"
+          python scripts/train_lora.py --adapter "$ADAPTER" --iters "$ITERS"
+
+      - name: Upload adapter checkpoints
+        uses: actions/upload-artifact@v4
+        with:
+          name: lora-checkpoints-${{ github.run_number }}
+          path: training/lora-*/checkpoints/
+          retention-days: 30
+          if-no-files-found: warn
