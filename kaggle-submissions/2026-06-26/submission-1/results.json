@@ -14,7 +14,9 @@
   "prescan_new_candidates": [],
   "seeded_from": "kaggle-submissions/2026-06-17/submission-4/submission_v2.zip",
   "zip": "kaggle-submissions/2026-06-26/submission-1/submission_v2.zip",
-  "submitted": false,
+  "submitted": true,
+  "submitted_at": "2026-06-26T10:02:00+00:00",
+  "submitted_by": "manual:kaggle-cli",
   "solver_counts": {
     "conv_diff": 19,
     "position_gather_arcgen": 18,
@@ -29,5 +31,5 @@
   },
   "arcgen_validate_samples": 100,
   "elapsed_s": 9689.7,
-  "message": "No submit: 70 pass_all, 0 train_only, est 1066"
+  "message": "ARC-Genome M10a: 70 verified, est 1066, arcgen color fit (manual override)"
 }
