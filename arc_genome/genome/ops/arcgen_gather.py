@@ -6,6 +6,7 @@ import numpy as np
 
 from arc_genome.config import get_config
 from arc_genome.data.encoding import GH, GW, get_examples
+from arc_genome.onnx.bounded import compile_bbox_relative_gather
 from arc_genome.onnx.gather import build_gather_model, build_gather_model_with_const
 
 
@@ -132,7 +133,89 @@ def s_spatial_gather_arcgen(td):
     return build_gather_model_with_const(ih, iw, oh, ow, idx, cst)
 
 
+def _content_bbox(grid: np.ndarray) -> tuple[int, int, int, int] | None:
+    mask = grid != 0
+    if not mask.any():
+        return None
+    rows = np.where(mask.any(axis=1))[0]
+    cols = np.where(mask.any(axis=0))[0]
+    br, bc = int(rows[0]), int(cols[0])
+    gh = int(rows[-1]) - br + 1
+    gw = int(cols[-1]) - bc + 1
+    return br, bc, gh, gw
+
+
+def _bbox_relative_idx_arcgen(td) -> tuple[np.ndarray, int, int] | None:
+    """Fit gather offsets relative to each example's input content bbox."""
+    out_sp = _fixed_output_shape(td)
+    if out_sp is None:
+        return None
+    oh, ow = out_sp
+    exs = _arcgen_examples(td)
+    rel = np.zeros((oh, ow, 2), dtype=np.int64)
+    for r in range(oh):
+        for c in range(ow):
+            found = False
+            for dr in range(GH):
+                for dc in range(GW):
+                    ok = True
+                    for ex in exs:
+                        inp = np.array(ex["input"])
+                        out = np.array(ex["output"])
+                        if r >= out.shape[0] or c >= out.shape[1]:
+                            ok = False
+                            break
+                        bbox = _content_bbox(inp)
+                        if bbox is None:
+                            ok = False
+                            break
+                        br, bc, gh, gw = bbox
+                        if dr >= gh or dc >= gw:
+                            ok = False
+                            break
+                        sr, sc = br + dr, bc + dc
+                        if sr >= inp.shape[0] or sc >= inp.shape[1]:
+                            ok = False
+                            break
+                        if int(inp[sr, sc]) != int(out[r][c]):
+                            ok = False
+                            break
+                    if ok:
+                        rel[r, c] = [dr, dc]
+                        found = True
+                        break
+                if found:
+                    break
+            if not found:
+                return None
+    for ex in exs:
+        inp = np.array(ex["input"])
+        out = np.array(ex["output"])
+        bbox = _content_bbox(inp)
+        if bbox is None:
+            return None
+        br, bc, _, _ = bbox
+        pred = np.zeros((oh, ow), dtype=inp.dtype)
+        for r in range(oh):
+            for c in range(ow):
+                dr, dc = rel[r, c]
+                pred[r, c] = inp[br + dr, bc + dc]
+        if not np.array_equal(pred, out[:oh, :ow]):
+            return None
+    return rel, oh, ow
+
+
+def s_bbox_gather_arcgen(td):
+    """BBox-relative gather with offsets fitted on train+test+ARC-GEN."""
+    fit = _bbox_relative_idx_arcgen(td)
+    if fit is None:
+        return None
+    rel, oh, ow = fit
+    return compile_bbox_relative_gather(rel, oh, ow)
+
+
 ARCgen_GATHER_SOLVERS = [
+    ("bbox_gather_arcgen", s_bbox_gather_arcgen),
     ("position_gather_arcgen", s_position_gather_arcgen),
     ("spatial_gather_arcgen", s_spatial_gather_arcgen),
 ]

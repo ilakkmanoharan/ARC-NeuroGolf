@@ -46,6 +46,8 @@ class PhaseConfig:
     arcgen_fit_gather: bool = False
     # Phase 16 — ARC-GEN-fitted color remaps
     arcgen_fit_color: bool = False
+    # Phase 17 — bbox-relative ARC-GEN-fitted gather
+    arcgen_fit_bbox_gather: bool = False
 
 
 def build_config(level: int) -> PhaseConfig:
@@ -97,6 +99,8 @@ def build_config(level: int) -> PhaseConfig:
         cfg.arcgen_fit_gather = True
     if level >= 16:
         cfg.arcgen_fit_color = True
+    if level >= 17:
+        cfg.arcgen_fit_bbox_gather = True
     return cfg
 
 
