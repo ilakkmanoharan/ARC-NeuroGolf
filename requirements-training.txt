@@ -1,0 +1,3 @@
+# LoRA training (Apple Silicon / MLX-LM)
+mlx-lm>=0.21.0
+huggingface_hub>=0.23.0

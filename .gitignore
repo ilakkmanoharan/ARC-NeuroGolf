@@ -34,3 +34,6 @@ venv/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# LoRA checkpoints (large); keep examples/ and mlx/*.jsonl in git
+training/lora-*/checkpoints/
