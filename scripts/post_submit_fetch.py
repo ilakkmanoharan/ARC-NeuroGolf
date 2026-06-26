@@ -28,6 +28,29 @@ def _unzip_submission(sub_dir: str) -> str:
     return onnx_dir
 
 
+def _logs_already_complete(sub_dir: str) -> bool:
+    logs_json = os.path.join(sub_dir, "kaggle_logs", "kaggle_logs.json")
+    results_path = os.path.join(sub_dir, "results.json")
+    if not os.path.isfile(logs_json):
+        return False
+    try:
+        with open(logs_json) as f:
+            logs = json.load(f)
+    except json.JSONDecodeError:
+        return False
+    tasks = logs.get("tasks") if isinstance(logs, dict) else None
+    if not tasks:
+        return False
+    if os.path.isfile(results_path):
+        with open(results_path) as f:
+            results = json.load(f)
+        if results.get("kaggle_score_actual") is not None:
+            return True
+        if results.get("submitted") and len(tasks) >= 10:
+            return True
+    return len(tasks) >= 10
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", required=True)
@@ -42,6 +65,10 @@ def main():
 
     sub_dir = f"kaggle-submissions/{args.date}/submission-{args.submission}"
     results_path = os.path.join(sub_dir, "results.json")
+
+    if _logs_already_complete(sub_dir):
+        print(f"Skip: kaggle_logs already complete for {sub_dir}")
+        return
 
     message = args.message
     if not message and os.path.isfile(results_path):

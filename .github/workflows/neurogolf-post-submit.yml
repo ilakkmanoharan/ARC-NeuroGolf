@@ -135,6 +135,8 @@ jobs:
           fi
 
       - name: Wait for Kaggle grade and fetch logs
+        id: fetch
+        continue-on-error: true
         env:
           KAGGLE_BIN: kaggle
           KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
@@ -153,7 +155,7 @@ jobs:
           python scripts/post_submit_fetch.py "${ARGS[@]}"
 
       - name: Commit post-submit artifacts
-        if: inputs.auto_commit == true
+        if: inputs.auto_commit == true && steps.fetch.outcome == 'success'
         env:
           DATE: ${{ steps.lane.outputs.date }}
           SUB_NUM: ${{ steps.lane.outputs.submission_number }}
@@ -173,7 +175,10 @@ jobs:
           git push
 
       - name: Trigger Cursor Cloud Agent (next submission)
-        if: inputs.trigger_cursor_agent == true
+        if: |
+          always() &&
+          inputs.trigger_cursor_agent == true &&
+          (steps.fetch.outcome == 'success' || steps.fetch.outcome == 'failure')
         env:
           CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
           GITHUB_REPOSITORY: ${{ github.repository }}
