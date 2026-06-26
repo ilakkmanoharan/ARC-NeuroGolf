@@ -1,4 +1,4 @@
 {
-  "auto_submit": false,
-  "message": "No submit: 70 pass_all, 0 train_only, est 1066 — Phase 16 color_map_arcgen flat vs s4"
+  "auto_submit": true,
+  "message": "ARC-Genome M10a: 70 verified, est 1066, arcgen color fit (manual override)"
 }
