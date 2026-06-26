@@ -218,10 +218,21 @@ def main():
         sys.exit(0)
 
     if os.environ.get("NEUROGOLF_SKIP_KAGGLE_SUBMIT"):
-        results_doc["message"] = f"Solve push only: {pass_all} pass_all, est {est:.0f}"
+        results_doc["message"] = f"ARC-Genome M10b: {pass_all} verified, est {est:.0f}, bbox gather arcgen"
         results_doc["ready_for_manual_kaggle_submit"] = True
         write_results(results_doc)
-        print("NEUROGOLF_SKIP_KAGGLE_SUBMIT set; zip ready, no Kaggle CLI submit.")
+        subprocess.run(
+            [
+                sys.executable,
+                "scripts/write_kaggle_submit_ready.py",
+                "--submission-dir",
+                SUB_DIR,
+                "--message",
+                results_doc["message"],
+            ],
+            check=False,
+        )
+        print("NEUROGOLF_SKIP_KAGGLE_SUBMIT set; zip + kaggle_submit_ready.json for GHA.")
         sys.exit(0)
 
     msg = f"ARC-Genome M10b: {pass_all} verified, est {est:.0f}, bbox gather arcgen"

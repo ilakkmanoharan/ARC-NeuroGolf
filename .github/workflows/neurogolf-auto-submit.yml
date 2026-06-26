@@ -1,6 +1,8 @@
 # Agent 1 — step 5–8: auto-submit to Kaggle when agent commits kaggle_submit_ready.json
 #
-# Required secrets: KAGGLE_API_TOKEN  (or KAGGLE_USERNAME + KAGGLE_KEY)
+# Secrets (Settings → Secrets → Actions):
+#   KAGGLE_API_TOKEN  — submit works; list API may 403 (use username+key for list)
+#   KAGGLE_USERNAME + KAGGLE_KEY  — full CLI (submit + list)
 #
 # Flow:
 #   push kaggle_submit_ready.json + submission_v2.zip → submit → commit results
@@ -13,10 +15,21 @@ on:
     branches: [main]
     paths:
       - "kaggle-submissions/**/kaggle_submit_ready.json"
+  workflow_dispatch:
+    inputs:
+      submission_dir:
+        description: Submission folder (e.g. kaggle-submissions/2026-06-26/submission-2)
+        required: true
+        default: "kaggle-submissions/2026-06-26/submission-2"
 
 permissions:
   contents: write
   actions: write
+
+env:
+  KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+  KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+  KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
 
 jobs:
   submit:
@@ -27,17 +40,28 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Find ready submission in this push
+      - name: Find ready submission
         id: ready
+        env:
+          MANUAL_SUB_DIR: ${{ inputs.submission_dir }}
         run: |
           set -euo pipefail
-          mapfile -t FILES < <(git diff --name-only HEAD~1 HEAD | grep 'kaggle_submit_ready\.json$' || true)
-          if [ "${#FILES[@]}" -eq 0 ]; then
-            echo "count=0" >> "$GITHUB_OUTPUT"
-            exit 0
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            SUB_DIR="${MANUAL_SUB_DIR}"
+            READY="${SUB_DIR}/kaggle_submit_ready.json"
+            if [ ! -f "$READY" ]; then
+              echo "::error::Missing $READY"
+              exit 1
+            fi
+          else
+            mapfile -t FILES < <(git diff --name-only HEAD~1 HEAD | grep 'kaggle_submit_ready\.json$' || true)
+            if [ "${#FILES[@]}" -eq 0 ]; then
+              echo "count=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            READY="${FILES[0]}"
+            SUB_DIR="$(dirname "$READY")"
           fi
-          READY="${FILES[0]}"
-          SUB_DIR="$(dirname "$READY")"
           export READY SUB_DIR
           RESULT=$(python3 - <<'PY'
           import json, os, sys
@@ -73,22 +97,7 @@ jobs:
 
       - name: Configure Kaggle CLI
         if: steps.ready.outputs.count == '1'
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
-        run: |
-          set -euo pipefail
-          if [ -n "${KAGGLE_API_TOKEN:-}" ]; then
-            echo "Using KAGGLE_API_TOKEN"
-          elif [ -n "${KAGGLE_USERNAME:-}" ] && [ -n "${KAGGLE_KEY:-}" ]; then
-            mkdir -p ~/.kaggle
-            printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > ~/.kaggle/kaggle.json
-            chmod 600 ~/.kaggle/kaggle.json
-          else
-            echo "::error::Set KAGGLE_API_TOKEN or KAGGLE_USERNAME+KAGGLE_KEY"
-            exit 1
-          fi
+        run: bash scripts/setup_kaggle_auth.sh
 
       - name: Submit to Kaggle
         if: steps.ready.outputs.count == '1'
@@ -125,7 +134,8 @@ jobs:
           SUB_DIR: ${{ steps.ready.outputs.sub_dir }}
         run: |
           set -euo pipefail
-          kaggle competitions submissions list -c neurogolf-2026 --csv | head -8 > "${SUB_DIR}/kaggle_status.txt" || true
+          kaggle competitions submissions list -c neurogolf-2026 --csv | head -8 > "${SUB_DIR}/kaggle_status.txt" || \
+            echo "# list API skipped (submit succeeded)" > "${SUB_DIR}/kaggle_status.txt"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "${SUB_DIR}/results.json" "${SUB_DIR}/kaggle_status.txt"
@@ -141,7 +151,6 @@ jobs:
           set -euo pipefail
           DATE=$(echo "$SUB_DIR" | cut -d/ -f2)
           NUM=$(basename "$SUB_DIR" | sed 's/submission-//')
-          NEXT_N=$((NUM + 1))
           gh workflow run neurogolf-post-submit.yml \
             -f auto_detect=true \
             -f skip_initial_wait=false \

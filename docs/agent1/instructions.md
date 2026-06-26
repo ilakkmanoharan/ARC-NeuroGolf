@@ -24,6 +24,7 @@ LORA PERSONAS — goal is score improvement (consult before each step):
   Export training rows after each step so adapters learn score-up vs score-flat outcomes.
 
 RESEARCH PAGES (update after step 2):
+  Solver strategy: strategy/unsolved-tasks-roadmap.md (read before Strategize)
   Submissions: kaggle-submissions/research/index.html  (python3 scripts/update_research_index.py)
   LoRA + score charts: kaggle-submissions/research/lora/index.html  (python3 scripts/update_lora_research_page.py)
   Portfolio: https://ilakk-manoharan.vercel.app/projects/arc-neurogolf

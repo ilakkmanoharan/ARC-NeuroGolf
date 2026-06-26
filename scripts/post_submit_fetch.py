@@ -60,11 +60,19 @@ def main():
     parser.add_argument("--retry-wait", type=int, default=600)
     parser.add_argument("--max-retries", type=int, default=18)
     parser.add_argument("--skip-initial-wait", action="store_true")
+    parser.add_argument(
+        "--local-only",
+        action="store_true",
+        help="Skip Kaggle API wait/list; build logs locally when results.json has kaggle_score_actual",
+    )
     parser.add_argument("--download-official", action="store_true", default=True)
     args = parser.parse_args()
 
     sub_dir = f"kaggle-submissions/{args.date}/submission-{args.submission}"
     results_path = os.path.join(sub_dir, "results.json")
+
+    if args.local_only:
+        args.download_official = False
 
     if _logs_already_complete(sub_dir):
         print(f"Skip: kaggle_logs already complete for {sub_dir}")
@@ -73,19 +81,35 @@ def main():
     message = args.message
     if not message and os.path.isfile(results_path):
         with open(results_path) as f:
-            message = json.load(f).get("message", "")
+            results = json.load(f)
+            message = results.get("message", "")
 
-    print(f"Waiting for Kaggle grade: {sub_dir}")
-    if message:
-        print(f"Matching message containing: {message[:80]!r}")
-
-    grade = wait_for_complete(
-        message_substr=message,
-        initial_wait_s=args.initial_wait,
-        retry_wait_s=args.retry_wait,
-        max_retries=args.max_retries,
-        skip_initial_wait=args.skip_initial_wait,
-    )
+    grade: dict
+    if args.local_only:
+        if not os.path.isfile(results_path):
+            raise FileNotFoundError(f"local-only requires {results_path}")
+        with open(results_path) as f:
+            results = json.load(f)
+        score = results.get("kaggle_score_actual")
+        if score is None:
+            raise ValueError("local-only requires kaggle_score_actual in results.json")
+        grade = {
+            "status": results.get("kaggle_status", "COMPLETE"),
+            "score": score,
+            "description": message,
+        }
+        print(f"Local-only mode: using kaggle_score_actual={score}")
+    else:
+        print(f"Waiting for Kaggle grade: {sub_dir}")
+        if message:
+            print(f"Matching message containing: {message[:80]!r}")
+        grade = wait_for_complete(
+            message_substr=message,
+            initial_wait_s=args.initial_wait,
+            retry_wait_s=args.retry_wait,
+            max_retries=args.max_retries,
+            skip_initial_wait=args.skip_initial_wait,
+        )
 
     onnx_dir = _unzip_submission(sub_dir)
     logs_dir = os.path.join(sub_dir, "kaggle_logs")
@@ -103,7 +127,7 @@ def main():
     )
 
     status_path = os.path.join(sub_dir, "kaggle_status.txt")
-    proc = subprocess.run(
+    list_proc = subprocess.run(
         [os.environ.get("KAGGLE_BIN", "kaggle"), "competitions", "submissions", "list",
          "-c", "neurogolf-2026", "--csv"],
         capture_output=True,
@@ -114,8 +138,12 @@ def main():
         f.write(f"# Graded at: {datetime.now(timezone.utc).isoformat()}\n")
         f.write(f"# Score: {grade.get('score')}\n")
         f.write(f"# Status: {grade.get('status')}\n\n")
-        if proc.stdout:
-            f.write(proc.stdout[:4000])
+        if list_proc.returncode == 0 and list_proc.stdout:
+            f.write(list_proc.stdout[:4000])
+        else:
+            f.write("# Kaggle list API unavailable (KGAT token may not list submissions)\n")
+            if list_proc.stderr:
+                f.write(list_proc.stderr[:500])
 
     if os.path.isfile(results_path):
         with open(results_path) as f:

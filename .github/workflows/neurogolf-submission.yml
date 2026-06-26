@@ -50,6 +50,9 @@ permissions:
 env:
   PYTHON_VERSION: "3.11"
   HF_ALL_TASKS_URL: https://huggingface.co/LuciferMrng/neurogolf-2026/resolve/main/all_tasks.json
+  KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+  KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+  KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
 
 jobs:
   submit:
@@ -90,22 +93,7 @@ jobs:
           fi
 
       - name: Configure Kaggle CLI
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
-        run: |
-          set -euo pipefail
-          if [ -n "${KAGGLE_API_TOKEN:-}" ]; then
-            echo "Using KAGGLE_API_TOKEN"
-          elif [ -n "${KAGGLE_USERNAME:-}" ] && [ -n "${KAGGLE_KEY:-}" ]; then
-            mkdir -p ~/.kaggle
-            printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > ~/.kaggle/kaggle.json
-            chmod 600 ~/.kaggle/kaggle.json
-          else
-            echo "::error::Set KAGGLE_USERNAME+KAGGLE_KEY or KAGGLE_API_TOKEN repository secrets"
-            exit 1
-          fi
+        run: bash scripts/setup_kaggle_auth.sh
 
       - name: Restore arc_gen_raw cache
         uses: actions/cache@v4

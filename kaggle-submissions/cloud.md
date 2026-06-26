@@ -79,8 +79,11 @@ Push code → workflow runs solve → uploads zip + logs as artifacts → option
 
 | Secret | Value |
 |---|---|
-| `KAGGLE_USERNAME` | Kaggle username |
-| `KAGGLE_KEY` | Kaggle API key |
+| `KAGGLE_API_TOKEN` | `KGAT_…` token — **submit works**; list API may return 403 |
+| `KAGGLE_USERNAME` | Kaggle username — **recommended with `KAGGLE_KEY`** for list/logs |
+| `KAGGLE_KEY` | Classic API key from Kaggle settings |
+
+For reliable auto-submit + post-submit logs, set **all three** or at minimum `KAGGLE_USERNAME` + `KAGGLE_KEY`. GHA uses `scripts/setup_kaggle_auth.sh` to persist auth across steps.
 
 ### Example workflow sketch
 
