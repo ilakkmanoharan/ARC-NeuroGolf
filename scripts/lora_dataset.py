@@ -18,6 +18,27 @@ ADAPTER_NAMES = {
     "implement": "NeuroGolf-Implement",
 }
 
+# Every adapter's north star: move the Kaggle public score up vs the prior scored submission.
+SCORE_GOAL = (
+    "PRIMARY GOAL: increase the Kaggle public score on neurogolf-2026. "
+    "Diagnose what blocked score gains; strategize concrete levers (pass_all, verified tasks, "
+    "ARC-GEN gating); implement minimal solver changes that beat the prior submission. "
+    "Reject plans that are flat or regressive vs the latest scored baseline."
+)
+
+ADAPTER_GOALS = {
+    "diagnose": (
+        f"{SCORE_GOAL} Output: ranked failure modes, score delta vs prior, and which task families "
+        "to fix first for maximum Kaggle gain."
+    ),
+    "strategize": (
+        f"{SCORE_GOAL} Output: plan.md with expected pass_all delta and why Kaggle score should rise."
+    ),
+    "implement": (
+        f"{SCORE_GOAL} Output: run script + arc_genome diff that implements the plan with measurable gates."
+    ),
+}
+
 SUBMISSION_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})/submission-(\d+)$")
 
 

@@ -53,7 +53,8 @@ def bootstrap_diagnose(records) -> list[str]:
         prev = _prior_submission(records, rec)
         label = score_delta_label(prev, rec)
         prompt_parts = [
-            f"You are {ADAPTER_NAMES['diagnose']}. Analyze NeuroGolf submission-{rec.num} ({rec.date}).",
+            f"You are {ADAPTER_NAMES['diagnose']}. {ADAPTER_GOALS['diagnose']}",
+            f"Analyze NeuroGolf submission-{rec.num} ({rec.date}).",
             f"score_outcome={label}",
         ]
         if prev:
@@ -97,8 +98,9 @@ def bootstrap_strategize(records) -> list[str]:
         prev = _prior_submission(records, rec)
         label = score_delta_label(prev, rec)
         prompt_parts = [
-            f"You are {ADAPTER_NAMES['strategize']}. Plan submission-{rec.num} ({rec.date}).",
-            f"goal: increase Kaggle score; prior score_outcome={label}",
+            f"You are {ADAPTER_NAMES['strategize']}. {ADAPTER_GOALS['strategize']}",
+            f"Plan submission-{rec.num} ({rec.date}).",
+            f"prior score_outcome={label}",
         ]
         if prev and prev.kaggle_actual is not None:
             prompt_parts.append(f"prior_kaggle={prev.kaggle_actual} prior_pass_all={prev.pass_all}")
@@ -137,7 +139,8 @@ def bootstrap_implement(records) -> list[str]:
         if not script.is_file():
             continue
         prompt_parts = [
-            f"You are {ADAPTER_NAMES['implement']}. Implement run script for submission-{rec.num} ({rec.date}).",
+            f"You are {ADAPTER_NAMES['implement']}. {ADAPTER_GOALS['implement']}",
+            f"Implement run script for submission-{rec.num} ({rec.date}).",
             f"## plan.md\n{plan[:8000]}",
         ]
         strategy = _read(sub / "strategy.md")

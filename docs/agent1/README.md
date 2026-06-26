@@ -1,6 +1,6 @@
 # Agent 1 — Full NeuroGolf loop
 
-Implements [private/agent/agent1.md](../../private/agent/agent1.md): fetch logs → analyze → plan → implement → **GitHub auto-submit** → wait 1h → repeat.
+Implements [private/agent/agent1.md](../../private/agent/agent1.md): fetch logs → analyze → plan → implement → **GitHub auto-submit** → poll Kaggle every 10 min → repeat.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ Implements [private/agent/agent1.md](../../private/agent/agent1.md): fetch logs 
 │  GitHub Actions: neurogolf-auto-submit.yml (step 5)             │
 │  Kaggle submit → commit → chain post-submit                     │
 └────────────────────────────┬────────────────────────────────────┘
-                             │ wait 1h (+ retries)
+                             │ poll 10 min (+ retries)
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  GitHub Actions: neurogolf-post-submit.yml (steps 6–8)          │
@@ -72,7 +72,7 @@ After pushing this repo, these workflows must exist on `main`:
 | Workflow | Role |
 |---|---|
 | `neurogolf-auto-submit.yml` | Step 5 — submit when `kaggle_submit_ready.json` pushed |
-| `neurogolf-post-submit.yml` | Steps 6–8 — 1h wait, fetch logs |
+| `neurogolf-post-submit.yml` | Steps 6–8 — 10 min poll, fetch logs |
 | `notify-kaggle-ready.yml` | Optional issue when manual push-only solve |
 
 ---
@@ -111,7 +111,7 @@ Export training rows: [training/lora-adapters/README.md](../../training/lora-ada
 1. **Actions → NeuroGolf post-submit** (auto_detect=true, trigger_cursor_agent=true)
 2. Agent solves ~75–90 min → commits `submission_v2.zip` + `kaggle_submit_ready.json`
 3. GHA auto-submits to Kaggle
-4. Post-submit waits **1 hour**, fetches logs, triggers Agent 1 again
+4. Post-submit polls Kaggle **every 10 minutes**, fetches logs, triggers Agent 1 again
 5. Repeat continuously
 
 ---
@@ -138,7 +138,7 @@ Must be pushed together with `submission_v2.zip` and `results.json`.
 |---|---|
 | Auto-submit didn’t run | Check `kaggle_submit_ready.json` in latest push; verify `KAGGLE_API_TOKEN` |
 | Agent skips | Read transcript — likely “not today” or already solved |
-| Post-submit stuck | Actions → `NeuroGolf post-submit` — may still be in 1h wait |
+| Post-submit stuck | Actions → `NeuroGolf post-submit` — may still be polling (10 min intervals) |
 | Research page stale | Agent runs `python3 scripts/update_research_index.py` after step 2 |
 | LoRA | Not required yet — personas in instructions suffice |
 

@@ -76,9 +76,9 @@ def find_submission(
 def wait_for_complete(
     *,
     message_substr: str = "",
-    initial_wait_s: int = 3600,
-    retry_wait_s: int = 1800,
-    max_retries: int = 4,
+    initial_wait_s: int = 600,
+    retry_wait_s: int = 600,
+    max_retries: int = 18,
     skip_initial_wait: bool = False,
 ) -> dict:
     if not skip_initial_wait and initial_wait_s > 0:
@@ -115,9 +115,9 @@ def wait_for_complete(
 def main():
     parser = argparse.ArgumentParser(description="Wait for Kaggle submission to complete")
     parser.add_argument("--message", default="", help="Substring to match submission description")
-    parser.add_argument("--initial-wait", type=int, default=3600, help="Seconds before first check")
-    parser.add_argument("--retry-wait", type=int, default=1800, help="Seconds between retries")
-    parser.add_argument("--max-retries", type=int, default=4)
+    parser.add_argument("--initial-wait", type=int, default=600, help="Seconds before first check (default 10 min)")
+    parser.add_argument("--retry-wait", type=int, default=600, help="Seconds between retries (default 10 min)")
+    parser.add_argument("--max-retries", type=int, default=18)
     parser.add_argument("--skip-initial-wait", action="store_true")
     parser.add_argument("--out", default="", help="Write result JSON path")
     args = parser.parse_args()

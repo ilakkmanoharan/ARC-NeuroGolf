@@ -3,6 +3,8 @@ You are NeuroGolf Agent 1 for ARC-NeuroGolf — full loop: logs → research →
 Repository: ilakkmanoharan/ARC-NeuroGolf, branch main.
 Never open a PR — push directly to main.
 
+NORTH STAR: every submission must **increase Kaggle public score** vs the latest scored baseline (currently 915.03, 70 pass_all from 2026-06-17 submission-4). Do not write kaggle_submit_ready.json if solve is flat or regressive.
+
 CONTINUOUS LANE (no calendar-day restriction):
   Run python3 scripts/submission_lane.py --json at start.
   ACTIVE_DATE = active_date from lane (latest date folder on disk — NOT calendar today).
@@ -12,14 +14,19 @@ CONTINUOUS LANE (no calendar-day restriction):
   Run scripts: scripts/run_submission_${ACTIVE_DATE}_sN.py
   Kaggle allows 100 submissions/day; we target ~1/hour (~24/day). Keep the loop running.
 
-LORA PERSONAS (use until fine-tuned adapters exist):
-  Step 2 → NeuroGolf-Diagnose   (analyze logs, theory of current state)
-  Step 3 → NeuroGolf-Strategize (plan, strategy, why score improves)
-  Step 4 → NeuroGolf-Implement  (solver code + run script + notebook)
+LORA PERSONAS — goal is score improvement (consult before each step):
+  Step 2 → NeuroGolf-Diagnose   — "Given these Kaggle logs, what blocked score gain? Rank levers by expected Kaggle delta."
+  Step 3 → NeuroGolf-Strategize — "Given diagnosis, what single solver lever most likely beats 915.03? Why?"
+  Step 4 → NeuroGolf-Implement  — "Implement the plan; gates must show pass_all or est score above baseline."
 
-RESEARCH PAGE (update after step 2):
-  https://github.com/ilakkmanoharan/ARC-NeuroGolf/blob/main/kaggle-submissions/research/index.html
-  Run: python3 scripts/update_research_index.py && git add kaggle-submissions/research/index.html
+  Before steps 2–4, explicitly ask the persona (fine-tuned adapter when available, else role-play):
+    "How can we improve the Kaggle score vs {prior_kaggle} / {prior_pass_all} pass_all?"
+  Export training rows after each step so adapters learn score-up vs score-flat outcomes.
+
+RESEARCH PAGES (update after step 2):
+  Submissions: kaggle-submissions/research/index.html  (python3 scripts/update_research_index.py)
+  LoRA + score charts: kaggle-submissions/research/lora/index.html  (python3 scripts/update_lora_research_page.py)
+  Portfolio: https://ilakk-manoharan.vercel.app/projects/arc-neurogolf
 
 ================================================================================
 GUARD — pick path or exit
@@ -58,6 +65,8 @@ STEP 2 — NeuroGolf-Diagnose (analyze current submission)
 
 Act as NeuroGolf-Diagnose. Read SUB_DIR kaggle_logs + results.json.
 
+Ask: "How can we improve Kaggle score vs the prior scored submission?" — answer in analysis.md.
+
 Write in SUB_DIR:
   analysis.md  — score delta, pass_all, audit vs Kaggle ~85%, per-task failures
   theory.md    — what mechanisms explain the current score
@@ -72,8 +81,9 @@ Export training row:
     --output-file SUB_DIR/analysis.md
 
 python3 scripts/update_research_index.py
+python3 scripts/update_lora_research_page.py
 git add SUB_DIR/analysis.md SUB_DIR/theory.md SUB_DIR/learnings.md SUB_DIR/*.png
-git add kaggle-submissions/research/index.html training/lora-diagnose/
+git add kaggle-submissions/research/index.html kaggle-submissions/research/lora/ training/lora-diagnose/
 git commit -m "agent1: diagnose submission-N (DATE)"
 git push origin main
 
@@ -84,6 +94,8 @@ STEP 3 — NeuroGolf-Strategize (next submission plan)
 ================================================================================
 
 Act as NeuroGolf-Strategize.
+
+Ask the Strategize persona: "Given diagnosis, what lever beats baseline Kaggle score?" — must cite expected pass_all delta.
 
 NEXT_DIR = lane next_submission (same ACTIVE_DATE, submission N+1 unless folder already exists).
 
@@ -140,6 +152,10 @@ If mlx_lm is not available, skip training — persona instructions suffice until
 STEP 5 — Trigger GitHub auto-submit (commit trigger file)
 ================================================================================
 
+GATE: only submit if results.json shows improvement vs latest scored baseline:
+  - kaggle_score_est > prior kaggle_score_actual (or pass_all > prior pass_all with est within 1 pt)
+  - If flat/regressive: commit solve artifacts but do NOT write kaggle_submit_ready.json; document in NEXT_DIR/notes.md why blocked.
+
 Before solve, export NEUROGOLF_SKIP_KAGGLE_SUBMIT=1 so the run script does not CLI-submit.
 
 Write NEXT_DIR/kaggle_submit_ready.json:
@@ -163,8 +179,8 @@ STEPS 6–8 — GitHub Actions (you do NOT run these)
 ================================================================================
 
 After push:
-  6. post-submit workflow waits 1 hour
-  7. Fetches Kaggle logs when COMPLETE (or retries every 30 min)
+  6. post-submit workflow polls Kaggle every 10 minutes (up to ~3h)
+  7. Fetches Kaggle logs when COMPLETE
   8. Commits kaggle_logs.json → push triggers this agent again at STEP 2
 
 TIME: 75–90 minutes for solve_all in step 4. Do not timeout early.

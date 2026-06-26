@@ -4,7 +4,7 @@
 #
 # Flow:
 #   push kaggle_submit_ready.json + submission_v2.zip → submit → commit results
-#   → chain post-submit (1h wait) → fetch logs → push triggers Agent 1 step 1 again
+#   → chain post-submit (10 min poll) → fetch logs → push triggers Agent 1 step 1 again
 
 name: NeuroGolf auto-submit
 
@@ -132,7 +132,7 @@ jobs:
           git commit -m "ci: auto-submit $(basename "$SUB_DIR")" || exit 0
           git push
 
-      - name: Chain post-submit (1h wait + logs)
+      - name: Chain post-submit (10 min poll + logs)
         if: steps.ready.outputs.count == '1'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -147,4 +147,4 @@ jobs:
             -f skip_initial_wait=false \
             -f auto_commit=true \
             -f trigger_cursor_agent=true
-          echo "Queued post-submit for submission-${NUM} (1h initial wait, auto-detect lane)"
+          echo "Queued post-submit for submission-${NUM} (10 min poll, auto-detect lane)"

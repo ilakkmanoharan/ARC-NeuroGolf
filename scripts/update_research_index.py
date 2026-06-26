@@ -154,7 +154,7 @@ def render(rows: list[dict]) -> str:
     <header>
       <h1>NeuroGolf Research</h1>
       <p>Analysis, theory, and plans per submission. Updated by Agent 1 (LoRA <code>NeuroGolf-Diagnose</code> / <code>NeuroGolf-Strategize</code>).</p>
-      <p style="margin-top:12px"><a href="../gallery/index.html">Submission gallery</a></p>
+      <p style="margin-top:12px"><a href="../gallery/index.html">Submission gallery</a> · <a href="lora/index.html">LoRA + score charts</a></p>
     </header>
     <table>
       <thead>

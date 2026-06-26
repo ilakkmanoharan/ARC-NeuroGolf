@@ -1,7 +1,6 @@
 # LoRA adapters (Agent 1)
 
-See design: [private/agent/LoRA-adapters/DESIGN.md](../../private/agent/LoRA-adapters/DESIGN.md) (local)  
-Public summary below.
+**Goal: increase Kaggle public score.** See design: [private/agent/LoRA-adapters/DESIGN.md](../../private/agent/LoRA-adapters/DESIGN.md)
 
 | Step | Adapter | Role |
 |---|---|---|

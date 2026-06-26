@@ -1,4 +1,4 @@
-# Post-submit: wait 1h (+30m retries), fetch Kaggle logs, commit to repo.
+# Post-submit: poll Kaggle every 10 min (up to ~3h), fetch logs, commit to repo.
 #
 # Required secrets: KAGGLE_USERNAME + KAGGLE_KEY  (or KAGGLE_API_TOKEN)
 #
@@ -27,9 +27,9 @@ on:
         required: false
         default: ""
       skip_initial_wait:
-        description: Skip 1h wait (use if submission was >1h ago)
+        description: Skip 10 min initial wait (use if submission was already graded)
         type: boolean
-        default: true
+        default: false
       auto_commit:
         description: Commit logs and status back to main
         type: boolean
@@ -53,7 +53,7 @@ on:
       skip_initial_wait:
         required: false
         type: boolean
-        default: true
+        default: false
       auto_commit:
         required: false
         type: boolean

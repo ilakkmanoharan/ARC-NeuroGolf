@@ -6,6 +6,7 @@
   "solved": 70,
   "pass_all": 70,
   "train_only": 0,
+  "kaggle_score_actual": 915.03,
   "kaggle_score_est": 1065.517487211883,
   "kaggle_score_baseline": 915.03,
   "kaggle_score_est_baseline": 1065.5174872118832,

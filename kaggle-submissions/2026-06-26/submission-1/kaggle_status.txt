@@ -1,0 +1,9 @@
+# Kaggle status — submission-1 (2026-06-26)
+# Graded at: 2026-06-26T10:02:00+00:00
+# Public score: 915.03 (manual Kaggle CLI submit)
+# Status: COMPLETE
+# Per-task logs: local fetch_kaggle_logs.py (ARC-GEN validation replay)
+
+message=ARC-Genome M10a: 70 verified, est 1066, arcgen color fit (manual override)
+pass_all=70
+kaggle_score_actual=915.03
