@@ -40,6 +40,10 @@ jobs:
         with:
           fetch-depth: 2
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
       - name: Find ready submission
         id: ready
         env:
@@ -94,6 +98,10 @@ jobs:
           echo "ready_file=$READY" >> "$GITHUB_OUTPUT"
           echo "sub_dir=$SUB_DIR" >> "$GITHUB_OUTPUT"
           echo "count=1" >> "$GITHUB_OUTPUT"
+
+      - name: Install Kaggle CLI
+        if: steps.ready.outputs.count == '1'
+        run: pip install 'kaggle>=1.6'
 
       - name: Configure Kaggle CLI
         if: steps.ready.outputs.count == '1'

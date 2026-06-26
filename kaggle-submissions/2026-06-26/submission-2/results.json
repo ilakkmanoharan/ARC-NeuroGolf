@@ -17,7 +17,9 @@
   ],
   "seeded_from": "kaggle-submissions/2026-06-26/submission-1/submission_v2.zip",
   "zip": "kaggle-submissions/2026-06-26/submission-2/submission_v2.zip",
-  "submitted": false,
+  "submitted": true,
+  "submitted_at": "2026-06-26T18:00:00+00:00",
+  "submitted_by": "manual:kaggle-cli-after-gha-failure",
   "solver_counts": {
     "conv_diff": 19,
     "position_gather_arcgen": 18,

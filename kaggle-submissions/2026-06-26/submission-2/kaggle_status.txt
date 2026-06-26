@@ -1,0 +1,4 @@
+# Kaggle status — submission-2 (2026-06-26)
+# Submitted manually after GHA auto-submit failed (kaggle CLI not installed in workflow)
+# Message: ARC-Genome M10b: 72 verified, est 1091, bbox gather arcgen
+# pass_all=72, est=1091.2 (+2 tasks vs baseline 915.03)
