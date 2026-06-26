@@ -43,12 +43,13 @@ def main() -> None:
         sys.exit(0)
 
     try:
-        from cursor_sdk import Agent, AgentOptions, CloudAgentOptions
+        from cursor_sdk import Agent, AgentOptions, CloudAgentOptions, CloudRepository
     except ImportError:
         print("cursor-sdk not installed — pip install cursor-sdk", file=sys.stderr)
         sys.exit(1)
 
-    repo = os.environ.get("GITHUB_REPOSITORY", "ilakkmanoharan/ARC-NeuroGolf")
+    repo_slug = os.environ.get("GITHUB_REPOSITORY", "ilakkmanoharan/ARC-NeuroGolf")
+    repo_url = f"https://github.com/{repo_slug}"
 
     if args.mode == "agent1":
         prompt = _load_agent1_prompt()
@@ -99,7 +100,7 @@ Push directly to main — do not open a PR."""
             api_key=api_key,
             model="composer-2.5",
             cloud=CloudAgentOptions(
-                repos=[repo],
+                repos=[CloudRepository(url=repo_url, starting_ref="main")],
                 auto_create_pr=False,
                 skip_reviewer_request=True,
             ),
