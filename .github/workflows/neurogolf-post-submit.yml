@@ -10,14 +10,18 @@ name: NeuroGolf post-submit
 on:
   workflow_dispatch:
     inputs:
+      auto_detect:
+        description: Auto-detect latest submitted submission (ignore date/number below)
+        type: boolean
+        default: true
       date:
-        description: Submission date folder (YYYY-MM-DD)
-        required: true
-        default: "2026-06-17"
+        description: Submission date folder (YYYY-MM-DD) — only if auto_detect=false
+        required: false
+        default: ""
       submission_number:
-        description: Submission number to fetch logs for
-        required: true
-        default: "4"
+        description: Submission number to fetch logs for — only if auto_detect=false
+        required: false
+        default: ""
       message:
         description: Kaggle message substring (optional; reads results.json)
         required: false
@@ -34,14 +38,6 @@ on:
         description: Launch Cursor Cloud Agent after logs land
         type: boolean
         default: true
-      next_date:
-        description: Date for next submission (Cursor implement mode)
-        required: false
-        default: "2026-06-18"
-      next_submission_number:
-        description: Next submission number for Cursor agent
-        required: false
-        default: "1"
   workflow_call:
     inputs:
       date:
@@ -66,14 +62,6 @@ on:
         required: false
         type: boolean
         default: true
-      next_date:
-        required: false
-        type: string
-        default: "2026-06-18"
-      next_submission_number:
-        required: false
-        type: string
-        default: "1"
 
 permissions:
   contents: write
@@ -96,6 +84,25 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Resolve submission (continuous lane)
+        id: lane
+        env:
+          AUTO_DETECT: ${{ inputs.auto_detect }}
+          INPUT_DATE: ${{ inputs.date }}
+          INPUT_SUB: ${{ inputs.submission_number }}
+        run: |
+          set -euo pipefail
+          if [ "${AUTO_DETECT}" = "true" ] || [ -z "${INPUT_DATE}" ] || [ -z "${INPUT_SUB}" ]; then
+            eval "$(python scripts/submission_lane.py --export-latest-submitted)"
+            echo "Auto-detected: ${DATE} submission-${SUB_NUM}"
+          else
+            DATE="${INPUT_DATE}"
+            SUB_NUM="${INPUT_SUB}"
+            echo "Manual: ${DATE} submission-${SUB_NUM}"
+          fi
+          echo "date=${DATE}" >> "$GITHUB_OUTPUT"
+          echo "submission_number=${SUB_NUM}" >> "$GITHUB_OUTPUT"
+
       - name: Configure Kaggle CLI
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
@@ -117,8 +124,8 @@ jobs:
 
       - name: Unzip submission ONNX if needed
         env:
-          DATE: ${{ inputs.date }}
-          SUB_NUM: ${{ inputs.submission_number }}
+          DATE: ${{ steps.lane.outputs.date }}
+          SUB_NUM: ${{ steps.lane.outputs.submission_number }}
         run: |
           set -euo pipefail
           SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
@@ -134,8 +141,8 @@ jobs:
         run: |
           set -euo pipefail
           ARGS=(
-            --date "${{ inputs.date }}"
-            --submission "${{ inputs.submission_number }}"
+            --date "${{ steps.lane.outputs.date }}"
+            --submission "${{ steps.lane.outputs.submission_number }}"
           )
           if [ -n "${{ inputs.message }}" ]; then
             ARGS+=(--message "${{ inputs.message }}")
@@ -148,8 +155,8 @@ jobs:
       - name: Commit post-submit artifacts
         if: inputs.auto_commit == true
         env:
-          DATE: ${{ inputs.date }}
-          SUB_NUM: ${{ inputs.submission_number }}
+          DATE: ${{ steps.lane.outputs.date }}
+          SUB_NUM: ${{ steps.lane.outputs.submission_number }}
         run: |
           set -euo pipefail
           SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
@@ -178,10 +185,10 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: post-submit-${{ inputs.date }}-s${{ inputs.submission_number }}
+          name: post-submit-${{ steps.lane.outputs.date }}-s${{ steps.lane.outputs.submission_number }}
           path: |
-            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/kaggle_logs/**
-            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/kaggle_status.txt
-            kaggle-submissions/${{ inputs.date }}/submission-${{ inputs.submission_number }}/results.json
+            kaggle-submissions/${{ steps.lane.outputs.date }}/submission-${{ steps.lane.outputs.submission_number }}/kaggle_logs/**
+            kaggle-submissions/${{ steps.lane.outputs.date }}/submission-${{ steps.lane.outputs.submission_number }}/kaggle_status.txt
+            kaggle-submissions/${{ steps.lane.outputs.date }}/submission-${{ steps.lane.outputs.submission_number }}/results.json
           retention-days: 30
           if-no-files-found: warn

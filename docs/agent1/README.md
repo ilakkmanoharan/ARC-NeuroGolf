@@ -77,14 +77,16 @@ After pushing this repo, these workflows must exist on `main`:
 
 ---
 
-## Daily folder rule
+## Continuous lane (no calendar-day limit)
+
+Submissions run continuously (~1/hour). Kaggle allows 100/day; we target ~24/day.
 
 ```text
-kaggle-submissions/TODAY/submission-1/   ← first of the day
-kaggle-submissions/TODAY/submission-2/   ← same day
+python3 scripts/submission_lane.py --json   ← active work folder
+kaggle-submissions/{active_date}/submission-N/   ← increments N in latest date folder
 ```
 
-Agent only works on **today’s UTC date**. Never solves old-date folders.
+Date folders are archive labels only — **not** tied to calendar today. Post-submit **auto-detects** the latest submitted submission.
 
 ---
 
@@ -104,18 +106,13 @@ Export training rows: [training/lora-adapters/README.md](../../training/lora-ada
 
 ## How to start the loop
 
-### First time today
+### Start or resume the loop
 
-1. **Run Test** on Agent 1 (or wait for post-submit push)
-2. Agent bootstraps `TODAY/submission-1` if needed
-3. Solve ~75–90 min → commits `submission_v2.zip` + `kaggle_submit_ready.json`
-4. GHA auto-submits to Kaggle
-5. Post-submit waits **1 hour**, fetches logs, pushes to `main`
-6. Push triggers Agent 1 again → step 2
-
-### Manual kick (no logs push)
-
-**Automations → NeuroGolf Agent 1 → Run Test** on `main`
+1. **Actions → NeuroGolf post-submit** (auto_detect=true, trigger_cursor_agent=true)
+2. Agent solves ~75–90 min → commits `submission_v2.zip` + `kaggle_submit_ready.json`
+3. GHA auto-submits to Kaggle
+4. Post-submit waits **1 hour**, fetches logs, triggers Agent 1 again
+5. Repeat continuously
 
 ---
 

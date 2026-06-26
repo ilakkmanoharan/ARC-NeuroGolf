@@ -302,14 +302,10 @@ jobs:
             echo "Not submitted; skip post-submit chain"
             exit 0
           fi
-          NEXT_N=$((SUB_NUM + 1))
           gh workflow run neurogolf-post-submit.yml \
-            -f date="${DATE}" \
-            -f submission_number="${SUB_NUM}" \
+            -f auto_detect=true \
             -f skip_initial_wait=false \
             -f auto_commit=true \
-            -f trigger_cursor_agent=true \
-            -f next_date="${DATE}" \
-            -f next_submission_number="${NEXT_N}"
-          echo "Queued post-submit for submission-${SUB_NUM} (1h wait). Agent will target submission-${NEXT_N}."
+            -f trigger_cursor_agent=true
+          echo "Queued post-submit (auto-detect lane). Agent will continue after logs land."
 

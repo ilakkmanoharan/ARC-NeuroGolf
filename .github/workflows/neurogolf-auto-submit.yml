@@ -134,11 +134,8 @@ jobs:
           NUM=$(basename "$SUB_DIR" | sed 's/submission-//')
           NEXT_N=$((NUM + 1))
           gh workflow run neurogolf-post-submit.yml \
-            -f date="${DATE}" \
-            -f submission_number="${NUM}" \
+            -f auto_detect=true \
             -f skip_initial_wait=false \
             -f auto_commit=true \
-            -f trigger_cursor_agent=false \
-            -f next_date="${DATE}" \
-            -f next_submission_number="${NEXT_N}"
-          echo "Queued post-submit for ${DATE} submission-${NUM} (1h initial wait)"
+            -f trigger_cursor_agent=true
+          echo "Queued post-submit for submission-${NUM} (1h initial wait, auto-detect lane)"
