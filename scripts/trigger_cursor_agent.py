@@ -43,7 +43,7 @@ def main() -> None:
         sys.exit(0)
 
     try:
-        from cursor_sdk import Agent, AgentOptions, CloudAgentOptions, CloudRepository
+        from cursor_sdk import Agent, AgentOptions, CloudAgentOptions, CloudRepository, CursorAgentError
     except ImportError:
         print("cursor-sdk not installed — pip install cursor-sdk", file=sys.stderr)
         sys.exit(1)
@@ -94,8 +94,8 @@ Rules: 100 ARC-GEN gate; no train_only tasks; gate submit on pass_all increase o
 Push directly to main — do not open a PR."""
         print(f"Launching Cursor Cloud Agent (implement) for {date} submission-{n}...")
 
-    result = Agent.prompt(
-        prompt,
+    # Fire-and-forget: solve takes 75–90 min; GHA must not block on run.wait().
+    agent = Agent.create(
         AgentOptions(
             api_key=api_key,
             model="composer-2.5",
@@ -106,14 +106,22 @@ Push directly to main — do not open a PR."""
             ),
         ),
     )
-
-    if result.status == "error":
-        print(f"Agent run failed: {result}", file=sys.stderr)
-        sys.exit(2)
-    print(f"Agent finished: status={result.status}")
-    agent_id = getattr(result, "agent_id", None) or getattr(result, "id", None)
-    if agent_id:
-        print(f"Agent ID: {agent_id}")
+    try:
+        run = agent.send(prompt)
+        print("Launched Cursor Cloud Agent (fire-and-forget)")
+        print(f"Agent ID: {agent.agent_id}")
+        run_id = getattr(run, "run_id", None)
+        if run_id:
+            print(f"Run ID: {run_id}")
+        print("Solve runs ~75–90 min on Cursor cloud. Watch: Cursor → Agents (filter Source → SDK)")
+    except CursorAgentError as err:
+        print(f"Agent startup failed: {err.message}", file=sys.stderr)
+        sys.exit(1)
+    finally:
+        try:
+            agent.close()
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":
