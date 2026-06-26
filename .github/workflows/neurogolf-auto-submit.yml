@@ -1,0 +1,144 @@
+# Agent 1 — step 5–8: auto-submit to Kaggle when agent commits kaggle_submit_ready.json
+#
+# Required secrets: KAGGLE_API_TOKEN  (or KAGGLE_USERNAME + KAGGLE_KEY)
+#
+# Flow:
+#   push kaggle_submit_ready.json + submission_v2.zip → submit → commit results
+#   → chain post-submit (1h wait) → fetch logs → push triggers Agent 1 step 1 again
+
+name: NeuroGolf auto-submit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kaggle-submissions/**/kaggle_submit_ready.json"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find ready submission in this push
+        id: ready
+        run: |
+          set -euo pipefail
+          mapfile -t FILES < <(git diff --name-only HEAD~1 HEAD | grep 'kaggle_submit_ready\.json$' || true)
+          if [ "${#FILES[@]}" -eq 0 ]; then
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          READY="${FILES[0]}"
+          SUB_DIR="$(dirname "$READY")"
+          export READY SUB_DIR
+          python3 - <<'PY'
+          import json, os, sys
+          ready = os.environ["READY"]
+          sub = os.environ["SUB_DIR"]
+          with open(ready) as f:
+              cfg = json.load(f)
+          if not cfg.get("auto_submit", False):
+              print("auto_submit not true"); sys.exit(1)
+          results = os.path.join(sub, "results.json")
+          if os.path.isfile(results):
+              with open(results) as f:
+                  r = json.load(f)
+              if r.get("submitted") is True:
+                  print("already submitted"); sys.exit(1)
+          zip_path = os.path.join(sub, "submission_v2.zip")
+          if not os.path.isfile(zip_path):
+              print("missing submission_v2.zip"); sys.exit(1)
+          print("ok")
+          PY
+          echo "ready_file=$READY" >> "$GITHUB_OUTPUT"
+          echo "sub_dir=$SUB_DIR" >> "$GITHUB_OUTPUT"
+          echo "count=1" >> "$GITHUB_OUTPUT"
+
+      - name: Configure Kaggle CLI
+        if: steps.ready.outputs.count == '1'
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -n "${KAGGLE_API_TOKEN:-}" ]; then
+            echo "Using KAGGLE_API_TOKEN"
+          elif [ -n "${KAGGLE_USERNAME:-}" ] && [ -n "${KAGGLE_KEY:-}" ]; then
+            mkdir -p ~/.kaggle
+            printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > ~/.kaggle/kaggle.json
+            chmod 600 ~/.kaggle/kaggle.json
+          else
+            echo "::error::Set KAGGLE_API_TOKEN or KAGGLE_USERNAME+KAGGLE_KEY"
+            exit 1
+          fi
+
+      - name: Submit to Kaggle
+        if: steps.ready.outputs.count == '1'
+        env:
+          SUB_DIR: ${{ steps.ready.outputs.sub_dir }}
+          READY_FILE: ${{ steps.ready.outputs.ready_file }}
+        run: |
+          set -euo pipefail
+          MSG=$(python3 -c "import json; print(json.load(open('$READY_FILE')).get('message','NeuroGolf auto-submit'))")
+          export MSG
+          cp "${SUB_DIR}/submission_v2.zip" submission.zip
+          kaggle competitions submit -c neurogolf-2026 -f submission.zip -m "$MSG"
+          python3 - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          sub = os.environ["SUB_DIR"]
+          msg = os.environ["MSG"]
+          path = os.path.join(sub, "results.json")
+          data = {}
+          if os.path.isfile(path):
+              with open(path) as f:
+                  data = json.load(f)
+          data["submitted"] = True
+          data["message"] = msg
+          data["submitted_at"] = datetime.now(timezone.utc).isoformat()
+          data["submitted_by"] = "github-actions:auto-submit"
+          with open(path, "w") as f:
+              json.dump(data, f, indent=2)
+          PY
+
+      - name: Record status and commit
+        if: steps.ready.outputs.count == '1'
+        env:
+          SUB_DIR: ${{ steps.ready.outputs.sub_dir }}
+        run: |
+          set -euo pipefail
+          kaggle competitions submissions list -c neurogolf-2026 --csv | head -8 > "${SUB_DIR}/kaggle_status.txt" || true
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${SUB_DIR}/results.json" "${SUB_DIR}/kaggle_status.txt"
+          git commit -m "ci: auto-submit $(basename "$SUB_DIR")" || exit 0
+          git push
+
+      - name: Chain post-submit (1h wait + logs)
+        if: steps.ready.outputs.count == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SUB_DIR: ${{ steps.ready.outputs.sub_dir }}
+        run: |
+          set -euo pipefail
+          DATE=$(echo "$SUB_DIR" | cut -d/ -f2)
+          NUM=$(basename "$SUB_DIR" | sed 's/submission-//')
+          NEXT_N=$((NUM + 1))
+          gh workflow run neurogolf-post-submit.yml \
+            -f date="${DATE}" \
+            -f submission_number="${NUM}" \
+            -f skip_initial_wait=false \
+            -f auto_commit=true \
+            -f trigger_cursor_agent=false \
+            -f next_date="${DATE}" \
+            -f next_submission_number="${NEXT_N}"
+          echo "Queued post-submit for ${DATE} submission-${NUM} (1h initial wait)"
