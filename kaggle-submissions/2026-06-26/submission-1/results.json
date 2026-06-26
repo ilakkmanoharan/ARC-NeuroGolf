@@ -1,0 +1,33 @@
+{
+  "submission": 1,
+  "date": "2026-06-26",
+  "phase": 16,
+  "milestone": "M10a",
+  "solved": 70,
+  "pass_all": 70,
+  "train_only": 0,
+  "kaggle_score_est": 1065.517487211883,
+  "kaggle_score_baseline": 915.03,
+  "kaggle_score_est_baseline": 1065.5174872118832,
+  "baseline_submission_tasks": 70,
+  "baseline_logged_dir": "kaggle-submissions/2026-06-17/submission-4",
+  "prescan_new_candidates": [],
+  "seeded_from": "kaggle-submissions/2026-06-17/submission-4/submission_v2.zip",
+  "zip": "kaggle-submissions/2026-06-26/submission-1/submission_v2.zip",
+  "submitted": false,
+  "solver_counts": {
+    "conv_diff": 19,
+    "position_gather_arcgen": 18,
+    "conv_fixed": 14,
+    "conv_var": 7,
+    "color_map_arcgen": 4,
+    "compose": 3,
+    "transpose": 2,
+    "bounded_flip_v": 1,
+    "bounded_flip_h": 1,
+    "bounded_upscale2": 1
+  },
+  "arcgen_validate_samples": 100,
+  "elapsed_s": 9689.7,
+  "message": "No submit: 70 pass_all, 0 train_only, est 1066"
+}

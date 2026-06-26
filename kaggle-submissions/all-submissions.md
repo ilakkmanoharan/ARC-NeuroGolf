@@ -9,3 +9,4 @@ Rows are appended by `scripts/append_submission_registry.py` (CI or local).
 | 2026-06-17 | — | 2 | `kaggle-submissions/2026-06-17/submission-2/` | `kaggle-submissions/2026-06-17/submission-2/kaggle_notebook.md` | 65 | 998.5 | yes | ARC-Genome M8: 65 verified, est 999, arcgen routing |
 | 2026-06-17 | — | 3 | `kaggle-submissions/2026-06-17/submission-3/` | `kaggle-submissions/2026-06-17/submission-3/kaggle_notebook.md` | 65 | 998.5 | yes | ARC-Genome M8b: 65 verified, est 999, autodiscover |
 | 2026-06-17 | — | 4 | `kaggle-submissions/2026-06-17/submission-4/` | — | 70 | 1065.5 | yes | ARC-Genome M9: 70 verified, est 1066, arcgen gather fit |
+| 2026-06-26 | 09:41 | 1 | `kaggle-submissions/2026-06-26/submission-1/` | `kaggle-submissions/2026-06-26/submission-1/kaggle_notebook.md` | 70 | 1065.5 | no | No submit: 70 pass_all, 0 train_only, est 1066 |
