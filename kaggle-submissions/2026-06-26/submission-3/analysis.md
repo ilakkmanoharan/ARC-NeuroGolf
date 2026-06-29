@@ -41,8 +41,8 @@ Audit/Kaggle ratio: **940.75 / 1091.2 ≈ 86.2%** (submission-2). submission-3 e
 
 | Task | Solver | Notes |
 |---|---|---|
-| 32 | `gravity_down_dynamic` | 6×6 max extent, ~52k nodes |
-| 78 | `gravity_up_dynamic` | 10×10 max extent, ~165k nodes |
+| 32 | `gravity_down_dynamic` | 6×6 max extent, ~52k nodes, **2.5 MB** — official score **12.31** if accepted |
+| 78 | `gravity_up_dynamic` | 10×10 max extent, ~165k nodes, **8.5 MB** — official score **11.46** if accepted |
 
 Build method: seeded 72 ONNX from submission-2 + compiled gravity for 32/78. **No full 400-task `solve_all`** — bundle audit only.
 
