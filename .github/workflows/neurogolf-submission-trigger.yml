@@ -1,0 +1,68 @@
+# Queue neurogolf-submission.yml when a trigger JSON is pushed to main.
+# Example: .github/triggers/submission-2026-06-26-s4.json
+
+name: NeuroGolf submission trigger
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/triggers/submission-*.json"
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Read trigger config
+        id: cfg
+        run: |
+          set -euo pipefail
+          mapfile -t FILES < <(git diff --name-only HEAD~1 HEAD | grep '^\.github/triggers/submission-.*\.json$' || true)
+          if [ "${#FILES[@]}" -eq 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          FILE="${FILES[0]}"
+          echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          export FILE
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = os.environ["FILE"]
+          cfg = json.loads(Path(path).read_text())
+          out = Path(os.environ["GITHUB_OUTPUT"])
+          with out.open("a") as f:
+              for k, v in cfg.items():
+                  f.write(f"{k}={v}\n")
+          PY
+
+      - name: Queue submission workflow
+        if: steps.cfg.outputs.ready == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'neurogolf-submission.yml',
+              ref: 'main',
+              inputs: {
+                date: '${{ steps.cfg.outputs.date }}',
+                submission_number: '${{ steps.cfg.outputs.submission_number }}',
+                run_script: '${{ steps.cfg.outputs.run_script }}',
+                description: '${{ steps.cfg.outputs.description }}',
+                fetch_prev_logs: 'true',
+                auto_commit: 'true',
+                chain_post_submit: 'true',
+              },
+            });
+            core.info('Queued neurogolf-submission.yml');

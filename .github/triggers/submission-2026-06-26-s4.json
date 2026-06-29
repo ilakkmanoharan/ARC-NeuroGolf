@@ -1,0 +1,9 @@
+{
+  "date": "2026-06-26",
+  "submission_number": 4,
+  "run_script": "run_submission_2026-06-26_s4.py",
+  "description": "M12 Phase 22: conv pass on unsolved, ONNX size gate",
+  "fetch_prev_logs": true,
+  "auto_commit": true,
+  "chain_post_submit": true
+}
