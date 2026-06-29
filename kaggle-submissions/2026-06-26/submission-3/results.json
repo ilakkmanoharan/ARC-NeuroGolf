@@ -21,7 +21,7 @@
   ],
   "seeded_from": "kaggle-submissions/2026-06-26/submission-2/submission_v2.zip",
   "zip": "kaggle-submissions/2026-06-26/submission-3/submission_v2.zip",
-  "submitted": false,
+  "submitted": true,
   "solver_counts": {
     "seeded": 72,
     "gravity_down_dynamic": 1,
@@ -30,5 +30,7 @@
   "arcgen_validate_samples": 100,
   "cost_audit_bundle": true,
   "ready_for_manual_kaggle_submit": true,
-  "message": "ARC-Genome M11: 74 verified, est 1115, dynamic gravity"
+  "message": "ARC-Genome M11: 74 verified, est 1115, dynamic gravity",
+  "submitted_at": "2026-06-29T13:31:27.680342+00:00",
+  "submitted_by": "github-actions:auto-submit"
 }
