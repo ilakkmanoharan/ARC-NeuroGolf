@@ -1,0 +1,23 @@
+{
+  "submission": 4,
+  "date": "2026-06-26",
+  "phase": 22,
+  "milestone": "M12",
+  "solved": 74,
+  "pass_all": 74,
+  "train_only": 0,
+  "kaggle_score_est": 1114.9936049442983,
+  "kaggle_score_baseline": 915.03,
+  "kaggle_score_est_baseline": 1114.9936049442983,
+  "baseline_submission_tasks": 74,
+  "baseline_logged_dir": "kaggle-submissions/2026-06-26/submission-3",
+  "prescan_new_candidates": [],
+  "new_tasks": [],
+  "seeded_from": "kaggle-submissions/2026-06-26/submission-3/submission_v2.zip",
+  "zip": "kaggle-submissions/2026-06-26/submission-4/submission_v2.zip",
+  "submitted": false,
+  "solver_counts": {},
+  "arcgen_validate_samples": 100,
+  "elapsed_s": 19976.7,
+  "message": "No submit: 74 pass_all, 0 train_only, est 1115"
+}

@@ -18,10 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from arc_genome.config import get_config, set_phase
 from arc_genome.data.arcgen import load_tasks_with_arcgen, validate_full
-from arc_genome.genome.ops.arcgen_compose import s_compose_arcgen
 from arc_genome.genome.ops.arcgen_gravity import ARCgen_GRAVITY_SOLVERS
-from arc_genome.genome.ops.arcgen_object import ARCgen_OBJECT_SOLVERS
-from arc_genome.genome.ops.arcgen_place import ARCgen_PLACE_SOLVERS
 from arc_genome.onnx.model import ONNX_MAX_BYTES, onnx_file_size_ok, save_model
 from arc_genome.solve import make_submission_zip, solve_all
 
@@ -36,9 +33,9 @@ SUBMIT_PATH = "submission.zip"
 PRIOR_SUB_DIR = "kaggle-submissions/2026-06-26/submission-3"
 SEED_DIR = f"{PRIOR_SUB_DIR}/submission"
 SEED_ZIP = f"{PRIOR_SUB_DIR}/submission_v2.zip"
-BASELINE_TASKS = 72
-BASELINE_SCORE = 940.75
-BASELINE_EST = 1091.2298643193174
+BASELINE_TASKS = 74
+BASELINE_SCORE = 915.03
+BASELINE_EST = 1114.9936049442983
 SUBMIT_EST_MIN = BASELINE_EST + 1.0
 
 
@@ -76,6 +73,7 @@ def baseline_solved_tasks() -> set[int]:
 
 
 def prescan_new_tasks() -> list[int]:
+    """Fast prescan — gravity only; compose/conv validated in solve_all."""
     solved = baseline_solved_tasks()
     tasks = load_tasks_with_arcgen("data/all_tasks.json")
     new: set[int] = set()
@@ -84,12 +82,7 @@ def prescan_new_tasks() -> list[int]:
             if tn in solved:
                 continue
             td = meta["data"]
-            for _name, sfn in [
-                *ARCgen_GRAVITY_SOLVERS,
-                ("compose_arcgen", s_compose_arcgen),
-                *ARCgen_PLACE_SOLVERS,
-                *ARCgen_OBJECT_SOLVERS,
-            ]:
+            for _name, sfn in ARCgen_GRAVITY_SOLVERS:
                 model = sfn(td)
                 if model is None:
                     continue
@@ -245,7 +238,7 @@ def main():
 
     if os.environ.get("NEUROGOLF_SKIP_KAGGLE_SUBMIT"):
         results_doc["message"] = (
-            f"ARC-Genome M12: {pass_all} verified, est {est:.0f}, unsolved conv pass"
+            f"ARC-Genome M12: {kaggle_eligible} verified, est {est_eligible:.0f}, unsolved conv pass"
         )
         results_doc["ready_for_manual_kaggle_submit"] = True
         write_results(results_doc)
