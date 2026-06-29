@@ -1,13 +1,15 @@
 # June 29, 2026 — NeuroGolf session (complete record)
 
-**North star:** Kaggle public score up (baseline **940.75** → target **~954** with submission-3).
+**North star:** Kaggle public score up (baseline **940.75** → target **2000+** via coverage).
 
 | Doc | Contents |
 |-----|----------|
+| [score-flat-diagnosis.md](./score-flat-diagnosis.md) | **Why 940.75 unchanged** — 1.44 MB ONNX cap |
+| [roadmap-2000.md](./roadmap-2000.md) | Path to 2000–3000 (conv scale, rogermt) |
 | [strategy.md](./strategy.md) | Decision tree, phases, anti-patterns |
 | [workflow.md](./workflow.md) | End-to-end agent + GHA + LoRA loop |
 | [phase-21-dynamic-gravity.md](./phase-21-dynamic-gravity.md) | Compiler technical spec |
-| [postmortem-stuck-and-submit.md](./postmortem-stuck-and-submit.md) | Why stuck; why auto-submit failed |
+| [postmortem-stuck-and-submit.md](./postmortem-stuck-and-submit.md) | Phase 18–21 journey; GHA submit |
 | [prescan-results.md](./prescan-results.md) | Audit numbers |
 | [lora-refresh.md](./lora-refresh.md) | Adapter training with today's strategies |
 | [session-log.md](./session-log.md) | Chronological log |
@@ -16,10 +18,10 @@
 
 | Item | Status |
 |------|--------|
-| Kaggle submit | **Done** — local CLI (74 pass_all, est 1115) |
-| GHA auto-submit | Failed — see [postmortem-stuck-and-submit.md](./postmortem-stuck-and-submit.md) |
-| LoRA refresh | Bootstrap + train run; Phase 21 rows added |
-| Next | Post-submit fetch logs when Kaggle grades |
+| submission-3 Kaggle | **940.75** — unchanged (tasks 32/78 **oversized**) |
+| Root cause | Phase 21 gravity ONNX: 2.5 MB + 8.5 MB &gt; **1.44 MB** limit |
+| Fix | Audit size gate + submission-4 conv pass on unsolved |
+| Next | GHA **submission-4** (Phase 22, `run_submission_2026-06-26_s4.py`) |
 
 ## Code map
 

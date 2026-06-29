@@ -83,3 +83,15 @@ Adapters were **not** refreshed with Phase 21 strategy before this session:
 - Training rows still described Phases 18–19 object/place, not dynamic gravity
 
 See [lora-refresh.md](./lora-refresh.md) for remediation steps.
+
+---
+
+## Part 4: Why Kaggle score stayed 940.75 after submission-3
+
+submission-3 added tasks **32** and **78** (dynamic gravity). Local audit: **74 pass_all**, est **1115**. Kaggle public: **940.75** (unchanged).
+
+**Cause:** Kaggle rejects ONNX files &gt; **1.44 MB**. Task 32 = 2.50 MB, task 78 = 8.50 MB. Effective bundle still **72 tasks**.
+
+Full write-up: [score-flat-diagnosis.md](./score-flat-diagnosis.md).
+
+**Remediation:** `ONNX_MAX_BYTES` gate in audit; submission-4 seeds without oversized files; conv second-pass on unsolved for real coverage.

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+
 import onnx
 import onnxruntime as ort
 from onnx import TensorProto, helper
@@ -12,7 +14,13 @@ DT = TensorProto.FLOAT
 IR = 10
 OPSET = [helper.make_opsetid("", 10)]
 BANNED_OPS = {"Loop", "Scan", "NonZero", "Unique", "Script", "Function"}
+# Kaggle NeuroGolf 2026: each ONNX file must be at most 1.44 MB.
+ONNX_MAX_BYTES = int(1.44 * 1024 * 1024)
 ORT_PROVIDERS = ["CPUExecutionProvider"]
+
+
+def onnx_file_size_ok(path: str) -> bool:
+    return os.path.getsize(path) <= ONNX_MAX_BYTES
 
 
 def make_model(nodes, inits=None):

@@ -14,7 +14,7 @@ from arc_genome.data.arcgen import attach_arcgen, load_tasks_with_arcgen, valida
 from arc_genome.data.encoding import load_tasks_json
 from arc_genome.onnx.cost import compute_cost
 from arc_genome.onnx.kaggle_score import kaggle_score_model
-from arc_genome.onnx.model import validate_model
+from arc_genome.onnx.model import onnx_file_size_ok, validate_model
 
 
 def audit(submission_dir: str, data_file: str, out_json: str, phase: int = 6):
@@ -22,7 +22,7 @@ def audit(submission_dir: str, data_file: str, out_json: str, phase: int = 6):
     set_phase(phase)
     tasks = load_tasks_with_arcgen(data_file)
     results = []
-    buckets = {"pass_all": 0, "train_only": 0, "fail": 0}
+    buckets = {"pass_all": 0, "train_only": 0, "fail": 0, "oversized": 0, "kaggle_eligible": 0}
 
     for tn in sorted(tasks.keys()):
         path = os.path.join(submission_dir, f"task{tn:03d}.onnx")
@@ -30,12 +30,19 @@ def audit(submission_dir: str, data_file: str, out_json: str, phase: int = 6):
             continue
         hex_id = tasks[tn]["hex"]
         td = tasks[tn]["data"]
+        size_bytes = os.path.getsize(path)
+        size_ok = onnx_file_size_ok(path)
         train_ok = validate_model(path, {"train": td["train"], "test": td["test"]})
         full_ok = validate_full(path, td) if train_ok else False
 
         if full_ok:
             buckets["pass_all"] += 1
             tier = "pass_all"
+            if size_ok:
+                buckets["kaggle_eligible"] += 1
+            else:
+                buckets["oversized"] += 1
+                tier = "oversized"
         elif train_ok:
             buckets["train_only"] += 1
             tier = "train_only"
@@ -50,6 +57,8 @@ def audit(submission_dir: str, data_file: str, out_json: str, phase: int = 6):
             "task": tn,
             "hex": hex_id,
             "tier": tier,
+            "onnx_bytes": size_bytes,
+            "onnx_size_ok": size_ok,
             "local_score": local["score"],
             "local_cost": local["total"],
             "kaggle_score": kaggle["score"] if kaggle else None,
@@ -71,6 +80,9 @@ def audit(submission_dir: str, data_file: str, out_json: str, phase: int = 6):
         "kaggle_total_score": sum(kaggle_scores),
         "kaggle_avg": sum(kaggle_scores) / len(kaggle_scores) if kaggle_scores else 0,
         "pass_all_kaggle_total": sum(r["kaggle_score"] or 0 for r in results if r["tier"] == "pass_all"),
+        "kaggle_eligible_total": sum(
+            r["kaggle_score"] or 0 for r in results if r["tier"] == "pass_all" and r["onnx_size_ok"]
+        ),
     }
 
     report = {"summary": summary, "tasks": results}

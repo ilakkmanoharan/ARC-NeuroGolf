@@ -8,6 +8,7 @@ LoRA adapters (Diagnose / Strategize / Implement) were trained on older submissi
 - **Dynamic gravity ONNX** — when static gather fails but numpy matches
 - **Seed + patch bundle** — skip full solve_all when audit passes
 - **Dual submit path** — local `kaggle_auto_submit.py` + GHA fallback
+- **1.44 MB ONNX cap** — `validate_full` without size check = phantom +2 tasks (submission-3)
 
 ## Fixes
 
@@ -15,13 +16,13 @@ LoRA adapters (Diagnose / Strategize / Implement) were trained on older submissi
 
 `scripts/bootstrap_lora_training_data.py` now imports `ADAPTER_GOALS` (was NameError at runtime).
 
-### 2. New training artifacts (submission-3)
+### 2. New training artifacts (submission-3 + diagnosis)
 
 | Adapter | Source files |
 |---------|--------------|
-| Diagnose | `submission-3/analysis.md` |
-| Strategize | `submission-3/plan.md`, `strategy.md`, `strategy/June-29-2026/strategy.md` |
-| Implement | `scripts/run_submission_2026-06-26_s3.py` |
+| Diagnose | `submission-3/analysis.md`, `strategy/June-29-2026/score-flat-diagnosis.md` |
+| Strategize | `submission-4/plan.md`, `strategy/June-29-2026/roadmap-2000.md` |
+| Implement | `scripts/run_submission_2026-06-26_s4.py`, `scripts/audit_submission.py` |
 
 ### 3. Refresh commands
 
@@ -55,11 +56,12 @@ GHA alternative: push changes under `training/lora-*/examples/` → **NeuroGolf 
 
 **Diagnose** should flag:
 
-> Static gather compile failure on numpy-matched chains = dynamic rule, not "try depth-3 compose."
+> Static gather compile failure on numpy-matched chains = dynamic rule, not "try depth-3 compose."  
+> **Any ONNX &gt; 1.44 MB will score 0 on Kaggle** even if `validate_full=True`.
 
 **Implement** should emit:
 
-> `arcgen_gravity.py` + `gravity.py` + `kaggle_auto_submit.py` wiring; phase 21 in config.
+> `ONNX_MAX_BYTES` in audit; strip oversized seeds; `kaggle_eligible` gate before submit.
 
 ### 5. Research page
 

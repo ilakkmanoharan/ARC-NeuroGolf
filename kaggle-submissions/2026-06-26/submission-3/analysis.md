@@ -1,9 +1,9 @@
 # Submission Analysis — submission-3 (M11)
 
 **Date:** 2026-06-26  
-**Kaggle:** *pending* (submitted 2026-06-29, logs not yet fetched)  
-**Tasks:** **74 pass_all** (+2 vs submission-2)  
-**Audit est.:** **1115.0** (+23.8 vs s2 est 1091.2)  
+**Kaggle:** **940.75** (unchanged vs submission-2) — submitted 2026-06-29  
+**Tasks:** **74 pass_all** local (+2 vs submission-2) | **72 Kaggle-effective**  
+**Audit est.:** **1115.0** (+23.8 vs s2 est 1091.2) — **phantom** (+2 oversized ONNX)  
 **Message:** `ARC-Genome M11: 74 verified, est 1115, dynamic gravity`
 
 ---
@@ -12,19 +12,26 @@
 
 **Question:** How can we improve Kaggle score vs **915.03 / 70 pass_all** (north-star baseline) or **940.75 / 72** (submission-2 local)?
 
-**Answer:** submission-3 already clears both on local gates (+2 pass_all, +23.8 est). Kaggle confirmation pending. The remaining blocker for the *next* submission is **326 unsolved tasks** where symbolic prescan returned **0 hits** after Phase 21.
+**Answer:** submission-3 **did not** improve Kaggle score. Tasks 32/78 pass `validate_full` locally but ONNX files exceed **1.44 MB** (2.5 MB + 8.5 MB) — Kaggle rejects them. Effective count stays **72 / 940.75**. Next: conv second-pass on unsolved + audit size gate.
 
 ---
 
-## Score progression (local audit)
+## Kaggle flat score — root cause
+
+| Task | `validate_full` | File size | Kaggle counts? |
+|------|-----------------|----------:|:--------------:|
+| 32 | True | 2.50 MB | **No** |
+| 78 | True | 8.50 MB | **No** |
+
+See `strategy/June-29-2026/score-flat-diagnosis.md`.
 
 | Submission | pass_all | Audit est. | Kaggle actual | Δ tasks | Δ est |
 |---|---:|---:|---:|---:|---:|
 | submission-2 | 72 | 1091.2 | *pending* | — | — |
 | north-star (s4 2026-06-17) | 70 | 1065.5 | **915.03** | — | — |
-| **submission-3** | **74** | **1115.0** | *pending* | **+2** | **+23.8** |
+| **submission-3** | **74** | **1115.0** | **940.75** | **+0 Kaggle** | phantom +23.8 est |
 
-Audit/Kaggle ratio from north-star: ~85.9%. Projected Kaggle for s3: **~957** if ratio holds (+16 vs 915 baseline).
+Audit/Kaggle ratio: **940.75 / 1091.2 ≈ 86.2%** (submission-2). submission-3 est inflation from oversized tasks.
 
 ---
 

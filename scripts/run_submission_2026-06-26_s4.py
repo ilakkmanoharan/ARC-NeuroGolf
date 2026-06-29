@@ -22,7 +22,7 @@ from arc_genome.genome.ops.arcgen_compose import s_compose_arcgen
 from arc_genome.genome.ops.arcgen_gravity import ARCgen_GRAVITY_SOLVERS
 from arc_genome.genome.ops.arcgen_object import ARCgen_OBJECT_SOLVERS
 from arc_genome.genome.ops.arcgen_place import ARCgen_PLACE_SOLVERS
-from arc_genome.onnx.model import save_model
+from arc_genome.onnx.model import ONNX_MAX_BYTES, onnx_file_size_ok, save_model
 from arc_genome.solve import make_submission_zip, solve_all
 
 KAGGLE = os.environ.get("KAGGLE_BIN", os.path.expanduser("~/Library/Python/3.9/bin/kaggle"))
@@ -36,9 +36,9 @@ SUBMIT_PATH = "submission.zip"
 PRIOR_SUB_DIR = "kaggle-submissions/2026-06-26/submission-3"
 SEED_DIR = f"{PRIOR_SUB_DIR}/submission"
 SEED_ZIP = f"{PRIOR_SUB_DIR}/submission_v2.zip"
-BASELINE_TASKS = 74
-BASELINE_SCORE = 915.03
-BASELINE_EST = 1114.9936049442983
+BASELINE_TASKS = 72
+BASELINE_SCORE = 940.75
+BASELINE_EST = 1091.2298643193174
 SUBMIT_EST_MIN = BASELINE_EST + 1.0
 
 
@@ -101,16 +101,24 @@ def prescan_new_tasks() -> list[int]:
     return sorted(new)
 
 
-def seed_baseline(out_dir: str) -> int:
+def seed_baseline(out_dir: str) -> tuple[int, list[int]]:
     if not ensure_seed_dir():
-        return 0
+        return 0, []
     os.makedirs(out_dir, exist_ok=True)
     copied = 0
+    skipped_oversized: list[int] = []
     for filename in os.listdir(SEED_DIR):
-        if filename.endswith(".onnx"):
-            shutil.copy2(os.path.join(SEED_DIR, filename), os.path.join(out_dir, filename))
-            copied += 1
-    return copied
+        if not filename.endswith(".onnx"):
+            continue
+        src = os.path.join(SEED_DIR, filename)
+        if not onnx_file_size_ok(src):
+            skipped_oversized.append(int(filename.replace("task", "").replace(".onnx", "")))
+            continue
+        shutil.copy2(src, os.path.join(out_dir, filename))
+        copied += 1
+    if skipped_oversized:
+        print(f"Skipped oversized seeds (>{ONNX_MAX_BYTES} B): {sorted(skipped_oversized)}")
+    return copied, skipped_oversized
 
 
 def write_results(results_doc: dict) -> None:
@@ -127,8 +135,10 @@ def main():
     os.makedirs(SUB_DIR, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
 
-    seeded = seed_baseline(OUT)
+    seeded, skipped_oversized = seed_baseline(OUT)
     print(f"Seeded {seeded} ONNX from {PRIOR_SUB_DIR}")
+    if skipped_oversized:
+        print(f"Oversized seeds excluded from zip (Kaggle 1.44MB cap): {skipped_oversized}")
 
     baseline = baseline_solved_tasks()
     tasks = load_tasks_with_arcgen("data/all_tasks.json")
@@ -167,8 +177,11 @@ def main():
     summary = audit["summary"]
     buckets = summary["buckets"]
     pass_all = buckets["pass_all"]
+    kaggle_eligible = buckets.get("kaggle_eligible", pass_all)
+    oversized = buckets.get("oversized", 0)
     train_only = buckets.get("train_only", 0)
     est = summary["pass_all_kaggle_total"]
+    est_eligible = summary.get("kaggle_eligible_total", est)
     solver_counts = Counter(r["solver"] for r in results.values())
     new_tasks = sorted(set(results.keys()) - baseline)
 
@@ -179,8 +192,11 @@ def main():
         "milestone": "M12",
         "solved": pass_all,
         "pass_all": pass_all,
+        "kaggle_eligible": kaggle_eligible,
+        "oversized_pass_all": oversized,
         "train_only": train_only,
         "kaggle_score_est": est,
+        "kaggle_score_est_eligible": est_eligible,
         "kaggle_score_baseline": BASELINE_SCORE,
         "kaggle_score_est_baseline": BASELINE_EST,
         "baseline_submission_tasks": BASELINE_TASKS,
@@ -188,6 +204,7 @@ def main():
         "prescan_new_candidates": new_candidates,
         "new_tasks": new_tasks,
         "seeded_from": SEED_ZIP if seeded else None,
+        "skipped_oversized_seeds": skipped_oversized,
         "zip": ZIP_STORE,
         "submitted": False,
         "solver_counts": dict(solver_counts.most_common()),
@@ -196,21 +213,31 @@ def main():
     }
     write_results(results_doc)
 
-    should_submit = train_only == 0 and (pass_all > BASELINE_TASKS or est >= SUBMIT_EST_MIN)
+    should_submit = (
+        train_only == 0
+        and oversized == 0
+        and (kaggle_eligible > BASELINE_TASKS or est_eligible >= SUBMIT_EST_MIN)
+    )
     print(
-        f"\n=== Submit: pass_all={pass_all}, train_only={train_only}, "
-        f"est={est:.1f}, submit={should_submit} ==="
+        f"\n=== Submit: kaggle_eligible={kaggle_eligible}, pass_all={pass_all}, "
+        f"oversized={oversized}, train_only={train_only}, "
+        f"est_eligible={est_eligible:.1f}, submit={should_submit} ==="
     )
 
     if not should_submit:
-        results_doc["message"] = f"No submit: {pass_all} pass_all, {train_only} train_only, est {est:.0f}"
+        results_doc["message"] = (
+            f"No submit: kaggle_eligible={kaggle_eligible} (need >{BASELINE_TASKS}), "
+            f"oversized={oversized}, train_only={train_only}, est_eligible={est_eligible:.0f}"
+        )
         write_results(results_doc)
         notes = (
             f"# submission-4 notes\n\n"
-            f"Blocked submit: pass_all={pass_all} (need >{BASELINE_TASKS}), "
-            f"train_only={train_only}, est={est:.1f} (need >={SUBMIT_EST_MIN:.1f}).\n"
+            f"Blocked submit: kaggle_eligible={kaggle_eligible} (need >{BASELINE_TASKS}), "
+            f"oversized={oversized}, train_only={train_only}, est_eligible={est_eligible:.1f} "
+            f"(need >={SUBMIT_EST_MIN:.1f}).\n"
             f"prescan_new={new_candidates}\n"
             f"new_from_solve={new_tasks}\n"
+            f"skipped_oversized_seeds={skipped_oversized}\n"
         )
         with open(f"{SUB_DIR}/notes.md", "w") as f:
             f.write(notes)
@@ -236,7 +263,7 @@ def main():
         print("NEUROGOLF_SKIP_KAGGLE_SUBMIT set; zip + kaggle_submit_ready.json for GHA.")
         sys.exit(0)
 
-    msg = f"ARC-Genome M12: {pass_all} verified, est {est:.0f}, unsolved conv pass"
+    msg = f"ARC-Genome M12: {kaggle_eligible} verified, est {est_eligible:.0f}, unsolved conv pass"
     shutil.copy2(ZIP_STORE, SUBMIT_PATH)
     proc = subprocess.run(
         [
