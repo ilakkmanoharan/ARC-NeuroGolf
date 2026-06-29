@@ -36,5 +36,6 @@
   "arcgen_validate_samples": 100,
   "elapsed_s": 11392.2,
   "message": "ARC-Genome M10b: 72 verified, est 1091, bbox gather arcgen",
+  "kaggle_score_actual": 940.75,
   "ready_for_manual_kaggle_submit": true
 }

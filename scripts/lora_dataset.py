@@ -79,6 +79,137 @@ def load_results(sub_dir: Path) -> dict[str, Any]:
         return {}
 
 
+GITHUB_REPO_BASE = "https://github.com/ilakkmanoharan/ARC-NeuroGolf/tree/main"
+
+
+def _onnx_count(sub_dir: Path) -> int | None:
+    sub = sub_dir / "submission"
+    if sub.is_dir():
+        n = len(list(sub.glob("task*.onnx")))
+        if n:
+            return n
+    z = sub_dir / "submission_v2.zip"
+    if z.is_file():
+        import zipfile
+
+        with zipfile.ZipFile(z) as zf:
+            return sum(1 for n in zf.namelist() if n.endswith(".onnx"))
+    return None
+
+
+def _kaggle_logs_summary(sub_dir: Path) -> dict[str, Any]:
+    p = sub_dir / "kaggle_logs" / "kaggle_logs.json"
+    if not p.is_file():
+        return {}
+    try:
+        return json.loads(p.read_text(encoding="utf-8")).get("summary", {})
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def _doc_links(sub_dir: Path, date: str, num: int) -> dict[str, str]:
+    rel = f"kaggle-submissions/{date}/submission-{num}"
+    base = f"{GITHUB_REPO_BASE}/{rel}"
+    links: dict[str, str] = {"folder": base}
+    for name in ("analysis", "plan", "theory", "strategy", "notes", "learnings"):
+        if (sub_dir / f"{name}.md").is_file():
+            links[name] = f"{base}/{name}.md"
+    if (sub_dir / "page.html").is_file():
+        links["report"] = f"{base}/page.html"
+    if (sub_dir / "results.json").is_file():
+        links["results"] = f"{base}/results.json"
+    if (sub_dir / "audit.json").is_file():
+        links["audit"] = f"{base}/audit.json"
+    return links
+
+
+def build_submission_detail(
+    sub_dir: Path,
+    date: str,
+    num: int,
+    prev_scored: SubmissionRecord | None,
+) -> dict[str, Any]:
+    r = load_results(sub_dir)
+    logs = _kaggle_logs_summary(sub_dir)
+    kaggle_actual = r.get("kaggle_score_actual")
+    if kaggle_actual is None and logs.get("kaggle_actual") is not None:
+        kaggle_actual = logs["kaggle_actual"]
+    pass_all = r.get("pass_all")
+    kaggle_est = r.get("kaggle_score_est")
+    submitted = bool(r.get("submitted"))
+    if kaggle_actual is not None and prev_scored and prev_scored.kaggle_actual is not None:
+        outcome = score_delta_label(prev_scored, SubmissionRecord(
+            date=date, num=num, path=sub_dir,
+            pass_all=pass_all, kaggle_actual=kaggle_actual,
+            kaggle_est=kaggle_est, message=r.get("message", ""),
+        ))
+    elif kaggle_actual is not None:
+        outcome = "baseline" if prev_scored is None else score_delta_label(prev_scored, SubmissionRecord(
+            date=date, num=num, path=sub_dir,
+            pass_all=pass_all, kaggle_actual=kaggle_actual,
+            kaggle_est=kaggle_est, message="",
+        ))
+    elif submitted:
+        outcome = "pending_grade"
+    else:
+        outcome = "not_submitted"
+
+    kaggle_delta = None
+    if kaggle_actual is not None and prev_scored and prev_scored.kaggle_actual is not None:
+        kaggle_delta = round(kaggle_actual - prev_scored.kaggle_actual, 2)
+
+    audit_buckets = {}
+    audit_path = sub_dir / "audit.json"
+    if audit_path.is_file():
+        try:
+            audit_buckets = json.loads(audit_path.read_text(encoding="utf-8")).get("summary", {}).get("buckets", {})
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    return {
+        "label": f"{date} submission-{num}",
+        "date": date,
+        "submission": num,
+        "milestone": r.get("milestone"),
+        "phase": r.get("phase"),
+        "pass_all": pass_all,
+        "kaggle_eligible": r.get("kaggle_eligible"),
+        "train_only": r.get("train_only"),
+        "oversized_pass_all": r.get("oversized_pass_all"),
+        "kaggle_actual": kaggle_actual,
+        "kaggle_est": kaggle_est,
+        "kaggle_delta": kaggle_delta,
+        "audit_ratio": logs.get("audit_ratio"),
+        "outcome": outcome,
+        "submitted": submitted,
+        "submitted_at": r.get("submitted_at"),
+        "submitted_by": r.get("submitted_by"),
+        "message": r.get("message", ""),
+        "onnx_count": _onnx_count(sub_dir),
+        "new_tasks": r.get("new_tasks") or r.get("prescan_new_candidates"),
+        "solver_counts": r.get("solver_counts"),
+        "arcgen_validate_samples": r.get("arcgen_validate_samples"),
+        "elapsed_s": r.get("elapsed_s"),
+        "audit_buckets": audit_buckets or None,
+        "docs": _doc_links(sub_dir, date, num),
+    }
+
+
+def build_all_submission_details() -> list[dict[str, Any]]:
+    records = discover_submissions()
+    details: list[dict[str, Any]] = []
+    prev_scored: SubmissionRecord | None = None
+    for rec in records:
+        if not (rec.path / "results.json").is_file() and not (rec.path / "theory.md").is_file():
+            continue
+        detail = build_submission_detail(rec.path, rec.date, rec.num, prev_scored)
+        details.append(detail)
+        if detail["kaggle_actual"] is not None:
+            prev_scored = rec
+    details.sort(key=lambda d: (d["date"], d["submission"]), reverse=True)
+    return details
+
+
 def discover_submissions() -> list[SubmissionRecord]:
     rows: list[SubmissionRecord] = []
     if not SUBMISSIONS.is_dir():

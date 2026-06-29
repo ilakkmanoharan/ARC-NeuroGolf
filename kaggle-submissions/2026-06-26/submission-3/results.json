@@ -26,5 +26,8 @@
   "arcgen_validate_samples": 100,
   "cost_audit_bundle": true,
   "ready_for_manual_kaggle_submit": true,
-  "message": "ARC-Genome M11: 74 verified, est 1115, dynamic gravity"
+  "message": "ARC-Genome M11: 74 verified, est 1115, dynamic gravity",
+  "kaggle_score_actual": 940.75,
+  "kaggle_eligible": 72,
+  "oversized_pass_all": 2
 }

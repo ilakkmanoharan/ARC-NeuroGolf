@@ -11,7 +11,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from lora_dataset import ADAPTER_NAMES, discover_submissions, score_delta_label  # noqa: E402
+from lora_dataset import (  # noqa: E402
+    ADAPTER_NAMES,
+    build_all_submission_details,
+    discover_submissions,
+    score_delta_label,
+)
 
 OUT_DIR = ROOT / "kaggle-submissions" / "research" / "lora"
 STATS_JSON = OUT_DIR / "stats.json"
@@ -61,6 +66,7 @@ def build_stats() -> dict:
             "base_model": "mlx-community/Llama-3.2-3B-Instruct-4bit",
         }
 
+    submissions = build_all_submission_details()
     best = max(scored, key=lambda r: r.kaggle_actual or 0) if scored else None
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -70,6 +76,7 @@ def build_stats() -> dict:
         "best_pass_all": best.pass_all if best else None,
         "best_label": f"{best.date} submission-{best.num}" if best else None,
         "timeline": timeline,
+        "submissions": submissions,
         "outcomes": outcomes,
         "adapters": adapters,
         "note_arcgen": (
@@ -121,7 +128,28 @@ def render_html(stats: dict) -> str:
       <div class="card"><h2>Submission outcomes</h2><canvas id="chartOutcomes"></canvas></div>
     </div>
     <div class="card">
-      <h2>Adapters</h2>
+      <h2>Submissions</h2>
+      <p class="muted">Per-submission stats from <code>results.json</code>, audit, and Kaggle logs.</p>
+      <div style="overflow-x:auto">
+        <table id="submissionsTable">
+          <thead>
+            <tr>
+              <th>Submission</th>
+              <th>Milestone</th>
+              <th>Kaggle</th>
+              <th>pass_all</th>
+              <th>Est</th>
+              <th>Δ</th>
+              <th>Outcome</th>
+              <th>ONNX</th>
+              <th>Docs</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
       <table id="adapterTable"><thead><tr><th>Adapter</th><th>Role</th><th>Examples</th><th>MLX rows</th><th>Checkpoint</th><th>Base model</th></tr></thead><tbody></tbody></table>
       <p class="muted" style="margin-top:12px" id="arcgenNote"></p>
     </div>
@@ -167,6 +195,29 @@ def render_html(stats: dict) -> str:
       const tr = document.createElement('tr');
       tr.innerHTML = `<td>${{k}}</td><td>${{row.display}}</td><td>${{row.examples}}</td><td>${{row.mlx_train_rows}}</td><td>${{row.checkpoint ? 'yes' : 'no'}}</td><td>${{row.base_model}}</td>`;
       tbody.appendChild(tr);
+    }}
+    const subs = STATS.submissions || [];
+    const stbody = document.querySelector('#submissionsTable tbody');
+    for (const s of subs) {{
+      const tr = document.createElement('tr');
+      const kaggle = s.kaggle_actual != null ? s.kaggle_actual.toFixed(2) : (s.submitted ? 'pending' : '—');
+      const est = s.kaggle_est != null ? Math.round(s.kaggle_est) : '—';
+      const delta = s.kaggle_delta != null ? (s.kaggle_delta > 0 ? '+' : '') + s.kaggle_delta : '—';
+      const docs = Object.entries(s.docs || {{}})
+        .filter(([k]) => k !== 'folder')
+        .map(([k, url]) => `<a href="${{url}}">${{k}}</a>`)
+        .join(' · ');
+      const folder = s.docs && s.docs.folder ? `<a href="${{s.docs.folder}}">folder</a>` : '';
+      tr.innerHTML = `<td><strong>${{s.label}}</strong><br><span class="muted">${{s.message || ''}}</span></td>`
+        + `<td>${{s.milestone || '—'}}<br><span class="muted">phase ${{s.phase ?? '—'}}</span></td>`
+        + `<td>${{kaggle}}</td>`
+        + `<td>${{s.pass_all ?? '—'}}${{s.kaggle_eligible != null && s.kaggle_eligible !== s.pass_all ? ' (' + s.kaggle_eligible + ' elig)' : ''}}</td>`
+        + `<td>${{est}}</td>`
+        + `<td>${{delta}}</td>`
+        + `<td>${{s.outcome}}</td>`
+        + `<td>${{s.onnx_count ?? '—'}}</td>`
+        + `<td>${{folder}}${{docs ? ' · ' + docs : ''}}</td>`;
+      stbody.appendChild(tr);
     }}
   </script>
 </body>
