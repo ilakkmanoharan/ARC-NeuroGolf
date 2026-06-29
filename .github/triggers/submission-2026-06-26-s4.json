@@ -5,5 +5,6 @@
   "description": "M12 Phase 22: conv pass on unsolved, ONNX size gate",
   "fetch_prev_logs": true,
   "auto_commit": true,
-  "chain_post_submit": true
+  "chain_post_submit": true,
+  "note": "re-trigger after workflow registration"
 }
