@@ -1,0 +1,20 @@
+{
+  "date": "2026-06-29",
+  "submission": 3,
+  "baseline_pass_all": 72,
+  "baseline_kaggle": 940.75,
+  "phase": 21,
+  "results": {
+    "arcgen_dynamic_gravity": 2,
+    "new_tasks": [32, 78],
+    "solvers": {
+      "32": "gravity_down_dynamic",
+      "78": "gravity_up_dynamic"
+    },
+    "arcgen_compose_depth2": 0,
+    "arcgen_place_programs": 0,
+    "arcgen_object_programs": 0
+  },
+  "conclusion": "Phase 21 dynamic gravity ONNX passes prescan on tasks 32 and 78. Proceed to cost audit then solve_all.",
+  "next": "Cost audit on tasks 32/78; run submission-3 solve_all if est delta > 0"
+}

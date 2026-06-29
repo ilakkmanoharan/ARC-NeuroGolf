@@ -79,6 +79,8 @@ def work_dir() -> tuple[str, int, Path]:
         return date, 1, SUBMISSIONS / date / "submission-1"
 
     for date, num, path in sorted(rows, key=lambda x: (x[0], x[1]), reverse=True):
+        if (path / "superseded.md").is_file():
+            continue
         if (path / "submission_v2.zip").is_file() and (path / "kaggle_submit_ready.json").is_file():
             continue
         if (path / "plan.md").is_file() or find_run_script(date, num):

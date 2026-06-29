@@ -7,6 +7,8 @@ Public research record for how ARC-Genome breaks the **~330 unsolved task** ceil
 | [unsolved-tasks-roadmap.md](./unsolved-tasks-roadmap.md) | Why conv search stops working, solver-family roadmap, prescan discipline, LoRA role |
 | [submission-milestones.md](./submission-milestones.md) | Scored submission history and what each phase proved |
 
+**June 29, 2026 session:** [June-29-2026/](./June-29-2026/) — Phase 21 dynamic gravity (+2 prescan hits).
+
 **North star:** increase Kaggle public score on [neurogolf-2026](https://www.kaggle.com/competitions/neurogolf-2026) via **symbolic solver families + ARC-GEN validation**, not brute-force conv fitting.
 
 **Current baseline (June 2026):** 915.03 Kaggle, 70 pass_all — [2026-06-17 submission-4](../kaggle-submissions/2026-06-17/submission-4/).

@@ -46,6 +46,18 @@ def _solver_list(task_data: dict | None = None):
     if cfg.milestone5_solvers:
         from arc_genome.genome.ops.milestone5 import MILESTONE5_SOLVERS
         solvers.extend(MILESTONE5_SOLVERS)
+    if cfg.arcgen_compose_depth > 0:
+        from arc_genome.genome.ops.arcgen_compose import s_compose_arcgen
+        solvers = [("compose_arcgen", s_compose_arcgen)] + solvers
+    if cfg.arcgen_dynamic_gravity:
+        from arc_genome.genome.ops.arcgen_gravity import ARCgen_GRAVITY_SOLVERS
+        solvers = ARCgen_GRAVITY_SOLVERS + solvers
+    if cfg.arcgen_fit_place_programs:
+        from arc_genome.genome.ops.arcgen_place import ARCgen_PLACE_SOLVERS
+        solvers = ARCgen_PLACE_SOLVERS + solvers
+    if cfg.arcgen_fit_object_programs:
+        from arc_genome.genome.ops.arcgen_object import ARCgen_OBJECT_SOLVERS
+        solvers = ARCgen_OBJECT_SOLVERS + solvers
     if cfg.arcgen_fit_gather:
         from arc_genome.genome.ops.arcgen_gather import ARCgen_GATHER_SOLVERS
         solvers = ARCgen_GATHER_SOLVERS + solvers

@@ -48,6 +48,14 @@ class PhaseConfig:
     arcgen_fit_color: bool = False
     # Phase 17 — bbox-relative ARC-GEN-fitted gather
     arcgen_fit_bbox_gather: bool = False
+    # Phase 18 — ARC-GEN-fitted object programs (gravity, component, rect rules)
+    arcgen_fit_object_programs: bool = False
+    # Phase 19 — ARC-GEN extract/place (bbox shift, patch paste, translate)
+    arcgen_fit_place_programs: bool = False
+    # Phase 20 — ARC-GEN depth-2 composition (color ∘ flip, gravity ∘ map, …)
+    arcgen_compose_depth: int = 0
+    # Phase 21 — dynamic bbox-relative gravity ONNX (variable-shape safe)
+    arcgen_dynamic_gravity: bool = False
 
 
 def build_config(level: int) -> PhaseConfig:
@@ -101,6 +109,14 @@ def build_config(level: int) -> PhaseConfig:
         cfg.arcgen_fit_color = True
     if level >= 17:
         cfg.arcgen_fit_bbox_gather = True
+    if level >= 18:
+        cfg.arcgen_fit_object_programs = True
+    if level >= 19:
+        cfg.arcgen_fit_place_programs = True
+    if level >= 20:
+        cfg.arcgen_compose_depth = 2
+    if level >= 21:
+        cfg.arcgen_dynamic_gravity = True
     return cfg
 
 

@@ -6,9 +6,24 @@ import itertools
 
 import numpy as np
 
-from arc_genome.data.encoding import get_examples
+from arc_genome.config import get_config
 from arc_genome.genome.compose.primitives import PRIMITIVE_NAMES, apply_chain
 from arc_genome.onnx.gather import build_gather_model
+
+
+def _examples(td):
+    cfg = get_config()
+    if cfg.arcgen_validation:
+        n = cfg.arcgen_fit_samples
+        return td.get("train", []) + td.get("test", []) + td.get("arc-gen", [])[:n]
+    return td.get("train", []) + td.get("test", [])
+
+
+def _example_pairs(td):
+    return [
+        (np.array(ex["input"], dtype=np.int64), np.array(ex["output"], dtype=np.int64))
+        for ex in _examples(td)
+    ]
 
 
 def _chains(depth: int):
@@ -53,7 +68,17 @@ def _idx_from_chain(exs, chain):
 
 def solve_composition(td, max_depth: int = 3):
     """Find a primitive chain matching all I/O pairs; emit via spatial gather."""
-    exs = get_examples(td)
+    cfg = get_config()
+    if cfg.arcgen_compose_depth > 0:
+        from arc_genome.genome.ops.arcgen_compose import solve_compose_arcgen
+
+        model = solve_compose_arcgen(td, max_depth=min(max_depth, cfg.arcgen_compose_depth))
+        if model is not None:
+            return model
+
+    exs = _example_pairs(td)
+    if not exs:
+        return None
     for chain in _chains(max_depth):
         try:
             if not all(np.array_equal(apply_chain(inp, chain), out) for inp, out in exs):
