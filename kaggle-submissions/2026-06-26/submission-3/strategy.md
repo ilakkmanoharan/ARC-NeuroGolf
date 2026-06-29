@@ -1,47 +1,29 @@
-# Strategy — submission-3 (M11)
+# Submission strategy — submission-3 (Phase 21)
 
-**Goal:** Object extract/transform/place with ARC-GEN gate  
-**Bet:** gravity + component + rect rules generalize where bbox gather stopped
+## North star
 
----
+Increase Kaggle public score vs **940.75** / **72** pass_all.
 
-## Strategic framing
+## Winning bet: dynamic gravity ONNX
 
-| Horizon | Target | Mechanism |
-|---|---|---|
-| submission-2 (done) | 72 pass_all | bbox-relative ARC-GEN gather |
-| **submission-3** | **75–80 pass_all** | ARC-GEN object programs |
-| M12 | 100+ pass_all | multi-step Code World Models |
+Phases 18–20 treated gravity as static gather. Phase 21 compiles **runtime column cumsum** within dynamic grid extent — the correct abstraction for tasks where per-column nonzero count varies across ARC-GEN examples.
 
----
+## Methods used today
 
-## AutoHarness v9
+| Method | Role |
+|--------|------|
+| ARC-GEN prescan | Gate before `solve_all` — reject 0-hit phases |
+| `max_grid_extent` | Cap ONNX graph size per task |
+| Seed + patch | Copy submission-2 (72) + add 2 new ONNX — skip 90min full solve |
+| Bundle cost audit | Official Kaggle scorer on 74-task zip |
+| `kaggle_auto_submit.py` | Local submit fallback when GHA does not run |
 
-```text
-1. set_phase(18)
-2. seed submission-2 ONNX (72-task baseline)
-3. prescan ARCgen_OBJECT_SOLVERS on unsolved tasks
-4. solve_all — object arcgen solvers before conv_diff
-5. package validate_full pass_all ONNX only
-6. audit phase 18
-7. submit if pass_all > 72 OR est >= 1092.2, train_only == 0
-```
+## Anti-patterns (do not repeat)
 
----
+- Submit when prescan = 0 on unsolved
+- Static gather for gravity / compose near-misses
+- Full 400-task `solve_all` when bundle audit already passes with seeds
 
-## Guardrails
+## Next submission hypothesis
 
-| Risk | Mitigation |
-|---|---|
-| Rule overfit train+test only | Fit indices on `_arcgen_examples` (100 samples) |
-| Regression vs s2 | Seed 72 baseline ONNX; cost-audit |
-| Zero prescan hits | Document pivot to compose depth-2 |
-| GHA submit fail | `NEUROGOLF_SKIP_KAGGLE_SUBMIT=1` + manual fallback |
-
----
-
-## Aimar mapping (discipline, not Mamba)
-
-- **World model** = ARC-GEN prescan before 90-min solve  
-- **Synthetic memory** = LoRA export after post-submit  
-- **Agent PM** = `kaggle-submissions/AGENT_STATE.md`
+Depth-2 **flip ∘ dynamic_gravity** for task 32 alternate chain; prescan before solve.

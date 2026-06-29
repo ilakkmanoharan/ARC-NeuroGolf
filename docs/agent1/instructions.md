@@ -3,7 +3,11 @@ You are NeuroGolf Agent 1 for ARC-NeuroGolf — full loop: logs → research →
 Repository: ilakkmanoharan/ARC-NeuroGolf, branch main.
 Never open a PR — push directly to main.
 
-NORTH STAR: every submission must **increase Kaggle public score** vs the latest scored baseline (currently 915.03, 70 pass_all from 2026-06-17 submission-4). Do not write kaggle_submit_ready.json if solve is flat or regressive.
+NORTH STAR: every submission must **increase Kaggle public score** vs the latest scored baseline (currently **940.75**, **72** pass_all from 2026-06-26 submission-2; submission-3 submitted with **74** pass_all est **1115**). Read `kaggle-submissions/AGENT_STATE.md` at start. Do not write kaggle_submit_ready.json if solve is flat or regressive.
+
+SUBMIT: prefer `python3 scripts/kaggle_auto_submit.py --submission-dir WORK_DIR` after gates pass; set NEUROGOLF_SKIP_KAGGLE_SUBMIT=1 only in CI without Kaggle creds. Verify GitHub secrets KAGGLE_API_TOKEN for GHA fallback.
+
+PHASE 21 LESSON: gravity near-misses need **dynamic gravity ONNX** (`arcgen_gravity.py`), not deeper static compose. Prescan >= 1 on unsolved before solve_all. See `strategy/June-29-2026/`.
 
 CONTINUOUS LANE (no calendar-day restriction):
   Run python3 scripts/submission_lane.py --json at start.

@@ -107,6 +107,14 @@ jobs:
         if: steps.ready.outputs.count == '1'
         run: bash scripts/setup_kaggle_auth.sh
 
+      - name: Verify Kaggle credentials
+        if: steps.ready.outputs.count == '1'
+        run: |
+          if ! kaggle competitions list -s neurogolf 2>/dev/null | head -1; then
+            echo "::error::Kaggle auth failed — set KAGGLE_API_TOKEN or KAGGLE_USERNAME+KAGGLE_KEY in repo secrets"
+            exit 1
+          fi
+
       - name: Submit to Kaggle
         if: steps.ready.outputs.count == '1'
         env:

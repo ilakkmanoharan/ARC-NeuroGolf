@@ -210,7 +210,7 @@ def main():
         sys.exit(0)
 
     if os.environ.get("NEUROGOLF_SKIP_KAGGLE_SUBMIT"):
-        results_doc["message"] = f"ARC-Genome M11: {pass_all} verified, est {est:.0f}, compose arcgen"
+        results_doc["message"] = f"ARC-Genome M11: {pass_all} verified, est {est:.0f}, dynamic gravity"
         results_doc["ready_for_manual_kaggle_submit"] = True
         write_results(results_doc)
         subprocess.run(
@@ -221,36 +221,45 @@ def main():
                 SUB_DIR,
                 "--message",
                 results_doc["message"],
+                "--force",
             ],
             check=False,
         )
         print("NEUROGOLF_SKIP_KAGGLE_SUBMIT set; zip + kaggle_submit_ready.json for GHA.")
         sys.exit(0)
 
-    msg = f"ARC-Genome M11: {pass_all} verified, est {est:.0f}, place arcgen"
-    shutil.copy2(ZIP_STORE, SUBMIT_PATH)
+    msg = f"ARC-Genome M11: {pass_all} verified, est {est:.0f}, dynamic gravity"
+    # Local submit first (reliable); GHA auto-submit chains on push of results.json
     proc = subprocess.run(
-        [
-            KAGGLE,
-            "competitions",
-            "submit",
-            "-c",
-            "neurogolf-2026",
-            "-f",
-            SUBMIT_PATH,
-            "-m",
-            msg,
-        ]
+        [sys.executable, "scripts/kaggle_auto_submit.py", "--submission-dir", SUB_DIR, "--message", msg]
     )
     if proc.returncode != 0:
-        sys.exit(1)
+        results_doc["ready_for_manual_kaggle_submit"] = True
+        results_doc["message"] = msg
+        write_results(results_doc)
+        subprocess.run(
+            [
+                sys.executable,
+                "scripts/write_kaggle_submit_ready.py",
+                "--submission-dir",
+                SUB_DIR,
+                "--message",
+                msg,
+                "--force",
+            ],
+            check=False,
+        )
+        print("Local Kaggle submit failed; wrote kaggle_submit_ready.json for GHA retry.")
+        sys.exit(proc.returncode)
+
     results_doc["submitted"] = True
     results_doc["message"] = msg
+    results_doc["submitted_by"] = "run_script:kaggle_auto_submit"
     from datetime import datetime, timezone
 
     results_doc["submitted_at"] = datetime.now(timezone.utc).isoformat()
     write_results(results_doc)
-    print("Submitted successfully.")
+    print("Submitted successfully (local).")
 
 
 if __name__ == "__main__":

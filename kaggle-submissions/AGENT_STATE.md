@@ -1,6 +1,6 @@
 # Agent state — read at step 0 (Imi-style PM)
 
-Last updated: 2026-06-29 — submission-3 ready for auto-submit.
+Last updated: 2026-06-29 — submission-3 submitted (local CLI).
 
 ## Baseline (latest scored)
 
@@ -14,17 +14,22 @@ Last updated: 2026-06-29 — submission-3 ready for auto-submit.
 
 | Field | Value |
 |-------|-------|
-| Next folder | `kaggle-submissions/2026-06-26/submission-3` |
+| Latest submit | `kaggle-submissions/2026-06-26/submission-3` |
 | Phase | **21** dynamic gravity |
-| Status | **ready** — `kaggle_submit_ready.json` + zip (74 pass_all, est 1115) |
+| Status | **submitted** 2026-06-29 — 74 pass_all, est 1115 |
 | New tasks | **32**, **78** |
 
-## Submit gates
+## Submit automation
 
 ```text
-PASS: pass_all=74 > 72, train_only=0, est=1115 > 1092
-kaggle_submit_ready.json committed — GHA auto-submit on push
+Primary: scripts/kaggle_auto_submit.py (local Kaggle CLI)
+Fallback: GHA neurogolf-auto-submit on kaggle_submit_ready.json push
+Verify repo secrets: KAGGLE_API_TOKEN
 ```
+
+## Next
+
+Post-submit fetch when Kaggle grades submission-3. See `strategy/June-29-2026/`.
 
 ## Do not repeat
 

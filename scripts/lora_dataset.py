@@ -155,9 +155,13 @@ def summarize_arcgen_role(sub_dir: Path) -> str:
     """ARC-GEN is used by solvers, not as raw LLM text — summarize how this submission used it."""
     r = load_results(sub_dir)
     n = r.get("arcgen_validate_samples")
+    phase = r.get("phase")
+    new_tasks = r.get("new_tasks") or r.get("prescan_new_candidates")
     lines = [
         "# ARC-GEN usage (solver validation, not LLM training text)",
+        f"phase={phase}",
         f"arcgen_validate_samples={n}",
+        f"new_tasks={new_tasks}",
         "ARC-GEN JSON grids train ONNX solvers via arc_genome; for LoRA we use "
         "Kaggle per-task logs and audit outcomes as the learning signal.",
     ]

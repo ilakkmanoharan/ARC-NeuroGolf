@@ -12,6 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from lora_dataset import (
+    ADAPTER_GOALS,
     ADAPTER_NAMES,
     ROOT,
     discover_submissions,
@@ -114,6 +115,9 @@ def bootstrap_strategize(records) -> list[str]:
         strategy = _read(sub / "strategy.md")
         if strategy:
             response = response + "\n\n---\n\n# Strategy\n\n" + strategy
+        june = ROOT / "strategy" / "June-29-2026" / "strategy.md"
+        if june.is_file() and rec.date >= "2026-06-26":
+            response = response + "\n\n---\n\n# Session strategy (June-29)\n\n" + _read(june)[:8000]
         row = {
             "adapter": ADAPTER_NAMES["strategize"],
             "submission_dir": rec.rel(),
