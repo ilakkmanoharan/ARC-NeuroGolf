@@ -47,4 +47,6 @@ def s_gravity_right_dynamic(td):
 ARCgen_GRAVITY_SOLVERS = [
     ("gravity_up_dynamic", s_gravity_up_dynamic),
     ("gravity_down_dynamic", s_gravity_down_dynamic),
+    ("gravity_left_dynamic", s_gravity_left_dynamic),
+    ("gravity_right_dynamic", s_gravity_right_dynamic),
 ]

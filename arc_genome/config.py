@@ -117,6 +117,8 @@ def build_config(level: int) -> PhaseConfig:
         cfg.arcgen_compose_depth = 2
     if level >= 21:
         cfg.arcgen_dynamic_gravity = True
+    if level >= 22:
+        cfg.arcgen_compose_depth = 3
     return cfg
 
 
