@@ -1,0 +1,678 @@
+{
+  "summary": {
+    "submission_dir": "kaggle-submissions/2026-06-26/submission-5/submission",
+    "tasks_scored": 74,
+    "pass_all": 74,
+    "kaggle_total_est": 1115.9088645860963,
+    "kaggle_actual": 848.07,
+    "audit_ratio": 0.759981416864682
+  },
+  "tasks": [
+    {
+      "task": 6,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 16.484608430530393,
+      "kaggle_memory": 2472,
+      "kaggle_params": 2519,
+      "kaggle_cost": 4991
+    },
+    {
+      "task": 12,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 14.673109194224695,
+      "kaggle_memory": 18432,
+      "kaggle_params": 12111,
+      "kaggle_cost": 30543
+    },
+    {
+      "task": 15,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.669302131360084,
+      "kaggle_memory": 10368,
+      "kaggle_params": 911,
+      "kaggle_cost": 11279
+    },
+    {
+      "task": 16,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 20.394829814011906,
+      "kaggle_memory": 0,
+      "kaggle_params": 100,
+      "kaggle_cost": 100
+    },
+    {
+      "task": 22,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 14.974693124142778,
+      "kaggle_memory": 10472,
+      "kaggle_params": 12119,
+      "kaggle_cost": 22591
+    },
+    {
+      "task": 26,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 16.199283371280842,
+      "kaggle_memory": 4120,
+      "kaggle_params": 2519,
+      "kaggle_cost": 6639
+    },
+    {
+      "task": 32,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 12.399529934559444,
+      "kaggle_memory": 295488,
+      "kaggle_params": 1210,
+      "kaggle_cost": 296698
+    },
+    {
+      "task": 39,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 12.856595625615727,
+      "kaggle_memory": 185476,
+      "kaggle_params": 2375,
+      "kaggle_cost": 187851
+    },
+    {
+      "task": 53,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 56,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 17.545858921853323,
+      "kaggle_memory": 808,
+      "kaggle_params": 919,
+      "kaggle_cost": 1727
+    },
+    {
+      "task": 57,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 12.855781481818513,
+      "kaggle_memory": 185620,
+      "kaggle_params": 2384,
+      "kaggle_cost": 188004
+    },
+    {
+      "task": 60,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.261917891881513,
+      "kaggle_memory": 7040,
+      "kaggle_params": 9911,
+      "kaggle_cost": 16951
+    },
+    {
+      "task": 73,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 16.83634382383157,
+      "kaggle_memory": 3200,
+      "kaggle_params": 311,
+      "kaggle_cost": 3511
+    },
+    {
+      "task": 78,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 12.279470332219804,
+      "kaggle_memory": 331940,
+      "kaggle_params": 2606,
+      "kaggle_cost": 334546
+    },
+    {
+      "task": 79,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 14.739152738030555,
+      "kaggle_memory": 16472,
+      "kaggle_params": 12119,
+      "kaggle_cost": 28591
+    },
+    {
+      "task": 83,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 87,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 95,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.669302131360084,
+      "kaggle_memory": 10368,
+      "kaggle_params": 911,
+      "kaggle_cost": 11279
+    },
+    {
+      "task": 100,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.506663517562751,
+      "kaggle_memory": 8352,
+      "kaggle_params": 4919,
+      "kaggle_cost": 13271
+    },
+    {
+      "task": 108,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 116,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 120,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_memory": 82800,
+      "kaggle_params": 903,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 121,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 14.817707157324762,
+      "kaggle_memory": 14312,
+      "kaggle_params": 12119,
+      "kaggle_cost": 26431
+    },
+    {
+      "task": 127,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_memory": 82800,
+      "kaggle_params": 903,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 130,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.591546746434854,
+      "kaggle_memory": 7272,
+      "kaggle_params": 4919,
+      "kaggle_cost": 12191
+    },
+    {
+      "task": 135,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 140,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 142,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 144,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.872280656712155,
+      "kaggle_memory": 4288,
+      "kaggle_params": 4919,
+      "kaggle_cost": 9207
+    },
+    {
+      "task": 150,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 12.900199396552775,
+      "kaggle_memory": 179220,
+      "kaggle_params": 616,
+      "kaggle_cost": 179836
+    },
+    {
+      "task": 152,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 153,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.0519693847132,
+      "kaggle_memory": 8792,
+      "kaggle_params": 12119,
+      "kaggle_cost": 20911
+    },
+    {
+      "task": 155,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 12.900199396552775,
+      "kaggle_memory": 179220,
+      "kaggle_params": 616,
+      "kaggle_cost": 179836
+    },
+    {
+      "task": 164,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 171,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_memory": 82800,
+      "kaggle_params": 903,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 172,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 179,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 25.0,
+      "kaggle_memory": 0,
+      "kaggle_params": 0,
+      "kaggle_cost": 0
+    },
+    {
+      "task": 194,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 210,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 211,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 214,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 220,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_memory": 82800,
+      "kaggle_params": 903,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 223,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 227,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 16.222444546786946,
+      "kaggle_memory": 3968,
+      "kaggle_params": 2519,
+      "kaggle_cost": 6487
+    },
+    {
+      "task": 230,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_memory": 82800,
+      "kaggle_params": 903,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 241,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 25.0,
+      "kaggle_memory": 0,
+      "kaggle_params": 0,
+      "kaggle_cost": 0
+    },
+    {
+      "task": 242,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 14.583958318424212,
+      "kaggle_memory": 21272,
+      "kaggle_params": 12119,
+      "kaggle_cost": 33391
+    },
+    {
+      "task": 258,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.664969901870846,
+      "kaggle_memory": 82800,
+      "kaggle_params": 903,
+      "kaggle_cost": 83703
+    },
+    {
+      "task": 261,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.618288614699134,
+      "kaggle_memory": 82800,
+      "kaggle_params": 4903,
+      "kaggle_cost": 87703
+    },
+    {
+      "task": 266,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 17.0516147148881,
+      "kaggle_memory": 1920,
+      "kaggle_params": 911,
+      "kaggle_cost": 2831
+    },
+    {
+      "task": 276,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 20.394829814011906,
+      "kaggle_memory": 0,
+      "kaggle_params": 100,
+      "kaggle_cost": 100
+    },
+    {
+      "task": 282,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.669302131360084,
+      "kaggle_memory": 10368,
+      "kaggle_params": 911,
+      "kaggle_cost": 11279
+    },
+    {
+      "task": 283,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.474046290643345,
+      "kaggle_memory": 12800,
+      "kaggle_params": 911,
+      "kaggle_cost": 13711
+    },
+    {
+      "task": 294,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.474046290643345,
+      "kaggle_memory": 12800,
+      "kaggle_params": 911,
+      "kaggle_cost": 13711
+    },
+    {
+      "task": 299,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.549147782548516,
+      "kaggle_memory": 4608,
+      "kaggle_params": 8111,
+      "kaggle_cost": 12719
+    },
+    {
+      "task": 305,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 14.28827474169159,
+      "kaggle_memory": 32768,
+      "kaggle_params": 12111,
+      "kaggle_cost": 44879
+    },
+    {
+      "task": 307,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 12.940659784344549,
+      "kaggle_memory": 172028,
+      "kaggle_params": 677,
+      "kaggle_cost": 172705
+    },
+    {
+      "task": 309,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 20.394829814011906,
+      "kaggle_memory": 0,
+      "kaggle_params": 100,
+      "kaggle_cost": 100
+    },
+    {
+      "task": 311,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 316,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.264280423250316,
+      "kaggle_memory": 8792,
+      "kaggle_params": 8119,
+      "kaggle_cost": 16911
+    },
+    {
+      "task": 317,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.669302131360084,
+      "kaggle_memory": 10368,
+      "kaggle_params": 911,
+      "kaggle_cost": 11279
+    },
+    {
+      "task": 318,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.872280656712155,
+      "kaggle_memory": 4288,
+      "kaggle_params": 4919,
+      "kaggle_cost": 9207
+    },
+    {
+      "task": 322,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 16.793962237221187,
+      "kaggle_memory": 1152,
+      "kaggle_params": 2511,
+      "kaggle_cost": 3663
+    },
+    {
+      "task": 326,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 331,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.474046290643345,
+      "kaggle_memory": 12800,
+      "kaggle_params": 911,
+      "kaggle_cost": 13711
+    },
+    {
+      "task": 337,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 20.394829814011906,
+      "kaggle_memory": 0,
+      "kaggle_params": 100,
+      "kaggle_cost": 100
+    },
+    {
+      "task": 347,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 16.53388959881308,
+      "kaggle_memory": 2232,
+      "kaggle_params": 2519,
+      "kaggle_cost": 4751
+    },
+    {
+      "task": 372,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.36838678971014,
+      "kaggle_memory": 14520,
+      "kaggle_params": 719,
+      "kaggle_cost": 15239
+    },
+    {
+      "task": 373,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 380,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 385,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 13.393520441697655,
+      "kaggle_memory": 108000,
+      "kaggle_params": 1807,
+      "kaggle_cost": 109807
+    },
+    {
+      "task": 386,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 16.331803935047233,
+      "kaggle_memory": 3296,
+      "kaggle_params": 2519,
+      "kaggle_cost": 5815
+    },
+    {
+      "task": 393,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 15.276656377010053,
+      "kaggle_memory": 11784,
+      "kaggle_params": 4919,
+      "kaggle_cost": 16703
+    },
+    {
+      "task": 395,
+      "train_ok": true,
+      "pass_all": true,
+      "kaggle_score": 16.53388959881308,
+      "kaggle_memory": 2232,
+      "kaggle_params": 2519,
+      "kaggle_cost": 4751
+    }
+  ]
+}
