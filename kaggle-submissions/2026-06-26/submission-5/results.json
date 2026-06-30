@@ -24,7 +24,7 @@
   ],
   "seeded_from": "kaggle-submissions/2026-06-26/submission-2/submission_v2.zip",
   "zip": "kaggle-submissions/2026-06-26/submission-5/submission_v2.zip",
-  "submitted": false,
+  "submitted": true,
   "solver_counts": {
     "32": "gravity_down_dynamic",
     "78": "gravity_up_dynamic"
@@ -32,5 +32,7 @@
   "arcgen_validate_samples": 100,
   "elapsed_s": 102.3,
   "message": "ARC-Genome M13: 74 verified, est 1116, compact gravity",
-  "ready_for_manual_kaggle_submit": true
+  "ready_for_manual_kaggle_submit": true,
+  "submitted_at": "2026-06-30T05:10:13.975212+00:00",
+  "submitted_by": "github-actions:auto-submit"
 }
