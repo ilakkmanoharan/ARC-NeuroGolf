@@ -18,7 +18,7 @@ from arc_genome.genome.ops.conv import (
 )
 from arc_genome.data.encoding import fixed_shapes, get_examples
 from arc_genome.onnx.cost import compute_cost
-from arc_genome.onnx.model import save_model, validate_model
+from arc_genome.onnx.model import save_model, validate_model, onnx_file_size_ok
 
 
 def _score_candidate(path: str, task_data: dict) -> dict:
@@ -100,8 +100,10 @@ def _try_record(
 ):
     if not _validates(path, task_data, task_hex):
         return
-    cost = _score_candidate(path, task_data)
     cfg = get_config()
+    if cfg.use_official_score and not onnx_file_size_ok(path):
+        return
+    cost = _score_candidate(path, task_data)
     if apply_gate and cfg.calibrated_cost and cost["score"] < cfg.cost_gate_min_score:
         return
     candidates.append((sname, cost, path))

@@ -12,3 +12,4 @@ Rows are appended by `scripts/append_submission_registry.py` (CI or local).
 | 2026-06-26 | 09:41 | 1 | `kaggle-submissions/2026-06-26/submission-1/` | `kaggle-submissions/2026-06-26/submission-1/kaggle_notebook.md` | 70 | 1065.5 | no | No submit: 70 pass_all, 0 train_only, est 1066 |
 | 2026-06-26 | 14:35 | 2 | `kaggle-submissions/2026-06-26/submission-2/` | `kaggle-submissions/2026-06-26/submission-2/kaggle_notebook.md` | 72 | 1091.2 | no | ARC-Genome M10b: 72 verified, est 1091, bbox gather arcgen |
 | 2026-06-26 | 19:52 | 4 | `kaggle-submissions/2026-06-26/submission-4/` | `kaggle-submissions/2026-06-26/submission-4/kaggle_notebook.md` | 74 | 1115.0 | no | No submit: 74 pass_all, 0 train_only, est 1115 |
+| 2026-06-26 | 05:09 | 5 | `kaggle-submissions/2026-06-26/submission-5/` | — | 74 | 1115.9 | no | ARC-Genome M13: 74 verified, est 1116, compact gravity |

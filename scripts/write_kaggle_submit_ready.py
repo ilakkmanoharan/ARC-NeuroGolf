@@ -42,6 +42,12 @@ def main() -> int:
         print(f"submit gates not met (ready_for_manual_kaggle_submit=false): {msg or 'no message'}")
         return 0
 
+    kaggle_eligible = results.get("kaggle_eligible")
+    oversized = results.get("oversized_pass_all", 0)
+    if kaggle_eligible is not None and oversized:
+        print(f"submit blocked: {oversized} oversized ONNX files", file=sys.stderr)
+        return 1
+
     message = args.message.strip()
     if not message:
         message = results.get("message", "")

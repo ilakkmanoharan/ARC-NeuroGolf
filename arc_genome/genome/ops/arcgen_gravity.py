@@ -11,7 +11,7 @@ from arc_genome.genome.compose.primitives import (
     _gravity_right,
     _gravity_up,
 )
-from arc_genome.onnx.gravity import build_gravity_model, max_grid_extent
+from arc_genome.onnx.gravity import build_gravity_model_slim, max_grid_extent
 
 
 def _pairs(td) -> list[tuple[np.ndarray, np.ndarray]]:
@@ -25,7 +25,7 @@ def _s_gravity_dynamic(td, direction: str, rule_fn):
     if not all(np.array_equal(rule_fn(inp), out) for inp, out in pairs):
         return None
     mh, mw = max_grid_extent(td)
-    return build_gravity_model(direction, mh, mw)
+    return build_gravity_model_slim(direction, mh, mw)
 
 
 def s_gravity_up_dynamic(td):

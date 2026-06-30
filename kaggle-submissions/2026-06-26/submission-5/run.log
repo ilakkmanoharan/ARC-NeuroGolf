@@ -1,0 +1,5 @@
+Seeded 72 ONNX from kaggle-submissions/2026-06-26/submission-2 (size-safe only)
+Pre-scan compact gravity: [32, 78]
+Compiled task 32: gravity_down_dynamic (453.2 KB)
+Compiled task 78: gravity_up_dynamic (888.9 KB)
+Created kaggle-submissions/2026-06-26/submission-5/submission_v2.zip: 74 files, 855 KB
