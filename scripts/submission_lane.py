@@ -78,13 +78,24 @@ def work_dir() -> tuple[str, int, Path]:
         date = active_date()
         return date, 1, SUBMISSIONS / date / "submission-1"
 
+    submitted = latest_submitted()
+    sub_floor: tuple[str, int] | None = None
+    if submitted:
+        sub_floor = (submitted[0], submitted[1])
+
     for date, num, path in sorted(rows, key=lambda x: (x[0], x[1]), reverse=True):
         if (path / "superseded.md").is_file():
+            continue
+        if sub_floor and (date, num) <= sub_floor:
             continue
         if (path / "submission_v2.zip").is_file() and (path / "kaggle_submit_ready.json").is_file():
             continue
         if (path / "plan.md").is_file() or find_run_script(date, num):
             return date, num, path
+
+    if submitted:
+        s_date, s_num, _ = submitted
+        return s_date, s_num + 1, SUBMISSIONS / s_date / f"submission-{s_num + 1}"
 
     date, num, _ = max(rows, key=lambda x: (x[0], x[1]))
     return date, num + 1, SUBMISSIONS / date / f"submission-{num + 1}"

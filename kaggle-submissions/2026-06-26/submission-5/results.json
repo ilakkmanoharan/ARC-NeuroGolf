@@ -34,5 +34,6 @@
   "message": "ARC-Genome M13: 74 verified, est 1116, compact gravity",
   "ready_for_manual_kaggle_submit": true,
   "submitted_at": "2026-06-30T05:10:13.975212+00:00",
-  "submitted_by": "github-actions:auto-submit"
+  "submitted_by": "github-actions:auto-submit",
+  "kaggle_score_actual": 965.42
 }

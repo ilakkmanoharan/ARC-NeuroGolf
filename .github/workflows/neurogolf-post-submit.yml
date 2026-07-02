@@ -169,6 +169,24 @@ jobs:
             -m "Kaggle grade + per-task logs via neurogolf-post-submit workflow."
           git push
 
+      - name: Queue next submission (continual harness — no Cursor required)
+        if: inputs.auto_commit == true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          eval "$(python3 scripts/submission_lane.py --export-work-dir)"
+          SCRIPT="run_submission_${DATE}_s${SUB_NUM}.py"
+          if [ ! -f "scripts/${SCRIPT}" ]; then
+            echo "::notice::scripts/${SCRIPT} not found — Cursor agent or manual implement needed"
+            exit 0
+          fi
+          if [ -f "kaggle-submissions/${DATE}/submission-${SUB_NUM}/submission_v2.zip" ]; then
+            echo "submission-${SUB_NUM} already solved — skip queue"
+            exit 0
+          fi
+          python3 scripts/queue_next_submission.py --commit || true
+
       - name: Trigger Cursor Cloud Agent (next submission)
         if: |
           always() &&

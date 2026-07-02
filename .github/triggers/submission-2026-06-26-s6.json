@@ -1,0 +1,9 @@
+{
+  "date": "2026-06-26",
+  "submission_number": "6",
+  "run_script": "run_submission_2026-06-26_s6.py",
+  "description": "M14 Phase 24: cost_audit rescoring + prescan-guided unsolved",
+  "fetch_prev_logs": true,
+  "auto_commit": true,
+  "chain_post_submit": true
+}

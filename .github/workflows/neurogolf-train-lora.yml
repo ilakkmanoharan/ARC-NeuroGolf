@@ -7,6 +7,10 @@
 
 name: NeuroGolf train LoRA
 
+concurrency:
+  group: neurogolf-train-lora
+  cancel-in-progress: false
+
 on:
   workflow_dispatch:
     inputs:

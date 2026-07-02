@@ -1,7 +1,7 @@
 # Submission Analysis — submission-5 (M13)
 
 **Date:** 2026-06-26  
-**Kaggle public:** **pending** (submitted 2026-06-30 via GHA)  
+**Kaggle public:** **965.42** ✅ (submitted 2026-06-30 via GHA)  
 **Prior scored baseline:** **940.75** / **72** kaggle-eligible (submission-2)  
 **Local:** **74 pass_all** | **74 kaggle-eligible** | **0 oversized**  
 **Audit est.:** **1116** (+24.7 vs s2 est 1091.2)  
@@ -26,7 +26,7 @@
 | oversized | **2** (32, 78) | **0** | fixed |
 | Task 32 size | 2.50 MB | **453 KB** | ✅ |
 | Task 78 size | 8.50 MB | **889 KB** | ✅ |
-| Kaggle actual | **940.75** (flat) | pending | — |
+| Kaggle actual | **940.75** (flat) | **965.42** | **+24.67** |
 | Audit est. | 1115.0 | **1116** | +1 |
 
 submission-3 proved dynamic gravity compiles and validates; submission-5 proves **size-safe slim compile** so Kaggle accepts the circuits.

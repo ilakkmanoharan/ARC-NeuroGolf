@@ -1,0 +1,60 @@
+# Continual harness: poll lane every 6h; queue next submission if run script exists and work is idle.
+#
+# Complements post-submit → queue_next_submission. Catches stalls when post-submit fetch fails
+# or when no new submission was graded.
+
+name: NeuroGolf continual harness
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Lane state
+        run: python3 scripts/submission_lane.py --json
+
+      - name: Queue next submission if ready
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          python3 scripts/queue_next_submission.py --commit || true
+
+      - name: Re-run post-submit if latest lacks kaggle_score_actual
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          set -euo pipefail
+          eval "$(python3 scripts/submission_lane.py --export-latest-submitted)"
+          SUB_DIR="kaggle-submissions/${DATE}/submission-${SUB_NUM}"
+          if python3 -c "import json; r=json.load(open('${SUB_DIR}/results.json')); exit(0 if r.get('kaggle_score_actual') else 1)"; then
+            echo "Latest submission already has kaggle_score_actual"
+            exit 0
+          fi
+          bash scripts/setup_kaggle_auth.sh 2>/dev/null || true
+          pip install -q -r requirements.txt
+          python3 scripts/post_submit_fetch.py --date "${DATE}" --submission "${SUB_NUM}" --skip-initial-wait || true
+          git add "${SUB_DIR}/results.json" "${SUB_DIR}/kaggle_status.txt" 2>/dev/null || true
+          git add "${SUB_DIR}/kaggle_logs/" 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "ci: continual harness backfill submission-${SUB_NUM} score"
+            git push
+          fi
