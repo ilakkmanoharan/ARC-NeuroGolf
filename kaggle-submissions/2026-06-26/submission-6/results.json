@@ -1,0 +1,40 @@
+{
+  "submission": 6,
+  "date": "2026-06-26",
+  "phase": 24,
+  "milestone": "M14",
+  "solved": 74,
+  "pass_all": 74,
+  "kaggle_eligible": 74,
+  "oversized_pass_all": 0,
+  "train_only": 0,
+  "kaggle_score_est": 1115.9088645860963,
+  "kaggle_score_est_eligible": 1115.9088645860963,
+  "kaggle_score_baseline": 965.42,
+  "kaggle_score_est_baseline": 1115.9088645860966,
+  "baseline_submission_tasks": 74,
+  "baseline_logged_dir": "kaggle-submissions/2026-06-26/submission-5",
+  "prescan_new_candidates": [],
+  "cost_audit_tasks": [
+    39,
+    57,
+    150,
+    155,
+    307
+  ],
+  "new_tasks": [],
+  "seeded_from": "kaggle-submissions/2026-06-26/submission-5/submission_v2.zip",
+  "skipped_oversized_seeds": [],
+  "zip": "kaggle-submissions/2026-06-26/submission-6/submission_v2.zip",
+  "submitted": false,
+  "solver_counts": {
+    "bbox_gather_arcgen": 2,
+    "bounded_flip_v": 1,
+    "bounded_flip_h": 1,
+    "bounded_upscale2": 1
+  },
+  "arcgen_validate_samples": 100,
+  "cost_audit_bundle": true,
+  "elapsed_s": 315.4,
+  "message": "No submit: kaggle_eligible=74 (need >74), oversized=0, train_only=0, est_eligible=1116"
+}

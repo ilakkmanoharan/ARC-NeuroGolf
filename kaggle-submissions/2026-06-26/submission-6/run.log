@@ -1,0 +1,19 @@
+Submission-6: Phase 24 cost_audit + prescan-guided solve
+Cost-audit targets: [39, 57, 150, 155, 307]
+Task  39: bbox_gather_arcgen   cost=   187,851 score=12.9
+Task  57: bbox_gather_arcgen   cost=   188,004 score=12.9
+Task 150: bounded_flip_v       cost=   179,836 score=12.9
+Task 155: bounded_flip_h       cost=   179,836 score=12.9
+Task 307: bounded_upscale2     cost=   172,705 score=12.9
+
+--- Second pass: 0 unsolved tasks ---
+
+Solved: 5/5 in 171s
+Estimated total score: 64.5
+  bbox_gather_arcgen: 2
+  bounded_flip_v: 1
+  bounded_flip_h: 1
+  bounded_upscale2: 1
+
+--- Skipping full unsolved conv pass (prescan empty; s4 proved 0 gain) ---
+Created kaggle-submissions/2026-06-26/submission-6/submission_v2.zip: 74 files, 855 KB
